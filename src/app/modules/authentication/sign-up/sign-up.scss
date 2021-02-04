@@ -9,6 +9,16 @@
     border: 2px solid #00E676;
 }
 
+.img {
+    height: 100px;
+    // width: 180px;
+    // padding: 10px;
+    margin: 0;
+    background-repeat: no-repeat;
+    justify-content: center;
+    background-image: url('../../../../assets/img/e-logo.png');
+}
+
 .signup_page {
     padding-top: 100px;
     height: 100vh;
