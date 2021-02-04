@@ -80,13 +80,15 @@
 
                             <div class="row">
                                 <div class="col-md 12 text-center pt-3">
-                                    <button [disabled]="signupForm.invalid" class="signup_btn signup_btn-5">SIGNUP</button>
+                                    <button [disabled]="signupForm.invalid" class="signup_btn signup_btn-5">REGISTER</button>
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
-
+                <div class="col-md-12 text-center pt-4">
+                    <p style="color: #fff;">Already have an account? <a style="text-decoration: none;" (click)="login()" href="Javascript:;">Login</a></p>
+                </div>
             </mat-card>
         </div>
         <div class="col-md-4"></div>
