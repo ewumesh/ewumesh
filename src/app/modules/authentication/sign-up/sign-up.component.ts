@@ -80,6 +80,7 @@ export class SignUpComponent implements OnInit, AfterViewInit {
                     horizontalPosition: 'right',
                     verticalPosition: 'top',
                 });
+                this.router.navigate(['/home']);
             } else {
                 this.snackbarService.open('Already registered.', 'Close', {
                     duration: 2000,
