@@ -21,14 +21,13 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script>
-        $(window).scroll(function() {
-            if ($(document).scrollTop() > 50) {
-                $('.nav').addClass('affix');
-                console.log("OK");
-            } else {
-                $('.nav').removeClass('affix');
-            }
-        });
+        function openNav() {
+            document.getElementById("mySidepanel").style.width = "380px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidepanel").style.width = "0";
+        }
 
         $('.navTrigger').click(function() {
             $(this).toggleClass('active');
@@ -37,7 +36,15 @@
             $("#mainListDiv").fadeIn();
 
         });
+        $(window).scroll(function() {
+            if ($(document).scrollTop() > 50) {
+                $('.nav').addClass('affix');
+                // console.log("OK");
+            } else {
+                $('.nav').removeClass('affix');
+            }
+        });
     </script>
-<script src="runtime.e5d1cef04630e4310d2e.js" defer=""></script><script src="polyfills.7a965888daba3fbc4385.js" defer=""></script><script src="main.98bef0abe9330ae064aa.js" defer=""></script></body>
+<script src="runtime.e5d1cef04630e4310d2e.js" defer=""></script><script src="polyfills.7a965888daba3fbc4385.js" defer=""></script><script src="main.0eefce820c920afca72f.js" defer=""></script></body>
 
 </html>
