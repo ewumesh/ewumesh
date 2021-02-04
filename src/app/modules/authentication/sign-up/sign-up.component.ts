@@ -6,6 +6,7 @@ import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition
 import { GenericValidator } from '../../../shred/validations/generic-validators';
 import { Regex } from '../../../shred/validations/regex';
 import { AuthService } from '../auth.service';
+import { SnackbarComponent } from 'src/app/shred/validations/snackbar/snackbar.component';
 
 @Component({
     templateUrl: './sign-up.component.html',
@@ -74,19 +75,20 @@ export class SignUpComponent implements OnInit, AfterViewInit {
     saveChanges() {
         this.authService.signUp(this.signupForm.value).subscribe(_ => {
             if (_ === true) {
-                this.router.navigate(['/main']);
-                this.snackbarService.open('User registered successfully.', 'Close', {
-                    duration: 1500,
-                    horizontalPosition: 'right',
+                this.snackbarService.openFromComponent(SnackbarComponent, {
+                    data: 'User registered successfully.',
+                    duration: 10000,
                     verticalPosition: 'top',
-                });
+                    horizontalPosition: 'right'
+                })
                 this.router.navigate(['/home']);
             } else {
-                this.snackbarService.open('Already registered.', 'Close', {
-                    duration: 2000,
-                    horizontalPosition: 'right',
+                this.snackbarService.openFromComponent(SnackbarComponent, {
+                    data: 'User already registered.',
+                    duration: 10000,
                     verticalPosition: 'top',
-                });
+                    horizontalPosition: 'right'
+                })
             }
         });
     }

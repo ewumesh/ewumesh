@@ -7,6 +7,7 @@ import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition
 import { GenericValidator } from '../../../shred/validations/generic-validators'
 import { ForgotPasswordComponent } from '../forgot-password/forgot-password.component';
 import { AuthService } from '../auth.service';
+import { SnackbarComponent } from 'src/app/shred/validations/snackbar/snackbar.component';
 
 @Component({
     templateUrl: './login.component.html',
@@ -65,20 +66,21 @@ export class LoginComponent implements OnInit, AfterViewInit {
     saveChanges() {
         this.authService.getUserDetail(this.loginForm.value).subscribe(_ => {
             if (_ !==undefined) {
-                this.router.navigate(['/main']);
-                this.snackbarService.open('Login Success.', 'Close', {
-                    duration: 1500,
-                    horizontalPosition: this.horizontalPosition,
-                    verticalPosition: this.verticalPosition,
-
-                });
+                this.snackbarService.openFromComponent(SnackbarComponent, {
+                    data: 'User Login Successfully.',
+                    duration: 10000,
+                    verticalPosition: "top", 
+                    horizontalPosition: "right" 
+                })
+                this.router.navigate(['/home'])
             } else {
-                this.snackbarService.open('You entered username and password not matched.', 'Close', {
-                    duration: 1500,
-                    horizontalPosition: this.horizontalPosition,
-                    verticalPosition: this.verticalPosition,
 
-                });
+                this.snackbarService.openFromComponent(SnackbarComponent, {
+                    data: 'You entered username and password not matched.',
+                    duration: 10000,
+                    verticalPosition: "top", 
+                    horizontalPosition: "right"
+                })
             }
         });
     }
