@@ -32,4 +32,8 @@ export class NavComponent implements OnInit {
             this.router.navigate(['/register']);
         }, 300)
     }
+
+    contact() {
+        this.router.navigate(['/asd'])
+    }
 }

@@ -6,6 +6,7 @@ import { NavModule } from './modules/nav/nav.module';
 import { AppRoutingModule } from './app.routing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SnackbarModule } from './shred/validations/snackbar/snackbar.module';
+import { PageNotFoundModule } from './modules/404/404.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { SnackbarModule } from './shred/validations/snackbar/snackbar.module';
     AppRoutingModule,
 
     BrowserAnimationsModule,
-    SnackbarModule
+    SnackbarModule,
+    PageNotFoundModule
   ],
   providers: [],
   bootstrap: [AppComponent]
