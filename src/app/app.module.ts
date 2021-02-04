@@ -7,11 +7,11 @@ import { AppRoutingModule } from './app.routing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SnackbarModule } from './shred/validations/snackbar/snackbar.module';
 import { PageNotFoundModule } from './modules/404/404.module';
+import { ScrollTopModule } from './modules/scroll-top/scroll-top.module';
 
 @NgModule({
   declarations: [
-    AppComponent
-  ],
+    AppComponent],
   imports: [
     BrowserModule,
     NavModule,
@@ -20,7 +20,8 @@ import { PageNotFoundModule } from './modules/404/404.module';
 
     BrowserAnimationsModule,
     SnackbarModule,
-    PageNotFoundModule
+    PageNotFoundModule,
+    ScrollTopModule
   ],
   providers: [],
   bootstrap: [AppComponent]
