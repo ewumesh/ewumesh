@@ -19,10 +19,6 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script>
-        function openNav() {
-            document.getElementById("mySidepanel").style.width = "500px";
-        }
-
         function closeNav() {
             document.getElementById("mySidepanel").style.width = "0";
         }
@@ -41,8 +37,23 @@
             } else {
                 $('.nav').removeClass('affix');
             }
+
+            if ($(document).scrollTop() > 80) {
+                document.getElementById("mySidepanel").style.width = "0";
+            }
+        });
+
+
+        // toggle
+        $(document).ready(function() {
+            $('#overlay-input').click(function() {
+                var toggleWidth = $("#mySidepanel").width() == 500 ? "0px" : "500px";
+                $('#mySidepanel').animate({
+                    width: toggleWidth
+                });
+            });
         });
     </script>
-<script src="runtime.b465896b1ef2b3fdb26b.js" defer=""></script><script src="polyfills.7a965888daba3fbc4385.js" defer=""></script><script src="main.6828a14391b45eee5a92.js" defer=""></script></body>
+<script src="runtime.b465896b1ef2b3fdb26b.js" defer=""></script><script src="polyfills.7a965888daba3fbc4385.js" defer=""></script><script src="main.6dd92cce3d029211aa45.js" defer=""></script></body>
 
 </html>
