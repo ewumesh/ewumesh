@@ -1,7 +1,11 @@
 .login_card {
     // background-image: url('../../../../assets/pexels-evie-shaffer-4004374.jpg');
-    background: transparent;
-    border: 2px solid #00E676;
+    background-image: url('../../../../assets/images/lo.jpg');
+    // background: transparent;
+    background-repeat: no-repeat;
+    justify-content: center;
+    background-size: cover;
+    // border: 2px solid #00E676;
 }
 
 .login_img {
@@ -17,7 +21,7 @@
     margin: 0;
     background-repeat: no-repeat;
     justify-content: center;
-    background-image: url('../../../../assets/img/e-logo.png');
+    background-image: url('../../../../assets/logo/e-logo.png');
 }
 
 .login_form {
@@ -137,9 +141,33 @@
 .forgot_password:hover {
     text-decoration: none;
     transition: color 0.8s ease-in;
-    color: #000;
+    color: #00E676;
 }
 
 .input_label {
     color: #fff;
+}
+
+.m_o {
+    margin: 0 !important;
+}
+
+.m_checkbox {
+    font-size: 12px !important;
+    color: #fff;
+}
+
+.f_text {
+    color: #fff;
+}
+
+#reg>a {
+    text-decoration: none;
+    color: rgb(2, 114, 241) !important;
+}
+
+#reg:hover {
+    color: #00E676!important;
+    text-decoration: none;
+    transition: color 0.8s ease-in-out;
 }

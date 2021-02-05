@@ -10,10 +10,6 @@ body {
 }
 
 
-/*-- Inspiration taken from abdo steif -->
-/* --> https://codepen.io/abdosteif/pen/bRoyMb?editors=1100*/
-
-
 /* Navbar section */
 
 .nav {
@@ -393,4 +389,14 @@ body {
 
 .openbtn:hover {
     background-color: #444;
+}
+
+// 
+.l_img {
+    width: 80px;
+}
+
+.mobile_view_button {
+    font-size: 50px !important;
+    margin-right: 90px !important;
 }

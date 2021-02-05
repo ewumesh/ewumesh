@@ -1,13 +1,13 @@
 <nav class="nav">
     <div class="container">
         <div class="logo">
-            <a href="Javascript:;"><img style="width: 80px;" src="assets/img/e-logo.png"></a>
+            <a href="Javascript:;"><img class="l_img" src="assets/logo/e-logo.png"></a>
         </div>
         <div id="mainListDiv" class="main_list">
             <ul class="navlinks">
                 <li><a href="Javascript:;" (click)="home()">Home</a></li>
                 <li><a href="Javascript:;">Portfolio</a></li>
-                <li><a href="Javascript:;">About</a></li>
+                <li><a href="Javascript:;" (click)="about()">About</a></li>
                 <li><a href="Javascript:;" (click)="contact()">Contact</a></li>
                 <li><a href="Javascript:;" (click)="login()">Login</a></li>
                 <li><a href="Javascript:;" (click)="register()">Register</a></li>
@@ -24,7 +24,7 @@
 </nav>
 
 <div id="mySidepanel" class="sidepanel">
-    <a href="javascript:void(0)" class="closebtn" style="font-size: 50px !important; margin-right: 90px !important;" onclick="closeNav()">X</a>
+    <a href="javascript:void(0)" class="closebtn mobile_view_button" onclick="closeNav()">X</a>
     <a href="Javascript:;" onclick="closeNav()" (click)="home()">Home</a>
     <a href="Javascript:;" onclick="closeNav()">Portfolio</a>
     <a href="Javascript:;" onclick="closeNav()">About</a>

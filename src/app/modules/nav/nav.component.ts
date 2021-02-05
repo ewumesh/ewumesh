@@ -36,4 +36,8 @@ export class NavComponent implements OnInit {
     contact() {
         this.router.navigate(['/asd'])
     }
+
+    about() {
+        this.router.navigate(['/notfound']);
+    }
 }

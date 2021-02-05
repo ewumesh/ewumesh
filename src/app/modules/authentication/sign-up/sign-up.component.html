@@ -1,92 +1,33 @@
-<!-- <div class="row signup_page">
-    <div class="col-md-4"></div>
-    <div class="col-md-4">
-        <mat-card class="signup_card">
-            <div class="text-center">
-                <img class="signup_img" src="../../../../assets/user1.jpg">
-            </div>
-
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <form [formGroup]="signupForm" (ngSubmit)="saveChanges()" autocomplete="off">
-                        <mat-form-field style="width: 80%;">
-                            <mat-label class="input_label">Email</mat-label>
-                            <input formControlName="email" type="email" matInput placeholder="Enter username">
-                            <mat-error class="font-danger" *ngIf="displayMessage?.email">{{displayMessage?.email}}</mat-error>
-                        </mat-form-field>
-
-                        <mat-form-field class="pt-3" style="width: 80%;">
-                            <mat-label class="input_label">Password</mat-label>
-                            <input formControlName="password" type="password" matInput placeholder="Enter Your Password">
-                            <mat-error class="font-danger" *ngIf="displayMessage?.password">{{displayMessage?.password}}</mat-error>
-                        </mat-form-field>
-
-                        <mat-form-field class="pt-3" style="width: 80%;">
-                            <mat-label class="input_label">Confirm Password</mat-label>
-                            <input formControlName="confirmPassword" type="confirmPassword" matInput placeholder="Re-enter your password">
-                            <mat-error class="font-danger" *ngIf="displayMessage?.confirmPassword">{{displayMessage?.confirmPassword}}</mat-error>
-                        </mat-form-field>
-                        <p style="text-align: left !important; padding-left: 10% !important;color: #f44336; font-size: 12px; font-family:Roboto,'Helvetica Neue', sans-serif; letter-spacing: normal;
-                        " *ngIf="signupForm.errors?.invalid"> Password doesn't match </p>
-
-                        <div class="row">
-                            <div class="col-md 12 text-center pt-3">
-                                <button [disabled]="signupForm.invalid" class="signup_btn signup_btn-5">SIGNUP</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-        </mat-card>
-        <div class="col-md-12 text-center pt-4">
-            <p style="color: #fff;">Already have an account? <a (click)="login()" href="Javascript:;">Login</a></p>
-        </div>
-    </div>
-    <div class="col-md-4"></div>
-</div> -->
-
 <header id="home" class="signup_page pb-4">
-    <div class="row" style="margin: 0;">
+    <div class="row m_0">
         <div class="col-md-4"></div>
         <div class="col-md-4">
             <mat-card class="signup_card">
                 <div class="text-center">
-                    <div class="row">
-                        <div class="col-md-3"></div>
-                        <div class="col-md-6">
-                            <div class="img">
-
-                            </div>
-                        </div>
-                        <div class="col-md-3"></div>
-                    </div>
-
-                    <!-- <img class="login_img" src="../../../../assets/img/e-logo.png"> -->
+                    <img class="login_img" src="assets/logo/e-logo.png">
                 </div>
 
                 <div class="row">
                     <div class="col-md-12 text-center signup_form">
                         <form [formGroup]="signupForm" (ngSubmit)="saveChanges()" autocomplete="off">
-                            <mat-form-field style="width: 80%;">
+                            <mat-form-field class="max-width">
                                 <mat-label class="input_label">Email</mat-label>
                                 <input formControlName="email" type="email" matInput placeholder="Enter username">
                                 <mat-error class="font-danger" *ngIf="displayMessage?.email">{{displayMessage?.email}}</mat-error>
                             </mat-form-field>
 
-                            <mat-form-field class="pt-3" style="width: 80%;">
+                            <mat-form-field class="max-width pt-3">
                                 <mat-label class="input_label">Password</mat-label>
                                 <input formControlName="password" type="password" matInput placeholder="Enter Your Password">
                                 <mat-error class="font-danger" *ngIf="displayMessage?.password">{{displayMessage?.password}}</mat-error>
                             </mat-form-field>
 
-                            <mat-form-field class="pt-3" style="width: 80%;">
+                            <mat-form-field class="max-width pt-3">
                                 <mat-label class="input_label">Confirm Password</mat-label>
                                 <input formControlName="confirmPassword" type="password" matInput placeholder="Re-enter your password">
                                 <mat-error class="font-danger" *ngIf="displayMessage?.confirmPassword">{{displayMessage?.confirmPassword}}</mat-error>
                             </mat-form-field>
-                            <p style="text-align: left !important; padding-left: 10% !important;color: #f44336; font-size: 12px; font-family:Roboto,'Helvetica Neue', sans-serif; letter-spacing: normal;
-                            " *ngIf="signupForm.errors?.invalid"> Password doesn't match </p>
+                            <p class="wrong_password" *ngIf="signupForm.errors?.invalid"> Password doesn't match </p>
 
                             <div class="row">
                                 <div class="col-md 12 text-center pt-3">
@@ -97,7 +38,7 @@
                     </div>
                 </div>
                 <div class="col-md-12 text-center pt-4">
-                    <p style="color: #fff;">Already have an account? <a style="text-decoration: none;" (click)="login()" href="Javascript:;">Login</a></p>
+                    <p class="already">Already have an account? <a class="s_login" (click)="login()" href="Javascript:;">Login</a></p>
                 </div>
             </mat-card>
         </div>

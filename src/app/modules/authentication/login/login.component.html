@@ -1,59 +1,10 @@
-<!-- <div class="row login_page">
-    <div class="col-md-4"></div>
-    <div class="col-md-4">
-        <mat-card class="login_card">
-            <div class="text-center">
-                <img class="login_img" src="../../../../assets/user1.jpg">
-            </div>
-
-            <div class="row">
-                <div class="col-md-12 text-center login_form">
-                    <form [formGroup]="loginForm" (ngSubmit)="saveChanges()" class="example-form" autocomplete="off">
-                        <mat-form-field class="login_field">
-                            <mat-label class="input_label">Username</mat-label>
-                            <input formControlName="userName" type="email" matInput placeholder="Enter username">
-                            <mat-error class="font-danger" *ngIf="displayMessage?.userName">{{displayMessage?.userName}}</mat-error>
-                        </mat-form-field>
-
-                        <mat-form-field class="login_field">
-                            <mat-label class="input_label">Password</mat-label>
-                            <input formControlName="password" type="password" matInput placeholder="Enter Your Password">
-                            <mat-error class="font-danger" *ngIf="displayMessage?.password">{{displayMessage?.password}}</mat-error>
-                        </mat-form-field>
-
-                        <div class="row pt-3">
-                            <div class="col-md-6 text-left pl-4">
-                                <mat-checkbox style="font-size: 12px !important; color: #fff;"> Remember me</mat-checkbox>
-                            </div>
-                            <div class="col-md-6 text-left login_card_footer">
-                                <a class="forgot_password" href="Javascript:;" (click)="forgotPassword()"> Forgot password ?</a>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md 12 text-center pt-3">
-                                <button [disabled]="loginForm.invalid" class="login_btn login_btn-5">LOGIN</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-        </mat-card>
-        <div class="col-md-12 text-center pt-4">
-            <p style="color: #fff;">Don't have an account? <a (click)="signUp()" href="Javascript:;">Sign up</a></p>
-        </div>
-    </div>
-    <div class="col-md-4"></div>
-</div> -->
-
 <header id="home" class="login_page pb-4">
-    <div class="row" style="margin: 0;">
+    <div class="row m_o">
         <div class="col-md-4"></div>
         <div class="col-md-4">
             <mat-card class="login_card">
                 <div class="text-center">
-                    <div class="row">
+                    <!-- <div class="row">
                         <div class="col-md-3"></div>
                         <div class="col-md-6">
                             <div class="img">
@@ -61,9 +12,9 @@
                             </div>
                         </div>
                         <div class="col-md-3"></div>
-                    </div>
+                    </div> -->
 
-                    <!-- <img class="login_img" src="../../../../assets/img/e-logo.png"> -->
+                    <img class="login_img" src="assets/logo/e-logo.png">
                 </div>
 
                 <div class="row">
@@ -83,7 +34,7 @@
 
                             <div class="row pt-3">
                                 <div class="col-md-6 text-left pl-4">
-                                    <mat-checkbox style="font-size: 12px !important; color: #fff;"> Remember me</mat-checkbox>
+                                    <mat-checkbox class="m_checkbox"> Remember me</mat-checkbox>
                                 </div>
                                 <div class="col-md-6 text-left login_card_footer">
                                     <a class="forgot_password" href="Javascript:;" (click)="forgotPassword()"> Forgot password ?</a>
@@ -100,7 +51,7 @@
                 </div>
 
                 <div class="col-md-12 text-center pt-4">
-                    <p style="color: #fff;">Don't have an account? <a style="text-decoration: none;" (click)="signUp()" href="Javascript:;">Register</a></p>
+                    <p class="f_text">Don't have an account? <a id="reg" (click)="signUp()" href="Javascript:;">Register</a></p>
                 </div>
             </mat-card>
         </div>

@@ -10,3 +10,10 @@
     opacity: 1;
     transition: all .2s ease-in-out;
 }
+
+.scroll_top_button {
+    height: 50px;
+    width: 50px;
+    border-radius: 100px;
+    background-color: #00E676 !important;
+}

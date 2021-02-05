@@ -51,3 +51,40 @@
 .s_icon:hover {
     cursor: pointer;
 }
+
+.footer_bg {
+    background-color: rgb(22, 22, 24) !important;
+}
+
+.f_row {
+    width: 100% !important;
+}
+
+.footer_p {
+    color: rgb(69, 97, 121);
+    line-height: 30px;
+}
+
+.copyright {
+    color: rgb(69, 97, 121);
+}
+
+.s_youtube {
+    color: #FF0000 !important;
+    font-size: 25px;
+}
+
+.s_twitter {
+    color: #385898 !important;
+    font-size: 25px;
+}
+
+.s_instagram {
+    color: #ed4956 !important;
+    font-size: 25px;
+}
+
+.s_facebook {
+    color: #385898 !important;
+    font-size: 25px;
+}

@@ -5,8 +5,12 @@
 }
 
 .signup_card {
-    background: transparent;
-    border: 2px solid #00E676;
+    // background: transparent;
+    // border: 2px solid #00E676;
+    background-image: url('../../../../assets/images/lo.jpg');
+    background-repeat: no-repeat;
+    justify-content: center;
+    background-size: cover;
 }
 
 .img {
@@ -16,7 +20,7 @@
     margin: 0;
     background-repeat: no-repeat;
     justify-content: center;
-    background-image: url('../../../../assets/img/e-logo.png');
+    background-image: url('../../../../assets/logo/e-logo.png');
 }
 
 .signup_page {
@@ -112,4 +116,38 @@
     outline-offset: 15px;
     outline-color: rgba(255, 255, 255, 0);
     text-shadow: 1px 1px 2px #427388;
+}
+
+.m_0 {
+    margin: 0;
+}
+
+.max-width {
+    width: 90% !important;
+}
+
+.wrong_password {
+    text-align: left !important;
+    padding-left: 10% !important;
+    color: #f44336;
+    font-size: 12px;
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
+    letter-spacing: normal;
+}
+
+.already {
+    color: #fff !important;
+}
+
+.s_login {
+    color: rgb(2, 114, 241) !important;
+    ;
+    // color:#00E676;
+    text-decoration: none;
+}
+
+.s_login:hover {
+    color: #00E676 !important;
+    text-decoration: none;
+    transition: color 0.8s ease-in-out;
 }

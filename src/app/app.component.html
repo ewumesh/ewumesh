@@ -2,12 +2,12 @@
 </top-nav>
 <router-outlet (activate)="onActivate($event)"></router-outlet>
 <app-scroll-top></app-scroll-top>
-<footer style="background-color: rgb(22, 22, 24);">
+<footer class="footer_bg">
     <div class="my-container">
-        <div class="row" style="width: 100% !important;">
+        <div class="row f_row">
             <div class="col-md-4 text-left">
                 <h4 class="f_name">EWUMESH</h4>
-                <p style="color: rgb(69, 97, 121); line-height: 30px;">
+                <p class="footer_p">
                     Many people limit themselves to what they think they can do. You can go as far as your mind lets you. What you believe, remember, you can achieve.
                 </p>
             </div>
@@ -42,32 +42,30 @@
         </div>
     </div>
 
+    <!-- Social Links -->
     <div class="my-container">
-        <span class="text-left" style="color: rgb(69, 97, 121);">
-            Copyright ©2021, Ewumesh. All rights reserved 
-            <!-- | This site is made with 
-            <i style="color: red;" class="fa fa-heart"></i> 
-            by Umesh -->
+        <span class="text-left copyright">
+            Copyright ©2021, Ewumesh. All rights reserved.
         </span>
 
         <ul class="s_icon">
             <li>
                 <a href="https://www.youtube.com/channel/UCHlF-J937VlQBsphDmSGuFw">
-                    <i style="color: #FF0000 !important; font-size: 25px;" class="fa fa-youtube-square ml-1 mr-1 s_icon"></i>
+                    <i class="fa fa-youtube-square ml-1 mr-1 s_icon s_youtube"></i>
                 </a>
             </li>
             <li>
                 <a href="https://www.twitter.com/ewumesh">
-                    <i style="color: #385898 !important; font-size: 25px;" class="fa fa-twitter-square ml-1 mr-1 s_icon"></i> </a>
+                    <i class="fa fa-twitter-square ml-1 mr-1 s_icon s_twitter"></i> </a>
             </li>
             <li>
                 <a href="https://www.instagram.com/ewumesh">
-                    <i style="color: #ed4956 !important; font-size: 25px;" class="fa fa-instagram ml-1 mr-1 s_icon"></i>
+                    <i class="fa fa-instagram ml-1 mr-1 s_icon s_instagram"></i>
                 </a>
             </li>
             <li>
                 <a href="https://www.facebook.com/ewumesh">
-                    <i style="color: #385898 !important; font-size: 25px;" class="fa fa-facebook-square ml-1 mr-1 s_icon"></i>
+                    <i class="fa fa-facebook-square ml-1 mr-1 s_icon s_facebook"></i>
                 </a>
             </li>
         </ul>
