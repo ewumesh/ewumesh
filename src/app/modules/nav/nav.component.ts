@@ -14,23 +14,16 @@ export class NavComponent implements OnInit {
     ngOnInit(): void { }
 
     home() {
-        setTimeout(() => {
-            this.router.navigate(['/home'])
-        }, 300);
+        this.router.navigate(['/home'])
     }
 
     login() {
-        setTimeout(() => {
-            this.router.navigate(['/login']);
-        }, 300)
+        this.router.navigate(['/login']);
     }
 
 
-    register(){
-
-        setTimeout(() => {
-            this.router.navigate(['/register']);
-        }, 300)
+    register() {
+        this.router.navigate(['/register']);
     }
 
     contact() {
