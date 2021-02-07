@@ -17,6 +17,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
     horizontalPosition: MatSnackBarHorizontalPosition = 'right';
     verticalPosition: MatSnackBarVerticalPosition = 'top';
 
+    isLoading: boolean = false;
+
     loginForm: FormGroup;
 
     genericValidator: GenericValidator;
@@ -64,24 +66,31 @@ export class LoginComponent implements OnInit, AfterViewInit {
     }
 
     saveChanges() {
+        this.isLoading = true;
         this.authService.getUserDetail(this.loginForm.value).subscribe(_ => {
-            if (_ !==undefined) {
-                this.snackbarService.openFromComponent(SnackbarComponent, {
-                    data: 'User Login Successfully.',
-                    duration: 10000,
-                    verticalPosition: "top", 
-                    horizontalPosition: "right" 
-                })
-                this.router.navigate(['/home'])
-            } else {
+            setTimeout(() => {
+                if (_ !== undefined) {
+                    this.snackbarService.openFromComponent(SnackbarComponent, {
+                        data: 'User Login Successfully.',
+                        duration: 10000,
+                        verticalPosition: "top",
+                        horizontalPosition: "right"
+                    })
+                    this.isLoading = false;
+                    this.router.navigate(['/home'])
+                } else {
 
-                this.snackbarService.openFromComponent(SnackbarComponent, {
-                    data: 'You entered username and password not matched.',
-                    duration: 10000,
-                    verticalPosition: "top", 
-                    horizontalPosition: "right"
-                })
-            }
+                    this.snackbarService.openFromComponent(SnackbarComponent, {
+                        data: 'You entered username and password not matched.',
+                        duration: 10000,
+                        verticalPosition: "top",
+                        horizontalPosition: "right"
+                    })
+                    this.isLoading = false;
+                }
+
+            }, 1000);
+
         });
     }
 
@@ -98,5 +107,5 @@ export class LoginComponent implements OnInit, AfterViewInit {
             this.router.navigate(['/register']);
         }, 400)
     }
-    
+
 }

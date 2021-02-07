@@ -16,6 +16,8 @@ export class SignUpComponent implements OnInit, AfterViewInit {
 
     signupForm: FormGroup;
 
+    isLoading: boolean = false;
+
     genericValidator: GenericValidator;
     displayMessage: any = {};
     @ViewChildren(FormControlName, { read: ElementRef })
@@ -73,23 +75,30 @@ export class SignUpComponent implements OnInit, AfterViewInit {
     }
 
     saveChanges() {
+        this.isLoading = true;
         this.authService.signUp(this.signupForm.value).subscribe(_ => {
-            if (_ === true) {
-                this.snackbarService.openFromComponent(SnackbarComponent, {
-                    data: 'User registered successfully.',
-                    duration: 10000,
-                    verticalPosition: 'top',
-                    horizontalPosition: 'right'
-                })
-                this.router.navigate(['/home']);
-            } else {
-                this.snackbarService.openFromComponent(SnackbarComponent, {
-                    data: 'User already registered.',
-                    duration: 10000,
-                    verticalPosition: 'top',
-                    horizontalPosition: 'right'
-                })
-            }
+            setTimeout(() => {
+                if (_ === true) {
+                    this.snackbarService.openFromComponent(SnackbarComponent, {
+                        data: 'User registered successfully.',
+                        duration: 10000,
+                        verticalPosition: 'top',
+                        horizontalPosition: 'right'
+                    })
+                    this.isLoading= false;
+                    this.router.navigate(['/home']);
+                } else {
+                    this.snackbarService.openFromComponent(SnackbarComponent, {
+                        data: 'User already registered.',
+                        duration: 10000,
+                        verticalPosition: 'top',
+                        horizontalPosition: 'right'
+                    })
+
+                    this.isLoading = false;
+                }
+            }, 1000);
+
         });
     }
 

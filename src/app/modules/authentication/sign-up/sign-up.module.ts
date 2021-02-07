@@ -9,7 +9,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { SignUpComponent } from './sign-up.component';
-import { AuthService } from '../auth.service';
+// import { AuthService } from '../auth.service';
 
 @NgModule({
     declarations: [SignUpComponent],
@@ -27,6 +27,6 @@ import { AuthService } from '../auth.service';
         MatSnackBarModule
     ],
     exports: [],
-    providers: [AuthService],
+    // providers: [AuthService],
 })
 export class SignUpModule { }

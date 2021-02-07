@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app.routing';
 import { SnackbarModule } from './shred/validations/snackbar/snackbar.module';
 import { PageNotFoundModule } from './modules/404/404.module';
 import { ScrollTopModule } from './modules/scroll-top/scroll-top.module';
+import { AuthService } from './modules/authentication/auth.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { ScrollTopModule } from './modules/scroll-top/scroll-top.module';
     SnackbarModule,
     PageNotFoundModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

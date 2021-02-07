@@ -11,7 +11,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { LoginComponent } from './login.component';
 import { ForgotPasswordComponent } from '../forgot-password/forgot-password.component';
-import { AuthService } from '../auth.service';
+// import { AuthService } from '../auth.service';
 
 @NgModule({
     declarations: [
@@ -36,7 +36,7 @@ import { AuthService } from '../auth.service';
         MatCheckboxModule
     ],
     exports: [],
-    providers: [AuthService],
+    // providers: [AuthService],
     entryComponents: [ForgotPasswordComponent]
 })
 export class LoginModule { }
