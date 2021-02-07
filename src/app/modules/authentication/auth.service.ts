@@ -42,6 +42,10 @@ export class AuthService {
         }
     }
 
+    getUsers() {
+        return of(USERS);
+    }
+
 
     // delete(id: number): Observable<any> {
     //     let data = JSON.parse(localStorage.getItem('userdata'));
@@ -98,6 +102,6 @@ export class AuthService {
 }
 
 let USERS = [
-    { id: 23452, userName: 'admin', password: 'admin' },
-    { id: 67452, userName: 'umeshthapa539@gmail.com', password: '12345' }
+    {sn: 1, id: 23452, userName: 'admin', password: 'admin' },
+    {sn: 2, id: 67452, userName: 'umeshthapa539@gmail.com', password: '12345' }
 ]
