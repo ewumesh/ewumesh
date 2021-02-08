@@ -20,7 +20,7 @@ export class AuthService {
         }
     }
 
-    getUserDetail(userData: any): Observable<any> {
+    getUserDetail(userData?: any): Observable<any> {
         let user = USERS.find(_ => _.userName === userData.userName);
 
         if(userData.userName === user.userName && userData.password === user.password) {
@@ -102,6 +102,6 @@ export class AuthService {
 }
 
 let USERS = [
-    {sn: 1, id: 23452, userName: 'admin', password: 'admin' },
-    {sn: 2, id: 67452, userName: 'umeshthapa539@gmail.com', password: '12345' }
+    {sn: 1, id: 23452, userName: 'admin', password: 'admin', firstName: 'Admin', lastName: 'Admin', phone: 'Admin', designation: 'Admin' },
+    {sn: 2, id: 67452, userName: 'umeshthapa539@gmail.com', password: '12345', firstName: 'Umesh', lastName: 'Thapa', phone: '9860614339', designation: 'Developer and Designer' }
 ]

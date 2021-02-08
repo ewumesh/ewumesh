@@ -1,0 +1,118 @@
+<div style="margin: 0 !important; padding: 0 !important; background: -webkit-linear-gradient(left, #6f6c91, #3d5e68); height: 100vh;">
+    <div class="container emp-profile">
+        <form method="post">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="profile-img">
+                        <img src="../../../assets/images/team-3.jpg" alt="" />
+                        <!-- <div class="file btn btn-lg btn-primary">
+                        Change Photo
+                        <input type="file" name="file" />
+                    </div> -->
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="profile-head">
+                        <h5>
+                            {{users.firstName}} {{users.lastName}}
+                        </h5>
+                        <h6>
+                            {{users.designation}}
+                        </h6>
+                        <p class="proile-rating">
+                            @EWUMESH
+                        </p>
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 pt-4">
+                    <div class="profile-work">
+                        <mat-accordion>
+                            <mat-expansion-panel>
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        About
+                                    </mat-panel-title>
+                                </mat-expansion-panel-header>
+                                <p>This is the primary content of the panel.</p>
+                            </mat-expansion-panel>
+                            <mat-expansion-panel>
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        Work
+                                    </mat-panel-title>
+                                </mat-expansion-panel-header>
+                                <p>I'm visible because I am open</p>
+                            </mat-expansion-panel>
+                            <mat-expansion-panel>
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        Education
+                                    </mat-panel-title>
+                                </mat-expansion-panel-header>
+                                <p>I'm visible because I am open</p>
+                            </mat-expansion-panel>
+                        </mat-accordion>
+
+
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="tab-content profile-tab" id="myTabContent">
+                        <div class="tab-pane fade show active">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>User Id</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <p>{{users.id}}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>Name</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <p>{{users.firstName}} {{users.lastName}}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>Email</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <p>{{users.userName}}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>Phone</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <p>{{users.phone}}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>Profession</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <p>{{users.designation}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

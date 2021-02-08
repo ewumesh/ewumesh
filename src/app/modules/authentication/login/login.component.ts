@@ -77,7 +77,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
                         horizontalPosition: "right"
                     })
                     this.isLoading = false;
-                    this.router.navigate(['/home'])
+                    this.router.navigate(['/profile']);
                 } else {
 
                     this.snackbarService.openFromComponent(SnackbarComponent, {

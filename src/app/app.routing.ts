@@ -7,6 +7,7 @@ const routes: Routes = [
     {path: 'login', loadChildren: () => import('./modules/authentication/login/login.module'). then(r => r.LoginModule)},
     {path: 'register', loadChildren: () => import('./modules/authentication/sign-up/sign-up.module'). then(r => r.SignUpModule)},
     {path: 'home', loadChildren: () => import('./modules/home/home.module'). then(r => r.HomeModule)},
+    {path: 'profile', loadChildren: () => import('./modules/user/user.module'). then(r => r.UserModule)},
 	{path: '404', component: PageNotFoundComponent},
 	{path: 'notfound', component: NotFoundComponent},
 	{ path: '', redirectTo: 'home', pathMatch: 'full' },
