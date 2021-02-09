@@ -9,6 +9,7 @@ import { SnackbarModule } from './shred/validations/snackbar/snackbar.module';
 import { PageNotFoundModule } from './modules/404/404.module';
 import { ScrollTopModule } from './modules/scroll-top/scroll-top.module';
 import { AuthService } from './modules/authentication/auth.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { AuthService } from './modules/authentication/auth.service';
     AppRoutingModule,
 
     BrowserAnimationsModule,
+    HttpClientModule,
     ScrollTopModule,
     SnackbarModule,
     PageNotFoundModule

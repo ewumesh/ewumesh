@@ -1,46 +1,35 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
 @Injectable()
 export class AuthService {
 
-    constructor() {
+    constructor(private http: HttpClient) {}
 
-        let data = JSON.parse(localStorage.getItem('userdata'));
-        if (data !== null && data.length === 0) {
-            localStorage.setItem('userdata', JSON.stringify([
-                { id: 23452, userName: 'admin', password: 'admin' },
-                { id: 67452, userName: 'umeshthapa539@gmail.com', password: '12345' }
-            ]));
-        } else if (data === null) {
-            localStorage.setItem('userdata', JSON.stringify([
-                { id: 23452, userName: 'admin', password: 'admin' },
-                { id: 67452, userName: 'umeshthapa539@gmail.com', password: '12345' }
-            ]));
-        }
-    }
+    // getUserDetail(userData?: any): Observable<any> {
 
-    getUserDetail(userData?: any): Observable<any> {
-        let user = USERS.find(_ => _.userName === userData.userName);
+    //     let db = JSON.parse(localStorage.getItem('userdata'))
+    //     let user = db.find(_ => _.userName === userData.userName);
 
-        if(userData.userName === user.userName && userData.password === user.password) {
-        return of(user);
-        } else {
-            return of(undefined);
-        }
-    }
+    //     if(userData.userName === user.userName && userData.password === user.password) {
+    //     return of(user);
+    //     } else {
+    //         return of(undefined);
+    //     }
+    // }
 
-    signUp(userData: any): Observable<any> {
-        let checkList = USERS.find(_ => _.userName === userData.email);
+    // signUp(userData: any): Observable<any> {
+    //     let checkList = USERS.find(_ => _.userName === userData.email);
 
-        if (checkList !== undefined) {
-            return of(false);
-        } else {
-            USERS.push(userData);
-            userData.id = USERS.length * 638;
-            return of(true);
-        }
-    }
+    //     if (checkList !== undefined) {
+    //         return of(false);
+    //     } else {
+    //         USERS.push(userData);
+    //         userData.id = USERS.length * 638;
+    //         return of(true);
+    //     }
+    // }
 
     getUsers() {
         return of(USERS);
@@ -98,6 +87,14 @@ export class AuthService {
     //     }
 
     // }
+
+    login (authenticate: any): Observable<any> {
+        return this.http.post('http://localhost:3000/login', authenticate);
+    }
+
+    register(authenticate: any): Observable<any> {
+        return this.http.post('http://localhost:3000/register', authenticate);
+    }
 
 }
 

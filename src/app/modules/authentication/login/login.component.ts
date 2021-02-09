@@ -8,6 +8,8 @@ import { GenericValidator } from '../../../shred/validations/generic-validators'
 import { ForgotPasswordComponent } from '../forgot-password/forgot-password.component';
 import { AuthService } from '../auth.service';
 import { SnackbarComponent } from 'src/app/shred/validations/snackbar/snackbar.component';
+import { __createBinding } from 'tslib';
+import { delay } from 'rxjs/operators';
 
 @Component({
     templateUrl: './login.component.html',
@@ -67,31 +69,29 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
     saveChanges() {
         this.isLoading = true;
-        this.authService.getUserDetail(this.loginForm.value).subscribe(_ => {
-            setTimeout(() => {
-                if (_ !== undefined) {
-                    this.snackbarService.openFromComponent(SnackbarComponent, {
-                        data: 'User Login Successfully.',
-                        duration: 10000,
-                        verticalPosition: "top",
-                        horizontalPosition: "right"
-                    })
-                    this.isLoading = false;
-                    this.router.navigate(['/profile']);
-                } else {
+        this.authService.login(this.loginForm.value).pipe(delay(800)).subscribe(_ => {
+            console.log(_);
+            if (_.responsebody) {
+                this.snackbarService.openFromComponent(SnackbarComponent, {
+                    data: _.message,
+                    duration: 10000,
+                    verticalPosition: "top",
+                    horizontalPosition: "right"
+                })
+                this.isLoading = false;
+                this.router.navigate(['/profile'])
+            } 
+            else if(_.responsebody === undefined) {
+                this.snackbarService.openFromComponent(SnackbarComponent, {
+                    data: _.message,
+                    duration: 10000,
+                    verticalPosition: "top",
+                    horizontalPosition: "right"
+                })
+                this.isLoading = false;
+            }
 
-                    this.snackbarService.openFromComponent(SnackbarComponent, {
-                        data: 'You entered username and password not matched.',
-                        duration: 10000,
-                        verticalPosition: "top",
-                        horizontalPosition: "right"
-                    })
-                    this.isLoading = false;
-                }
-
-            }, 1000);
-
-        });
+        })
     }
 
     forgotPassword() {

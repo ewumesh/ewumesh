@@ -7,6 +7,7 @@ import { GenericValidator } from '../../../shred/validations/generic-validators'
 import { Regex } from '../../../shred/validations/regex';
 import { AuthService } from '../auth.service';
 import { SnackbarComponent } from 'src/app/shred/validations/snackbar/snackbar.component';
+import { delay } from 'rxjs/operators';
 
 @Component({
     templateUrl: './sign-up.component.html',
@@ -55,7 +56,7 @@ export class SignUpComponent implements OnInit, AfterViewInit {
             email: [null, [Validators.required, Validators.pattern(Regex.emailRegex)]],
             password: [null, Validators.required],
             confirmPassword: [null, Validators.required]
-        },{validator: this.passwordConfirming})
+        }, { validator: this.passwordConfirming })
     }
 
     private validation() {
@@ -66,7 +67,7 @@ export class SignUpComponent implements OnInit, AfterViewInit {
 
     passwordConfirming(c: AbstractControl): { invalid: boolean } {
         if (c.get('password').value !== c.get('confirmPassword').value) {
-            return {invalid: true};
+            return { invalid: true };
         }
     }
 
@@ -76,30 +77,25 @@ export class SignUpComponent implements OnInit, AfterViewInit {
 
     saveChanges() {
         this.isLoading = true;
-        this.authService.signUp(this.signupForm.value).subscribe(_ => {
-            setTimeout(() => {
-                if (_ === true) {
-                    this.snackbarService.openFromComponent(SnackbarComponent, {
-                        data: 'User registered successfully.',
-                        duration: 10000,
-                        verticalPosition: 'top',
-                        horizontalPosition: 'right'
-                    })
-                    this.isLoading= false;
-                    this.router.navigate(['/home']);
-                } else {
-                    this.snackbarService.openFromComponent(SnackbarComponent, {
-                        data: 'User already registered.',
-                        duration: 10000,
-                        verticalPosition: 'top',
-                        horizontalPosition: 'right'
-                    })
-
-                    this.isLoading = false;
-                }
-            }, 1000);
-
-        });
+        this.authService.register(this.signupForm.value).pipe(delay(800)).subscribe(_ => {
+            if (_.responsebody) {
+                this.snackbarService.openFromComponent(SnackbarComponent, {
+                    data: _.message,
+                    duration: 10000,
+                    verticalPosition: 'top',
+                    horizontalPosition: 'right'
+                })
+                this.isLoading = false;
+                this.router.navigate(['/profile']);
+            } else if (_.responsebody === null) {
+                this.snackbarService.openFromComponent(SnackbarComponent, {
+                    data: _.message,
+                    duration: 10000,
+                    verticalPosition: 'top',
+                    horizontalPosition: 'right'
+                })
+            }
+        })
     }
 
     login() {
