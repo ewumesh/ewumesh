@@ -140,7 +140,7 @@ header {
     section {
         background-color: #2b2b5f;
         padding: 75px;
-        border-top: 1px dashed #ff8bc5;
+        // border-top: 1px dashed #ff8bc5;
     }
     .header_text h1 {
         font-size: 3em;
@@ -192,8 +192,9 @@ section {
 }
 
 .team {
-    background: #fff;
+    // background: #fff;
     padding: 60px 0;
+    background: image('../../../assets/images/bg-3.jpg');
 }
 
 .team .member {
