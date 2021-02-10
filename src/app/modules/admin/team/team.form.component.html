@@ -1,0 +1,49 @@
+<h1 mat-dialog-title>Form</h1>
+
+<form class="form" [formGroup]="teamForm" (ngSubmit)="saveChanges()" autocomplete="off">
+    <div class="row">
+        <div class="col-md-6">
+            <mat-form-field style="width: 100%;" appearance="outline">
+                <mat-label class="input_label">First Name</mat-label>
+                <input formControlName="firstName" type="firstName" matInput placeholder="Enter First name">
+                <mat-error class="text-danger" *ngIf="displayMessage?.firstName">{{displayMessage?.firstName}}</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-md-6">
+            <mat-form-field style="width: 100%;" appearance="outline">
+                <mat-label class="input_label">Last Name</mat-label>
+                <input formControlName="lastName" type="lastName" matInput placeholder="Enter last name">
+                <mat-error class="text-danger" *ngIf="displayMessage?.lastName">{{displayMessage?.lastName}}</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="col-md-6">
+            <mat-form-field style="width: 100%;" appearance="outline">
+                <mat-label class="input_label">Position</mat-label>
+                <input formControlName="position" type="position" matInput placeholder="Enter Position">
+                <mat-error class="text-danger" *ngIf="displayMessage?.position">{{displayMessage?.position}}</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="col-md-6">
+            <mat-form-field appearance="fill" style="width: 100%;" appearance="outline">
+                <mat-label>Image url</mat-label>
+                <mat-select formControlName="imgUrl">
+                    <mat-option *ngFor="let u of imageUrls" [value]="u.value">{{u.value}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="col-md-12">
+            <mat-form-field style="width: 100%;" appearance="outline">
+                <mat-label class="input_label">About</mat-label>
+                <textarea formControlName="about" matInput placeholder=""></textarea>
+            </mat-form-field>
+        </div>
+    </div>
+</form>
+
+<div class="text-center">
+    <button class="btn btn-primary mr-2" type="submit" (click)="saveChanges()">Save</button>
+    <button class="btn btn-danger ml-2" (click)="cancel()">Cancel</button>
+</div>
