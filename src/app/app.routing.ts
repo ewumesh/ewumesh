@@ -8,6 +8,9 @@ const routes: Routes = [
     {path: 'register', loadChildren: () => import('./modules/authentication/sign-up/sign-up.module'). then(r => r.SignUpModule)},
     {path: 'home', loadChildren: () => import('./modules/home/home.module'). then(r => r.HomeModule)},
     {path: 'profile', loadChildren: () => import('./modules/user/user.module'). then(r => r.UserModule)},
+    {path: 'admin', children: [
+		{path: 'team', loadChildren: () => import('./modules/admin/team/team.module').then(r => r.TeamModule)},
+	]},
 	{path: '404', component: PageNotFoundComponent},
 	{path: 'notfound', component: NotFoundComponent},
 	{ path: '', redirectTo: 'home', pathMatch: 'full' },

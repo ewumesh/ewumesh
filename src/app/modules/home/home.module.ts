@@ -2,16 +2,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home.component';
-import { ScrollTopModule } from '../scroll-top/scroll-top.module';
+import { TeamService } from '../admin/team/team.service';
 
 @NgModule({
     declarations: [HomeComponent],
     imports: [CommonModule,
         RouterModule.forChild([
             { path: '', component: HomeComponent }
-        ]),ScrollTopModule
+        ])
     ],
     exports: [],
-    providers: [],
+    providers: [TeamService],
 })
-export class HomeModule { }
+export class HomeModule { 
+    
+}
