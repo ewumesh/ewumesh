@@ -1,10 +1,12 @@
 import { AfterViewInit, Component, ElementRef, Inject, OnInit, ViewChildren } from '@angular/core';
 import { FormBuilder, FormControlName, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { delay, filter } from 'rxjs/operators';
 
 import { GenericValidator } from 'src/app/shred/validations/generic-validators';
+import { SnackbarComponent } from 'src/app/shred/validations/snackbar/snackbar.component';
 import { TeamService } from './team.service';
 
 @Component({
@@ -45,6 +47,7 @@ export class TeamFormComponent implements OnInit, AfterViewInit{
         private router: Router,
         private tService: TeamService,
         private dialog: MatDialog,
+        private snackbar: MatSnackBar,
         private dialogRef: MatDialogRef<TeamFormComponent>,
         @Inject(MAT_DIALOG_DATA)
         public data: { id: number }
@@ -104,10 +107,28 @@ export class TeamFormComponent implements OnInit, AfterViewInit{
     saveChanges() {
 
         this.tService.updateTeam(this.teamForm.value).pipe(delay(400)).subscribe(_ => {
-            console.log(_);
             this.router.navigate(['/home']);
             this.dialogRef.close();
+            console.log(_);
+
+            if(this.teamForm.value.id === _.id) {
+                this.snackbar.openFromComponent(SnackbarComponent, {
+                  data: 'Team Edited Successfully..',
+                  duration: 10000,
+                  verticalPosition: "top",
+                  horizontalPosition: "right"
+              })
+              } else {
+                this.snackbar.openFromComponent(SnackbarComponent, {
+                  data: 'Team Added Successfully.',
+                  duration: 10000,
+                  verticalPosition: "top",
+                  horizontalPosition: "right"
+              })
+              }
         })
+
+
     }
 
     cancel() {

@@ -2,9 +2,11 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { SelectionModel } from '@angular/cdk/collections';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { delay } from 'rxjs/operators';
+import { SnackbarComponent } from 'src/app/shred/validations/snackbar/snackbar.component';
 import { TeamFormComponent } from './team.form.component';
 import { TeamService } from './team.service';
 
@@ -31,7 +33,8 @@ export class TeamComponent implements OnInit, AfterViewInit {
 
     constructor(
       private tService: TeamService,
-      private dialog: MatDialog
+      private dialog: MatDialog,
+      private snackbar: MatSnackBar
       ) {}
 
 
@@ -46,10 +49,18 @@ export class TeamComponent implements OnInit, AfterViewInit {
     }
 
     delete(id: number) {
-        // this.tService.deleteTeam(1).pipe(delay(500)).subscribe(x => {
-        //     this.dataSource.data = x;
-        //     this.dataSource._updateChangeSubscription();
-        // })
+        this.tService.deleteTeam(id).pipe(delay(500)).subscribe(x => {
+            this.dataSource.data = x;
+            this.dataSource._updateChangeSubscription();
+
+            this.snackbar.openFromComponent(SnackbarComponent, {
+              data: 'Team Deleted successfully.',
+              duration: 10000,
+              verticalPosition: "top",
+              horizontalPosition: "right"
+          })
+
+        })
     }
 
     edit(id: number) {
@@ -62,30 +73,8 @@ export class TeamComponent implements OnInit, AfterViewInit {
         autoFocus: false,
     });
 
-    instance.afterClosed().pipe().subscribe(_ => {
-
+    instance.afterClosed().pipe(delay(500)).subscribe(_ => {
+      this.dataSource._updateChangeSubscription();
     })
     } 
-
-  /** Whether the number of selected elements matches the total number of rows. */
-  // isAllSelected() {
-  //   let numSelected = this.selection.selected.length;
-  //   let numRows = this.dataSource.data.length;
-  //   return numSelected === numRows;
-  // }
-
-  /** Selects all rows if they are not all selected; otherwise clear selection. */
-  // masterToggle() {
-  //   this.isAllSelected() ?
-  //       this.selection.clear() :
-  //       this.dataSource.data.forEach(row => this.selection.select(row));
-  // }
-
-  /** The label for the checkbox on the passed row */
-  // checkboxLabel(row?: any): string {
-  //   if (!row) {
-  //     return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
-  //   }
-  //   return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
-  // }
   }
