@@ -44,6 +44,9 @@
 </form>
 
 <div class="text-center">
-    <button class="btn btn-primary mr-2" type="submit" (click)="saveChanges()">Save</button>
+    <button [disabled]="teamForm.invalid || isLoading" class="btn btn-primary mr-2" type="submit" (click)="saveChanges()">
+        <span *ngIf="!isLoading">Save</span>     
+        <span *ngIf="isLoading"><i style="font-size: 22px;" class="fa fa-cog fa-spin"></i></span>
+    </button>
     <button class="btn btn-danger ml-2" (click)="cancel()">Cancel</button>
 </div>

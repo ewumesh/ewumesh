@@ -22,6 +22,8 @@ export class TeamFormComponent implements OnInit, AfterViewInit{
     private formInputElements: ElementRef[];
     displayMessage: any = {};
 
+    isLoading: boolean = false;
+
     imageUrls: any[] = [
         {id: 1, value: 'assets/images/ut.jpg'},
         {id: 2, value: 'assets/images/pr.jpg'},
@@ -93,7 +95,7 @@ export class TeamFormComponent implements OnInit, AfterViewInit{
             lastName: body.lastName,
             position: body.position,
             about: body.about,
-            imgUrl: body.imgUrl
+            imgUrl: body.imgUrl,
         });
     }
 
@@ -105,11 +107,10 @@ export class TeamFormComponent implements OnInit, AfterViewInit{
     }
 
     saveChanges() {
-
+        this.isLoading = true;
         this.tService.updateTeam(this.teamForm.value).pipe(delay(400)).subscribe(_ => {
             this.router.navigate(['/home']);
             this.dialogRef.close();
-            console.log(_);
 
             if(this.teamForm.value.id === _.id) {
                 this.snackbar.openFromComponent(SnackbarComponent, {
@@ -118,6 +119,7 @@ export class TeamFormComponent implements OnInit, AfterViewInit{
                   verticalPosition: "top",
                   horizontalPosition: "right"
               })
+              this.isLoading = false
               } else {
                 this.snackbar.openFromComponent(SnackbarComponent, {
                   data: 'Team Added Successfully.',
@@ -125,6 +127,7 @@ export class TeamFormComponent implements OnInit, AfterViewInit{
                   verticalPosition: "top",
                   horizontalPosition: "right"
               })
+              this.isLoading=false;
               }
         })
 

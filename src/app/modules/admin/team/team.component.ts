@@ -7,6 +7,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { delay } from 'rxjs/operators';
 import { SnackbarComponent } from 'src/app/shred/validations/snackbar/snackbar.component';
+import { SocialLinkComponent } from './social/social-link.component';
 import { TeamFormComponent } from './team.form.component';
 import { TeamService } from './team.service';
 
@@ -77,4 +78,16 @@ export class TeamComponent implements OnInit, AfterViewInit {
       this.dataSource._updateChangeSubscription();
     })
     } 
+
+
+    socialLink(id: number) {
+      let instance: MatDialogRef<SocialLinkComponent, any>;
+      const data = this.dataSource.data.find(_ => _.id === id);
+
+      instance = this.dialog.open(SocialLinkComponent, {
+        width: '900px',
+        data: data ? data : {},
+        autoFocus: false
+      })
+    }
   }

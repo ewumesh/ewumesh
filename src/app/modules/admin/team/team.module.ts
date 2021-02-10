@@ -15,9 +15,10 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { TeamFormComponent } from './team.form.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { SocialLinkComponent } from './social/social-link.component';
 
 @NgModule({
-    declarations: [TeamComponent, TeamFormComponent],
+    declarations: [TeamComponent, TeamFormComponent, SocialLinkComponent],
     imports: [ 
         CommonModule,
         RouterModule.forChild([
@@ -30,6 +31,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
      ],
     exports: [],
     providers: [TeamService],
-    entryComponents:[TeamFormComponent]
+    entryComponents:[TeamFormComponent, SocialLinkComponent]
 })
 export class TeamModule {}
