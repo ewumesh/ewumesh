@@ -14,6 +14,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { TeamFormComponent } from './team.form.component';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
     declarations: [TeamComponent, TeamFormComponent],
@@ -25,7 +26,7 @@ import { MatSelectModule } from '@angular/material/select';
             }
         ]),
         FormsModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatDialogModule, MatSelectModule,
-        MatTableModule,MatCheckboxModule,MatSortModule, MatMenuModule
+        MatTableModule,MatCheckboxModule,MatSortModule, MatMenuModule, MatSnackBarModule
      ],
     exports: [],
     providers: [TeamService],
