@@ -42,6 +42,7 @@ export class TeamFormComponent implements OnInit, AfterViewInit{
         {id: 15, value: 'assets/images/rn.jpg'},
         {id: 16, value: 'assets/images/kps.jpg'},
         {id: 17, value: 'assets/images/bijen.jpg'},
+        {id: 18, value: 'assets/images/an.jpg'},
     ]
 
     constructor(
