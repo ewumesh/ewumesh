@@ -23,17 +23,18 @@
 
         </div> -->
 
-        <div class="row gy-4">
-
+        <div cdkDropList class="row gy-4" cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)">
+            <!-- <div cdkDropList class="row gy-4" cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)"> -->
             <div class="col-lg-3 col-md-6 d-flex align-items-stretch pt-4" cdkDragBoundary=".row" *ngFor="let t of team" cdkDrag>
+                <!-- <div class="col-lg-3 col-md-6 d-flex align-items-stretch pt-4" cdkDragBoundary=".row" *ngFor="let t of team" cdkDrag> -->
                 <div class="member">
                     <div class="member-img">
                         <img [src]="t.imgUrl" class="img-fluid" alt="">
-                        <div class="social">
-                            <a href="https://www.twitter.com/ewumesh/"><i class="fa fa-twitter-square"></i></a>
-                            <a href="https://www.facebook.com/ewumesh/"><i class="fa fa-facebook-square"></i></a>
-                            <a href="https://www.instagram.com/ewumesh/"><i class="fa fa-instagram"></i></a>
-                            <a href="https://www.linkedin.com/in/umesh-thapa-3ba732156/"><i class="fa fa-linkedin"></i></a>
+                        <div class="social" *ngFor="let l  of t.links">
+                            <a [attr.href]="l.twitter"><i class="fa fa-twitter-square"></i></a>
+                            <a [attr.href]="l.facebook"><i class="fa fa-facebook-square"></i></a>
+                            <a [attr.href]="l.instagram"><i class="fa fa-instagram"></i></a>
+                            <a [attr.href]="l.linkedin"><i class="fa fa-linkedin"></i></a>
                         </div>
                     </div>
                     <div class="member-info">

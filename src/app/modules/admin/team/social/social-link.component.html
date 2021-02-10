@@ -1,0 +1,41 @@
+<h1 mat-dialog-title>Form</h1>
+
+<form class="form" [formGroup]="sForm" (ngSubmit)="saveChanges()" autocomplete="off">
+    <div class="row">
+        <div class="col-md-6">
+            <mat-form-field style="width: 100%;" appearance="outline">
+                <mat-label class="input_label">Facebook</mat-label>
+                <input formControlName="facebook" type="facebook" matInput placeholder="Url">
+            </mat-form-field>
+        </div>
+        <div class="col-md-6">
+            <mat-form-field style="width: 100%;" appearance="outline">
+                <mat-label class="input_label">Instagram</mat-label>
+                <input formControlName="instagram" type="instagram" matInput placeholder="Url">
+            </mat-form-field>
+        </div>
+
+        <div class="col-md-6">
+            <mat-form-field style="width: 100%;" appearance="outline">
+                <mat-label class="input_label">Twitter</mat-label>
+                <input formControlName="twitter" type="twitter" matInput placeholder="Urls">
+            </mat-form-field>
+        </div>
+
+        <div class="col-md-6">
+            <mat-form-field style="width: 100%;" appearance="outline">
+                <mat-label class="input_label">Linkedin</mat-label>
+                <input formControlName="linkedin" type="linkedin" matInput placeholder="Urls">
+            </mat-form-field>
+        </div>
+
+    </div>
+</form>
+
+<div class="text-center">
+    <button [disabled]="sForm.invalid || isLoading" class="btn btn-primary mr-2" type="submit" (click)="saveChanges()">
+        <span *ngIf="!isLoading">LOGIN</span>     
+        <span *ngIf="isLoading"><i style="font-size: 22px;" class="fa fa-cog fa-spin"></i></span>
+    </button>
+    <button class="btn btn-danger ml-2" (click)="cancel()">Cancel</button>
+</div>
