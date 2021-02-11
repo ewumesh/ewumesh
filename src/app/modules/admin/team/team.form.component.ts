@@ -25,24 +25,22 @@ export class TeamFormComponent implements OnInit, AfterViewInit{
     isLoading: boolean = false;
 
     imageUrls: any[] = [
-        {id: 1, value: 'assets/images/ut.jpg'},
-        {id: 2, value: 'assets/images/pr.jpg'},
-        {id: 3, value: 'assets/images/bs.jpg'},
-        {id: 4, value: 'assets/images/ds.jpg'},
-        {id: 5, value: 'assets/images/dp.jpg'},
-        {id: 6, value: 'assets/images/kp.jpg'},
-        {id: 7, value: 'assets/images/pa.jpg'},
-        {id: 8, value: 'assets/images/sk.jpg'},
-        {id: 9, value: 'assets/images/st.jpg'},
-        {id: 10, value: 'assets/images/ss.jpg'},
+        {id: 1, value: 'assets/images/umesh.jpg'},
+        {id: 2, value: 'assets/images/pujan.jpg'},
+        {id: 3, value: 'assets/images/bijen-1.jpg'},
+        {id: 4, value: 'assets/images/dharmendra.jpg'},
+        {id: 5, value: 'assets/images/deepika.jpg'},
+        {id: 6, value: 'assets/images/kanchan-1.jpg'},
+        {id: 7, value: 'assets/images/prajwol.jpg'},
+        {id: 8, value: 'assets/images/sagar.jpg'},
+        {id: 9, value: 'assets/images/suren.jpg'},
+        {id: 10, value: 'assets/images/saraswoti.jpg'},
         {id: 11, value: 'assets/images/team-1.jpg'},
         {id: 12, value: 'assets/images/team-2.jpg'},
         {id: 13, value: 'assets/images/team-4.jpg'},
         {id: 14, value: 'assets/images/team-3.jpg'},
-        {id: 15, value: 'assets/images/rn.jpg'},
-        {id: 16, value: 'assets/images/kps.jpg'},
-        {id: 17, value: 'assets/images/bijen.jpg'},
-        {id: 18, value: 'assets/images/an.jpg'},
+        {id: 15, value: 'assets/images/rabin.jpg'},
+        {id: 18, value: 'assets/images/aadarsa.jpg'},
     ]
 
     constructor(
