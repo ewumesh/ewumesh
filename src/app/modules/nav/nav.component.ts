@@ -33,4 +33,8 @@ export class NavComponent implements OnInit {
     about() {
         this.router.navigate(['/notfound']);
     }
+
+    blog() {
+        this.router.navigate(['/blogs']);
+    }
 }
