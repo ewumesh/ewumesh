@@ -11,6 +11,7 @@ const routes: Routes = [
     {path: 'admin', children: [
 		{path: 'team', loadChildren: () => import('./modules/admin/team/team.module').then(r => r.TeamModule)},
 	]},
+	{path: 'blogs', loadChildren: () => import('./modules/blog-view/blog-view.module').then(b => b.BlogViewModule)},
 	{path: '404', component: PageNotFoundComponent},
 	{path: 'notfound', component: NotFoundComponent},
 	{ path: '', redirectTo: 'home', pathMatch: 'full' },
