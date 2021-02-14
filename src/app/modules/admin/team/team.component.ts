@@ -53,7 +53,14 @@ export class TeamComponent implements OnInit, AfterViewInit {
 
     delete(id: number) {
       const data = this.dataSource.data.find(_ => _.content.id === id);
-      this.tService.deleteTeam(data.key);
+      this.tService.deleteTeam(data.key).pipe(delay(400)).subscribe(_ => {
+        this.snackbar.openFromComponent(SnackbarComponent, {
+          data: 'Team Deleted Successfully.',
+          duration: 5000,
+          verticalPosition: "top",
+          horizontalPosition: "right"
+      })
+      })
     }
 
     edit(id: number) {

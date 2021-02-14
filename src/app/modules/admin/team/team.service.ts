@@ -33,10 +33,12 @@ export class TeamService {
         return of(data);
     }
 
-    updateTeam(key, body,a) {
+    updateTeam(key, body,a): Observable<any> {
         body.id = a.id;
         body.sn = a.sn;
         this.teamList.update(key, {content: body});
+
+        return of(body);
     }
 
     addTeam(body: any): Observable<any> {
@@ -47,9 +49,10 @@ export class TeamService {
             return of(body)
     }
 
-    deleteTeam(key) {
+    deleteTeam(key): Observable<any> {
         let k =key;
         this.db.list('teams').remove(k);
+        return of(true);
     }
 
     // Links
