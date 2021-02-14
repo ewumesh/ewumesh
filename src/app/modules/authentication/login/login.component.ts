@@ -2,12 +2,13 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChildren } from '@ang
 import { FormBuilder, FormControlName, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { map } from 'rxjs/operators';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 
 import { GenericValidator } from '../../../shred/validations/generic-validators'
 import { ForgotPasswordComponent } from '../forgot-password/forgot-password.component';
 import { AuthService } from '../auth.service';
-import { SnackbarComponent } from 'src/app/shred/validations/snackbar/snackbar.component';
+import { SnackbarComponent } from '../../../../../src/app/shred/validations/snackbar/snackbar.component';
 
 @Component({
     templateUrl: './login.component.html',
@@ -18,8 +19,9 @@ export class LoginComponent implements OnInit, AfterViewInit {
     verticalPosition: MatSnackBarVerticalPosition = 'top';
 
     isLoading: boolean = false;
-
     loginForm: FormGroup;
+
+    users: any[] = [];
 
     genericValidator: GenericValidator;
     displayMessage: any = {};
@@ -45,6 +47,15 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
     ngOnInit() {
         this.initForm();
+        this.getListOfUsers();
+    }
+
+    getListOfUsers() {
+        this.authService.getAllUsers().pipe(
+            map(changes => changes.map(c => ({key: c.payload.key, ...c.payload.val()})))
+          ).subscribe(_ => {
+            this.users = _;
+          })
     }
 
     private initForm() {
@@ -67,31 +78,27 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
     saveChanges() {
         this.isLoading = true;
-        this.authService.getUserDetail(this.loginForm.value).subscribe(_ => {
+        let a = this.users.find(_ => _.content.email === this.loginForm.value.userName && _.content.password === this.loginForm.value.password);
+        if(a !== undefined) {
             setTimeout(() => {
-                if (_ !== undefined) {
-                    this.snackbarService.openFromComponent(SnackbarComponent, {
-                        data: 'User Login Successfully.',
-                        duration: 10000,
-                        verticalPosition: "top",
-                        horizontalPosition: "right"
-                    })
-                    this.isLoading = false;
-                    this.router.navigate(['/profile']);
-                } else {
-
-                    this.snackbarService.openFromComponent(SnackbarComponent, {
-                        data: 'You entered username and password not matched.',
-                        duration: 10000,
-                        verticalPosition: "top",
-                        horizontalPosition: "right"
-                    })
-                    this.isLoading = false;
-                }
-
-            }, 1000);
-
-        });
+                this.snackbarService.openFromComponent(SnackbarComponent, {
+                    data: 'User Login Successfully.',
+                    duration: 5000,
+                    verticalPosition: "top",
+                    horizontalPosition: "right"
+                })
+                this.router.navigate(['/profile']);
+            },400)
+        } else {
+            setTimeout(() => {
+                this.snackbarService.openFromComponent(SnackbarComponent, {
+                    data: 'Login username or password incorrect.',
+                    duration: 5000,
+                    verticalPosition: "top",
+                    horizontalPosition: "right"
+                })
+            }, 400)
+        }
     }
 
     forgotPassword() {

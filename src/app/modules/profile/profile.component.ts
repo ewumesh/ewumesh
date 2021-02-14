@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 
 @Component({
-    templateUrl: './user.component.html',
-    styleUrls: ['./user.scss']
+    templateUrl: './profile.component.html',
+    styleUrls: ['./profile.scss']
 })
-export class UserComponent implements OnInit {
+export class ProfileComponent implements OnInit {
     panelOpenState = false;
     users: any = {};
 
