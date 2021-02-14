@@ -125,12 +125,23 @@ export class TeamFormComponent implements OnInit, AfterViewInit{
             existValue.id = this.data.content.id;
             existValue.sn = this.data.content.sn;
 
-            this.tService.updateTeam(this.data.key, this.teamForm.value, existValue);
-
-            this.dialogRef.close();
+            this.tService.updateTeam(this.data.key, this.teamForm.value, existValue).pipe(delay(400)).subscribe(_ => {
+                this.dialogRef.close();
+                this.snackbar.openFromComponent(SnackbarComponent, {
+                    data: 'Team Updated Successfully.',
+                    duration: 5000,
+                    verticalPosition: "top",
+                    horizontalPosition: "right"
+                })
+            })
         } else {
         this.tService.addTeam(this.teamForm.value).pipe(delay(400)).subscribe(_ => {
-            this.router.navigate(['/home']);
+            this.snackbar.openFromComponent(SnackbarComponent, {
+                data: 'Team Added Successfully.',
+                duration: 5000,
+                verticalPosition: "top",
+                horizontalPosition: "right"
+            })
             this.dialogRef.close();
         })
     }

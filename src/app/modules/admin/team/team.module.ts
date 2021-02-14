@@ -5,6 +5,7 @@ import {MatTableModule} from '@angular/material/table';
 import { RouterModule } from '@angular/router';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 import { TeamService } from './team.service';
 import { MatSortModule } from '@angular/material/sort';
@@ -27,7 +28,7 @@ import { SocialLinkComponent } from './social/social-link.component';
             }
         ]),
         FormsModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatDialogModule, MatSelectModule,
-        MatTableModule,MatCheckboxModule,MatSortModule, MatMenuModule, MatSnackBarModule
+        MatTableModule,MatCheckboxModule,MatSortModule, MatMenuModule, MatSnackBarModule, MatAutocompleteModule
      ],
     exports: [],
     providers: [TeamService],
