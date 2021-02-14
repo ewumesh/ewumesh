@@ -3,17 +3,17 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import {MatExpansionModule} from '@angular/material/expansion';
 
-import { UserComponent } from './user.component';
+import { ProfileComponent } from './profile.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
-    declarations: [UserComponent],
+    declarations: [ProfileComponent],
     imports: [ 
         CommonModule,
         RouterModule.forChild([
-            {path: '', component: UserComponent}
+            {path: '', component: ProfileComponent}
         ]),
         MatExpansionModule,
         MatIconModule,
@@ -23,4 +23,4 @@ import { MatInputModule } from '@angular/material/input';
     exports: [],
     providers: [],
 })
-export class UserModule {}
+export class ProfileModule {}

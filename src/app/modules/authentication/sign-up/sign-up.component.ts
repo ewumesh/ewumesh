@@ -7,6 +7,7 @@ import { GenericValidator } from '../../../shred/validations/generic-validators'
 import { Regex } from '../../../shred/validations/regex';
 import { AuthService } from '../auth.service';
 import { SnackbarComponent } from 'src/app/shred/validations/snackbar/snackbar.component';
+import { delay, map } from 'rxjs/operators';
 
 @Component({
     templateUrl: './sign-up.component.html',
@@ -15,15 +16,14 @@ import { SnackbarComponent } from 'src/app/shred/validations/snackbar/snackbar.c
 export class SignUpComponent implements OnInit, AfterViewInit {
 
     signupForm: FormGroup;
-
     isLoading: boolean = false;
+
+    users: any[] = [];
 
     genericValidator: GenericValidator;
     displayMessage: any = {};
     @ViewChildren(FormControlName, { read: ElementRef })
     private formInputElements: ElementRef[];
-
-    psm: any;
 
     constructor(
         private fb: FormBuilder,
@@ -47,15 +47,26 @@ export class SignUpComponent implements OnInit, AfterViewInit {
 
     ngOnInit() {
         this.initForm();
+
+        this.getListOfUsers();
+    }
+
+    getListOfUsers() {
+        this.authService.getAllUsers().pipe(
+            map(changes => changes.map(c => ({ key: c.payload.key, ...c.payload.val() })))
+        ).subscribe(_ => {
+            this.users = _;
+        })
     }
 
     private initForm() {
         this.signupForm = this.fb.group({
             id: 0,
             email: [null, [Validators.required, Validators.pattern(Regex.emailRegex)]],
+            role: 'user',
             password: [null, Validators.required],
             confirmPassword: [null, Validators.required]
-        },{validator: this.passwordConfirming})
+        }, { validator: this.passwordConfirming })
     }
 
     private validation() {
@@ -66,7 +77,7 @@ export class SignUpComponent implements OnInit, AfterViewInit {
 
     passwordConfirming(c: AbstractControl): { invalid: boolean } {
         if (c.get('password').value !== c.get('confirmPassword').value) {
-            return {invalid: true};
+            return { invalid: true };
         }
     }
 
@@ -76,30 +87,28 @@ export class SignUpComponent implements OnInit, AfterViewInit {
 
     saveChanges() {
         this.isLoading = true;
-        this.authService.signUp(this.signupForm.value).subscribe(_ => {
-            setTimeout(() => {
-                if (_ === true) {
-                    this.snackbarService.openFromComponent(SnackbarComponent, {
-                        data: 'User registered successfully.',
-                        duration: 10000,
-                        verticalPosition: 'top',
-                        horizontalPosition: 'right'
-                    })
-                    this.isLoading= false;
-                    this.router.navigate(['/home']);
-                } else {
-                    this.snackbarService.openFromComponent(SnackbarComponent, {
-                        data: 'User already registered.',
-                        duration: 10000,
-                        verticalPosition: 'top',
-                        horizontalPosition: 'right'
-                    })
-
-                    this.isLoading = false;
-                }
-            }, 1000);
-
-        });
+        let a = this.users.find(_ => _.content.email === this.signupForm.value.email);
+        if (a === undefined) {
+            this.authService.addUser(this.signupForm.value).pipe(delay(400)).subscribe(_ => {
+                this.router.navigate(['/home']);
+                this.snackbarService.openFromComponent(SnackbarComponent, {
+                    data: 'User registered successfully.',
+                    duration: 5000,
+                    verticalPosition: 'top',
+                    horizontalPosition: 'right'
+                })
+                this.isLoading = false;
+                this.router.navigate(['/login']);
+            })
+        } else {
+            this.snackbarService.openFromComponent(SnackbarComponent, {
+                data: 'User already registered.',
+                duration: 5000,
+                verticalPosition: 'top',
+                horizontalPosition: 'right'
+            })
+            this.isLoading = false;
+        }
     }
 
     login() {
