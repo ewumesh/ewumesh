@@ -2,8 +2,9 @@ import { AfterViewInit, Component, ElementRef, Inject, OnInit, ViewChildren } fr
 import { FormBuilder, FormControlName, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { delay, filter } from 'rxjs/operators';
+import { delay, filter, map } from 'rxjs/operators';
 
 import { GenericValidator } from 'src/app/shred/validations/generic-validators';
 import { SnackbarComponent } from 'src/app/shred/validations/snackbar/snackbar.component';
@@ -17,6 +18,8 @@ export class TeamFormComponent implements OnInit, AfterViewInit{
 
     teamForm: FormGroup;
     genericValidator: GenericValidator
+
+    teamData: any;
 
     @ViewChildren(FormControlName, { read: ElementRef })
     private formInputElements: ElementRef[];
@@ -51,7 +54,7 @@ export class TeamFormComponent implements OnInit, AfterViewInit{
         private snackbar: MatSnackBar,
         private dialogRef: MatDialogRef<TeamFormComponent>,
         @Inject(MAT_DIALOG_DATA)
-        public data: { id: number }
+        public data: any
     ) {
         this.genericValidator = new GenericValidator({
             'firstName': {
@@ -74,6 +77,16 @@ export class TeamFormComponent implements OnInit, AfterViewInit{
 
     ngOnInit() { 
         this.initForm();
+        if(this.data.key) {
+        this.tService.getAllTeams().pipe(
+            map(changes => changes.map(c => ({key: c.payload.key, ...c.payload.val()})))
+          ).subscribe(_ => {
+            this.teamData = _;
+            let a = _.find(_ => _.key === this.data.key);
+            // console.log(a);
+            this.patchForm(a.content);
+          })
+        }
     }
 
     private initForm() {
@@ -106,29 +119,21 @@ export class TeamFormComponent implements OnInit, AfterViewInit{
     }
 
     saveChanges() {
-        this.isLoading = true;
-        this.tService.updateTeam(this.teamForm.value).pipe(delay(400)).subscribe(_ => {
+        
+        if(this.data.key) {
+            let existValue: any = {};
+            existValue.id = this.data.content.id;
+            existValue.sn = this.data.content.sn;
+
+            this.tService.updateTeam(this.data.key, this.teamForm.value, existValue);
+
+            this.dialogRef.close();
+        } else {
+        this.tService.addTeam(this.teamForm.value).pipe(delay(400)).subscribe(_ => {
             this.router.navigate(['/home']);
             this.dialogRef.close();
-
-            if(this.teamForm.value.id === _.id) {
-                this.snackbar.openFromComponent(SnackbarComponent, {
-                  data: 'Team Edited Successfully..',
-                  duration: 10000,
-                  verticalPosition: "top",
-                  horizontalPosition: "right"
-              })
-              this.isLoading = false
-              } else {
-                this.snackbar.openFromComponent(SnackbarComponent, {
-                  data: 'Team Added Successfully.',
-                  duration: 10000,
-                  verticalPosition: "top",
-                  horizontalPosition: "right"
-              })
-              this.isLoading=false;
-              }
         })
+    }
 
 
     }
@@ -147,15 +152,21 @@ export class TeamFormComponent implements OnInit, AfterViewInit{
 
     ngAfterViewInit() {
         this.validation();
+        // if (this.data.content.id > 0) {
+        //     this.tService.getTeamById(this.data.content.id).pipe(
+        //         // takeUntil(this.toDestroy$),
+        //         delay(500)
+        //     ).subscribe(r => {
+        //         let d: any = r;
+        //         // console.log(d);
+        //         this.patchForm(d);
+        //     });
+        // }
 
-        if (this.data.id > 0) {
-            this.tService.getTeamById(this.data.id).pipe(
-                // takeUntil(this.toDestroy$),
-                delay(500)
-            ).subscribe(r => {
-                let d: any = r;
-                this.patchForm(d);
-            });
-        }
+
+        //   console.log(this.teamList);
+
+          
+        // }
     }
 }

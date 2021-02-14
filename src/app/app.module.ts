@@ -9,6 +9,9 @@ import { SnackbarModule } from './shred/validations/snackbar/snackbar.module';
 import { PageNotFoundModule } from './modules/404/404.module';
 import { ScrollTopModule } from './modules/scroll-top/scroll-top.module';
 import { AuthService } from './modules/authentication/auth.service';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -18,6 +21,8 @@ import { AuthService } from './modules/authentication/auth.service';
     NavModule,
 
     AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
 
     BrowserAnimationsModule,
     ScrollTopModule,

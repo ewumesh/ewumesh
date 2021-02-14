@@ -5,7 +5,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { delay } from 'rxjs/operators';
+import { delay, filter, map } from 'rxjs/operators';
 import { SnackbarComponent } from 'src/app/shred/validations/snackbar/snackbar.component';
 import { SocialLinkComponent } from './social/social-link.component';
 import { TeamFormComponent } from './team.form.component';
@@ -40,8 +40,10 @@ export class TeamComponent implements OnInit, AfterViewInit {
 
 
     ngOnInit() {
-        this.tService.getAllTeam().pipe(delay(600)).subscribe(_ => {
-            this.dataSource.data = _
+        this.tService.getAllTeams().pipe(
+          map(changes => changes.map(c => ({key: c.payload.key, ...c.payload.val()})))
+        ).subscribe(_ => {
+          this.dataSource.data = _;
         })
     }
 
@@ -50,24 +52,13 @@ export class TeamComponent implements OnInit, AfterViewInit {
     }
 
     delete(id: number) {
-        this.tService.deleteTeam(id).pipe(delay(500)).subscribe(x => {
-            this.dataSource.data = x;
-            this.dataSource._updateChangeSubscription();
-
-            this.snackbar.openFromComponent(SnackbarComponent, {
-              data: 'Team Deleted successfully.',
-              duration: 10000,
-              verticalPosition: "top",
-              horizontalPosition: "right"
-          })
-
-        })
+      const data = this.dataSource.data.find(_ => _.content.id === id);
+      this.tService.deleteTeam(data.key);
     }
 
     edit(id: number) {
       let instance: MatDialogRef<TeamFormComponent, any>;
-      const data = this.dataSource.data.find(_ => _.id === id);
-
+      const data = this.dataSource.data.find(_ => _.content.id === id);
       instance = this.dialog.open(TeamFormComponent, {
         width: '900px',
         data: data ? data : {},

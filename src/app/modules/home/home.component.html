@@ -29,8 +29,8 @@
                 <!-- <div class="col-lg-3 col-md-6 d-flex align-items-stretch pt-4" cdkDragBoundary=".row" *ngFor="let t of team" cdkDrag> -->
                 <div class="member">
                     <div class="member-img">
-                        <img [src]="t.imgUrl" class="img-fluid" alt="">
-                        <div class="social" *ngFor="let l  of t.links">
+                        <img [src]="t.content.imgUrl" class="img-fluid" alt="">
+                        <div class="social" *ngFor="let l  of t.content.links">
                             <a [attr.href]="l.twitter"><i class="fa fa-twitter-square"></i></a>
                             <a [attr.href]="l.facebook"><i class="fa fa-facebook-square"></i></a>
                             <a [attr.href]="l.instagram"><i class="fa fa-instagram"></i></a>
@@ -38,9 +38,9 @@
                         </div>
                     </div>
                     <div class="member-info">
-                        <h4>{{t.firstName}} {{t.lastName}}</h4>
-                        <span>{{t.position}}</span>
-                        <p>{{t.about}}
+                        <h4>{{t.content.firstName}} {{t.content.lastName}}</h4>
+                        <span>{{t.content.position}}</span>
+                        <p>{{t.content.about}}
                         </p>
                     </div>
                 </div>
