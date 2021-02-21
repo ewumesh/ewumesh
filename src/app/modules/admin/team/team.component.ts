@@ -12,7 +12,6 @@ import { TeamFormComponent } from './team.form.component';
 import { TeamService } from './team.service';
 
 @Component({
-    selector: 'table-expandable-rows-example',
     templateUrl: './team.component.html',
     styleUrls: ['./team.scss'],
     animations: [

@@ -6,6 +6,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDialogModule } from '@angular/material/dialog';
+import {MatTableModule} from '@angular/material/table';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 import { BlogComponent } from './blog.component';
 import { BlogFormComponent } from './blog.form.component';
@@ -20,7 +25,8 @@ import { BlogService } from './blog.service';
             {path: '', component: BlogComponent}
         ]), 
         FormsModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatSelectModule,
-        MatCheckboxModule
+        MatCheckboxModule, MatDialogModule, MatTableModule, MatMenuModule, MatIconModule, 
+        MatAutocompleteModule
      ],
     exports: [],
     providers: [BlogService],

@@ -1,7 +1,27 @@
-<div class="row" style="padding-top: 100px;height: 100vh; margin: 0; background-color: #6f42c1;">
-    <div class="col-md-12">
-        <div class="container">
-            <h3>Comming soon.........</h3>
+<section class="our-blog">
+    <div class="container">
+        <div class="text-center">
+            <h2>Our <span>Blog</span></h2>
+            <p>It is a long established fact that a reader will be of a page when established fact looking at its layout.</p>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-4" *ngFor="let b of blogs">
+                <div class="card">
+                    <img *ngIf="b.headerImg" [src]="b.headerImg" alt="">
+                    <img *ngIf="!b.headerImg" src="https://instagram.fktm3-1.fna.fbcdn.net/v/t51.2885-15/e35/147457169_234506508298397_1357827513529296065_n.jpg?_nc_ht=instagram.fktm3-1.fna.fbcdn.net&_nc_cat=105&_nc_ohc=2ARPGIx1e2wAX-2H3vI&tp=1&oh=232dc68580258902a449e8f8969c0c1e&oe=605216C3"
+                        alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a href="#">{{b.title}}</a>
+                        </h5>
+                        <p class="date-author">
+                            {{b.date}} <span class="author">By {{b.author}}</span>
+                        </p>
+                        <p class="card-text">
+                            {{b.content}}
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
