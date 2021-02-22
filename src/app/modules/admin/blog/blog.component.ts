@@ -3,7 +3,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
-import { delay } from 'rxjs/operators';
+import { delay, map } from 'rxjs/operators';
 
 import { SnackbarComponent } from 'src/app/shred/validations/snackbar/snackbar.component';
 import { BlogFormComponent } from './blog.form.component';
@@ -27,20 +27,26 @@ export class BlogComponent implements OnInit {
 
     constructor(
         private dialog: MatDialog,
-        private blogServicece: BlogService,
+        private blogService: BlogService,
         private snackbar: MatSnackBar
         ) { }
 
     ngOnInit() {
-        this.blogServicece.getAllBlogs().pipe(delay(400)).subscribe(_ => {
-            this.dataSource.data = _;
-        })
+        this.getBlogs();
      }
+
+     getBlogs() {
+      this.blogService.getAllBlogs().pipe(
+          map(changes => changes.map(c => ({key: c.payload.key, ...c.payload.val()})))
+        ).subscribe(_ => {
+          this.dataSource.data = _;
+        })
+  }
 
 
     edit(id: number) {
         let instance: MatDialogRef<BlogFormComponent, any>;
-        const data = this.dataSource.data.find(_ => _.id === id);
+        const data = this.dataSource.data.find(_ => _.content.id === id);
         instance = this.dialog.open(BlogFormComponent, {
           width: '900px',
           data: data ? data : {},
@@ -54,9 +60,9 @@ export class BlogComponent implements OnInit {
 
     delete(id: number) {
         const data = this.dataSource.data.find(_ => _.content.id === id);
-        this.blogServicece.deleteBlog(data.key).pipe(delay(400)).subscribe(_ => {
+        this.blogService.deleteBlog(data.key).pipe(delay(400)).subscribe(_ => {
           this.snackbar.openFromComponent(SnackbarComponent, {
-            data: 'Team Deleted Successfully.',
+            data: 'Post Deleted Successfully.',
             duration: 5000,
             verticalPosition: "top",
             horizontalPosition: "right"

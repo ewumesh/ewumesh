@@ -1,40 +1,39 @@
 import { Injectable } from '@angular/core';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Observable, of } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
 })
 export class BlogService {
+    blogsList: AngularFireList<any>;
+    constructor(private db: AngularFireDatabase) {}
 
     getAllBlogs(): Observable<any> {
-        return of(BLOGS);
+        this.blogsList = this.db.list('blogs');
+        return this.blogsList.snapshotChanges();
     }
 
     postBlog(body: any): Observable<any> {
-        let arr = BLOGS;
         let rand = Math.floor(Math.random() * (9999 - 1111 + 1)) + 100;
         body.id = rand;
         body.sn = rand;
-        arr.push(body);
-        return of(BLOGS);
+        this.db.list('blogs').push({ content: body });
+        return of(body)
     }
 
-    editBlog(body: any): Observable<any> {
-        let i = BLOGS.findIndex(_ => _.id === body.id);
-        let data = BLOGS.find(_ => _.id === body.id);
-        body.id = data.id;
-        body.sn = data.sn;
-        BLOGS[i] = body
-        return of(BLOGS);
+    editBlog(key, body, a): Observable<any> {
+        body.id = a.id;
+        body.sn = a.sn;
+        this.blogsList.update(key, {content: body});
+
+        return of(body);
     }
 
-    getBlogById(id: number): Observable<any> {
-        let data = BLOGS.find(_ => _.id === id)
-        return of(data);
-    }
-
-    deleteBlog(id: number): Observable<any> {
-        return of()
+    deleteBlog(key): Observable<any> {
+        let k = key;
+        this.db.list('blogs').remove(k);
+        return of(true);
     }
 
 }
@@ -43,7 +42,7 @@ let BLOGS = [
     {
         id: 1,
         sn: 1,
-        headerImg: null,
+        headerImg: 'https://images.unsplash.com/photo-1601971935068-fb9281b6deec?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',
         title: 'Ewumesh',
         date: 'Feb 21 2021',
         author: 'Umesh Thapa',
@@ -75,23 +74,5 @@ let BLOGS = [
         date: 'Feb 21 2021',
         author: 'Umesh Thapa',
         content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam vero eaque animi pariatur fugit excepturi, fuga delectus facere provident beatae.        '
-    },
-    {
-        id: 5,
-        sn: 5,
-        headerImg: 'https://images.unsplash.com/photo-1601971935068-fb9281b6deec?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',
-        title: 'Ewumesh',
-        date: 'Feb 21 2021',
-        author: 'Umesh Thapa',
-        content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam vero eaque animi pariatur fugit excepturi, fuga delectus facere provident beatae.        '
-    },
-    {
-        id: 6,
-        sn: 6,
-        headerImg: 'https://images.unsplash.com/photo-1601971935068-fb9281b6deec?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',
-        title: 'Ewumesh',
-        date: 'Feb 21 2021',
-        author: 'Umesh Thapa',
-        content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam vero eaque animi pariatur fugit excepturi, fuga delectus facere provident beatae.        '
-    },
+    }
 ]

@@ -23,7 +23,7 @@ import { BlogService } from './blog.service';
         CommonModule,
         RouterModule.forChild([
             {path: '', component: BlogComponent}
-        ]), 
+        ]),
         FormsModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatSelectModule,
         MatCheckboxModule, MatDialogModule, MatTableModule, MatMenuModule, MatIconModule, 
         MatAutocompleteModule

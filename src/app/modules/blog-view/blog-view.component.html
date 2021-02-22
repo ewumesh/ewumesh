@@ -7,21 +7,45 @@
         <div class="row mt-5">
             <div class="col-md-4" *ngFor="let b of blogs">
                 <div class="card">
-                    <img *ngIf="b.headerImg" [src]="b.headerImg" alt="">
-                    <img *ngIf="!b.headerImg" src="https://instagram.fktm3-1.fna.fbcdn.net/v/t51.2885-15/e35/147457169_234506508298397_1357827513529296065_n.jpg?_nc_ht=instagram.fktm3-1.fna.fbcdn.net&_nc_cat=105&_nc_ohc=2ARPGIx1e2wAX-2H3vI&tp=1&oh=232dc68580258902a449e8f8969c0c1e&oe=605216C3"
+                    <img *ngIf="b.content.headerImg" [src]="b.content.headerImg" alt="">
+                    <img *ngIf="!b.headerImg && !b" src="https://instagram.fktm3-1.fna.fbcdn.net/v/t51.2885-15/e35/147457169_234506508298397_1357827513529296065_n.jpg?_nc_ht=instagram.fktm3-1.fna.fbcdn.net&_nc_cat=105&_nc_ohc=2ARPGIx1e2wAX-2H3vI&tp=1&oh=232dc68580258902a449e8f8969c0c1e&oe=605216C3"
                         alt="">
                     <div class="card-body">
                         <h5 class="card-title">
-                            <a href="#">{{b.title}}</a>
+                            <a href="#">{{b.content.title}}</a>
                         </h5>
                         <p class="date-author">
-                            {{b.date}} <span class="author">By {{b.author}}</span>
+                            {{b.content.date}} By <span class="author"> {{b.content.author}}</span>
                         </p>
                         <p class="card-text">
-                            {{b.content}}
+                            {{b.content.content | slice:0:200}}....
                         </p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="row" style="margin: 5% 0 0 0  !important; padding: 0 !important;">
+        <div class="col-md-12">
+            <div class="col-md-12 text-center">
+                <h3 style="color: #00E676;">Our Latest</h3>
+            </div>
+            <div class="article" *ngFor="let p of blogs">
+                <img [src]="p.headerImg" alt="">
+                <div class="meta">
+                    <p>{{p.content.date}}</p>
+                    <h5>{{p.content.title}}</h5>
+                    <p>{{p.content.content}}</p>
+                    <p>-BY <b>{{p.content.author}}</b></p>
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <button id="header_button" style="background-color:#00E676 ;" type="button">Read more..</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

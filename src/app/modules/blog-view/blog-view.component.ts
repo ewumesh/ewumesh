@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { delay } from 'rxjs/operators';
+import { delay, map } from 'rxjs/operators';
 import { BlogService } from '../admin/blog/blog.service';
 
 @Component({
@@ -18,9 +18,11 @@ export class BlogViewComponent implements OnInit {
         this.getBlogs();
      }
 
-    getBlogs() {
-        this.blogService.getAllBlogs().pipe(delay(400)).subscribe(_ => {
+     getBlogs() {
+        this.blogService.getAllBlogs().pipe(
+            map(changes => changes.map(c => ({key: c.payload.key, ...c.payload.val()})))
+          ).subscribe(_ => {
             this.blogs = _;
-        })
+          })
     }
 }
