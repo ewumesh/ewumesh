@@ -87,7 +87,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
                     verticalPosition: "top",
                     horizontalPosition: "right"
                 })
-                this.authService.currentUser = a;
+                this.authService.currentUser = true;
                 this.router.navigate(['/profile']);
             },400)
         } else {

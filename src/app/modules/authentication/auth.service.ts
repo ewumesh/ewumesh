@@ -7,7 +7,7 @@ export class AuthService {
 
     usersList: AngularFireList<any>;
 
-    currentUser: any;
+    currentUser: boolean = false;
 
     constructor(
         private db: AngularFireDatabase
