@@ -1,0 +1,16 @@
+<div class="text-center">
+    <h6 class="m-portlet_head-text m--font-brand" matDialogTitle>
+        Confirm!
+    </h6>
+    <div matDialogContent>
+        <h5> Are you sure about this?</h5>
+    </div>
+    <div matDialogActions class="justify-content-center mb-1">
+        <button [ngClass]="{'kt-spinner kt-spinner--center kt-spinner--sm kt-spinner--danger':isWorking, 'btn-label-danger':!isWorking}" matTooltip="Delete" matTooltipPosition="left" (click)="deleted()" class="btn btn-icon btn-circle mx-2">
+            <i *ngIf="!isWorking" class="flaticon-delete"></i>
+        </button>
+        <button [disabled]="isWorking" matTooltip="Cancel" matTooltipPosition="right" [mat-dialog-close]="false" class="btn btn-secondary btn-elevate-hover btn-icon btn-circle mx-2 mx-2">
+            <i class="la la-close"></i>
+        </button>
+    </div>
+</div>
