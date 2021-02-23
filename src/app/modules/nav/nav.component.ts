@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../authentication/auth.service';
 
 @Component({
     selector: 'top-nav',
@@ -8,7 +9,8 @@ import { Router } from '@angular/router';
 })
 export class NavComponent implements OnInit {
     constructor(
-        private router: Router
+        private router: Router,
+        public authService: AuthService
     ) { }
 
     ngOnInit(): void { }
@@ -19,6 +21,10 @@ export class NavComponent implements OnInit {
 
     login() {
         this.router.navigate(['/login']);
+    }
+
+    logout() {
+        this.authService.currentUser = undefined;
     }
 
 

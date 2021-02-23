@@ -9,8 +9,9 @@
                 <li><a href="Javascript:;" (click)="blog()">Blog</a></li>
                 <li><a href="Javascript:;" (click)="contact()">Contact</a></li>
                 <li><a href="Javascript:;" (click)="about()">About</a></li>
-                <li><a href="Javascript:;" (click)="login()">Login</a></li>
-                <li><a href="Javascript:;" (click)="register()">Register</a></li>
+                <li *ngIf="authService.currentUser === true"><a href="Javascript:;">Profile</a></li>
+                <li *ngIf="authService.currentUser === false"><a href="Javascript:;" (click)="login()">Login</a></li>
+                <li *ngIf="authService.currentUser === false"><a href="Javascript:;" (click)="register()">Register</a></li>
             </ul>
         </div>
         <span id="overlay-input" class="navTrigger">
