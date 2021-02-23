@@ -15,6 +15,7 @@ const routes: Routes = [
 	]},
 	{path: 'blogs', loadChildren: () => import('./modules/blog-view/blog-view.module').then(b => b.BlogViewModule)},
 	{path: 'contact', loadChildren: () => import('./modules/contact/contact-us.module').then(b => b.ContactUSModule)},
+	{path: 'about', loadChildren: () => import('./modules/about/about.module').then(b => b.AboutModule)},
 	{path: '404', component: PageNotFoundComponent},
 	{path: 'notfound', component: NotFoundComponent},
 	{ path: '', redirectTo: 'home', pathMatch: 'full' },
