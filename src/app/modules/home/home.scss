@@ -351,3 +351,121 @@ section {
 .cdk-drag-animating {
     transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
+
+// last recent blog
+article {
+    font-family: 'roboto';
+    font-size: 1.1em;
+}
+
+article h2,
+article h3 {
+    font-family: 'ubuntu'
+}
+
+.author {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.author-image {
+    height: 40px;
+    width: 40px;
+    margin-right: 10px;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+}
+
+.author-name {
+    font-size: 1.3em;
+}
+
+
+/* Pager */
+
+.pager {
+    font-family: 'ubuntu';
+    list-style-type: none;
+}
+
+
+/* Footer */
+
+footer {
+    background-color: #0f171f;
+    padding-bottom: 40px;
+    margin-bottom: 0;
+    color: white;
+    font-family: 'roboto';
+}
+
+footer h2,
+footer h3 {
+    font-family: 'ubuntu';
+}
+
+footer a {
+    color: #70a7d7;
+}
+
+footer a:hover {
+    color: #337ab7;
+}
+
+
+/* Social Button List */
+
+.social-cont {
+    margin-top: 20px;
+}
+
+
+/* Image List */
+
+.image-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.image-list li {
+    padding-bottom: 5px;
+    display: table-row;
+}
+
+.image-list img {
+    width: 40px;
+    height: 40px;
+}
+
+.image-list .vertical-center {
+    padding-bottom: 6px;
+}
+
+
+/* Tag List */
+
+.tag-cont .btn {
+    margin-right: 4px;
+    margin-bottom: 7px;
+    color: #fff;
+}
+
+.tag-cont .btn:hover {
+    background-color: #000;
+}
+
+// .arc:hover {
+//     border: 1px solid #000;
+//     transition: rgb(0, 253, 156) 0.25s;
+// }
+.arc {
+    border: 10px double rgba(28, 110, 164, 0.89);
+    border-radius: 0px 40px 0px 40px;
+}
+
+// .arc:hover {
+//     border: 10px double rgba(28, 110, 164, 0.89);
+//     border-radius: 40px 0px 40px 0px;
+//     transition: border 0.6s linear;
+// }
