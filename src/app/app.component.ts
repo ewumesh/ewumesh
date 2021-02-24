@@ -1,20 +1,18 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { fadeAnimation } from './route-transition-animations';
 
-import { routeTransitionAnimations } from './route-transition-animations';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  // animations: [routeTransitionAnimations]
+  animations: [fadeAnimation]
 })
 export class AppComponent {
   title = 'ewumesh';
 
-  // prepareRoute(outlet: RouterOutlet) {
-  //   return outlet && 
-  //     outlet.activatedRouteData && 
-  //     outlet.activatedRouteData['animationState'];
-  //  }
+  public getRouterOutletState(outlet) {
+    return outlet.isActivated ? outlet.activatedRoute : '';
+  }
 }

@@ -3,7 +3,10 @@
 <!-- <div [@triggerName]="prepareRoute(outlet)">
     <router-outlet #outlet="outlet"></router-outlet>
 </div> -->
-<router-outlet></router-outlet>
+<!-- <router-outlet></router-outlet -->
+<main [@fadeAnimation]="getRouterOutletState(o)">
+    <router-outlet #o="outlet"></router-outlet>
+</main>
 <app-scroll-top></app-scroll-top>
 <footer class="footer_bg">
     <div class="my-container">
