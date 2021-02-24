@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { delay, map } from 'rxjs/operators';
 import { BlogService } from '../admin/blog/blog.service';
 
@@ -11,7 +12,8 @@ export class BlogViewComponent implements OnInit {
     blogs: any[] = [];
 
     constructor(
-        private blogService: BlogService
+        private blogService: BlogService,
+        private router: Router
     ) { }
 
     ngOnInit() {
@@ -24,5 +26,15 @@ export class BlogViewComponent implements OnInit {
           ).subscribe(_ => {
             this.blogs = _;
           })
+    }
+
+    readBlog(data) {
+        // let a = this.blogs.find(_ => _.content.id === id);
+        // if(a !== undefined) {
+        //     this.blogService.getBlogById(a);
+        // }
+
+        this.router.navigate(['/view', data.id], {queryParams:data.title });
+
     }
 }

@@ -9,6 +9,14 @@ export class BlogService {
     blogsList: AngularFireList<any>;
     constructor(private db: AngularFireDatabase) {}
 
+    getBlogById(a?):Observable<any> {
+        if(a) {
+        return of(a);
+        } else {
+            return of([]);
+        }
+    }
+
     getAllBlogs(): Observable<any> {
         this.blogsList = this.db.list('blogs');
         return this.blogsList.snapshotChanges();
