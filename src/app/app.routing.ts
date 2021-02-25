@@ -12,6 +12,7 @@ const routes: Routes = [
 		{path: 'team', loadChildren: () => import('./modules/admin/team/team.module').then(r => r.TeamModule)},
 		{path: 'users', loadChildren: () => import('./modules/admin/users/user.module').then(r => r.UserModule)},
 		{path: 'blogs', loadChildren: () => import('./modules/admin/blog/blog.module').then(r => r.BlogModule)},
+		{path: 'user-response', loadChildren: () => import('./modules/admin/user-response/user-response.module').then(r => r.UserResponseModule)},
 	]},
 	{path: 'blogs', loadChildren: () => import('./modules/blog-view/blog-view.module').then(b => b.BlogViewModule)},
 	{path: 'contact', loadChildren: () => import('./modules/contact/contact-us.module').then(b => b.ContactUSModule)},
