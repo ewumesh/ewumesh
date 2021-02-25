@@ -33,7 +33,7 @@
                             </a>
                         </div>
                         <div class="date-published">
-                            {{individualBlog.date}}
+                            {{individualBlog.date | date:'mediumDate'}}
                         </div>
                     </div>
                 </article>
@@ -53,14 +53,16 @@
     <article class="container article-preview pt-4" *ngFor="let a of blogs | slice:0:2;">
         <div class="row">
             <div class="col-sm-2">
-                <h2 class="publish-day">{{a.content.date}}</h2>
+                <h2 class="publish-day">{{a.content.date | date:'mediumDate'}}</h2>
                 <!-- <div class="publish-month">February</div> -->
             </div>
             <div class="col-sm-10">
                 <h2 class="post-title"><a [routerLink]="['/view']" [queryParams]=" a.content" style="color: #fff;">{{a.content.title}}</a></h2>
                 <!-- <h3 class="post-subtitle">..............</h3> -->
                 <div class="post-preview">
-                    <p>{{a.content.content|slice:0:200}}</p>
+                    <p [innerHtml]="a.content.content|slice:0:200">
+                        <!-- {{a.content.content|slice:0:200}} -->
+                    </p>
                 </div>
                 <div class="author">
                     <a href="Javascript:;">
