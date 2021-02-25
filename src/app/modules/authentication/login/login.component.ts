@@ -9,6 +9,7 @@ import { GenericValidator } from '../../../shred/validations/generic-validators'
 import { ForgotPasswordComponent } from '../forgot-password/forgot-password.component';
 import { AuthService } from '../auth.service';
 import { SnackbarComponent } from '../../../../../src/app/shred/validations/snackbar/snackbar.component';
+import { AngularFireDatabase } from '@angular/fire/database';
 
 @Component({
     templateUrl: './login.component.html',
@@ -33,7 +34,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
         private dialog: MatDialog,
         private router: Router,
         private snackbarService: MatSnackBar,
-        private authService: AuthService
+        private authService: AuthService,
+        private db: AngularFireDatabase
     ) {
         this.genericValidator = new GenericValidator({
             'userName': {
@@ -75,7 +77,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
             .initValidationProcess(this.loginForm, this.formInputElements)
             .subscribe({ next: m => this.displayMessage = m });
     }
-
+ 
     saveChanges() {
         this.isLoading = true;
         let a = this.users.find(_ => _.content.email === this.loginForm.value.userName && _.content.password === this.loginForm.value.password);
@@ -88,7 +90,9 @@ export class LoginComponent implements OnInit, AfterViewInit {
                     horizontalPosition: "right"
                 })
                 this.authService.currentUser = true;
-                this.router.navigate(['/profile']);
+                this.authService.logged = a.key;
+                this.db.list('loggedUser').push({data: a});
+                this.router.navigate(['/profile'], {queryParams: a});
             },400)
         } else {
             setTimeout(() => {

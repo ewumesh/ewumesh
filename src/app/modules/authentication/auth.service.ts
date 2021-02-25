@@ -8,6 +8,7 @@ export class AuthService {
     usersList: AngularFireList<any>;
 
     currentUser: boolean = false;
+    logged: string = '';
 
     constructor(
         private db: AngularFireDatabase
@@ -31,6 +32,13 @@ export class AuthService {
     deleteUser(key): Observable<any> {
         let k = key;
         this.db.list('users').remove(k);
+        return of(true);
+    }
+
+    logOut(key) {
+        let k = key;
+        this.db.list('loggedUser').remove(k);
+        this.logged = undefined;
         return of(true);
     }
 
