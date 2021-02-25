@@ -52,6 +52,7 @@ export class BlogComponent implements OnInit {
           height:'100vh',
           data: data ? data : {},
           autoFocus: false,
+          hasBackdrop: false
       });
   
       instance.afterClosed().pipe(delay(500)).subscribe(_ => {

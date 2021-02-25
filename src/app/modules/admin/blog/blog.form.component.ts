@@ -21,50 +21,50 @@ export class BlogFormComponent implements OnInit {
 
     editorConfig: AngularEditorConfig = {
         editable: true,
-          spellcheck: true,
-          height: 'auto',
-          minHeight: '0',
-          maxHeight: 'auto',
-          width: 'auto',
-          minWidth: '0',
-          translate: 'yes',
-          enableToolbar: true,
-          showToolbar: true,
-          placeholder: 'Enter text here...',
-          defaultParagraphSeparator: '',
-          defaultFontName: '',
-          defaultFontSize: '',
-          fonts: [
-            {class: 'arial', name: 'Arial'},
-            {class: 'times-new-roman', name: 'Times New Roman'},
-            {class: 'calibri', name: 'Calibri'},
-            {class: 'comic-sans-ms', name: 'Comic Sans MS'}
-          ],
-          customClasses: [
-          {
-            name: 'quote',
-            class: 'quote',
-          },
-          {
-            name: 'redText',
-            class: 'redText'
-          },
-          {
-            name: 'titleText',
-            class: 'titleText',
-            tag: 'h1',
-          },
+        spellcheck: true,
+        height: 'auto',
+        minHeight: '0',
+        maxHeight: 'auto',
+        width: 'auto',
+        minWidth: '0',
+        translate: 'yes',
+        enableToolbar: true,
+        showToolbar: true,
+        placeholder: 'Enter text here...',
+        defaultParagraphSeparator: '',
+        defaultFontName: '',
+        defaultFontSize: '',
+        fonts: [
+            { class: 'arial', name: 'Arial' },
+            { class: 'times-new-roman', name: 'Times New Roman' },
+            { class: 'calibri', name: 'Calibri' },
+            { class: 'comic-sans-ms', name: 'Comic Sans MS' }
+        ],
+        customClasses: [
+            {
+                name: 'quote',
+                class: 'quote',
+            },
+            {
+                name: 'redText',
+                class: 'redText'
+            },
+            {
+                name: 'titleText',
+                class: 'titleText',
+                tag: 'h1',
+            },
         ],
         uploadUrl: 'v1/image',
         uploadWithCredentials: false,
         sanitize: true,
         toolbarPosition: 'top',
         toolbarHiddenButtons: [
-          ['bold', 'italic'],
-          ['fontSize']
+            ['bold', 'italic'],
+            ['fontSize']
         ]
     };
-    
+
 
     blogData: any[] = [];
 
@@ -117,14 +117,16 @@ export class BlogFormComponent implements OnInit {
     }
 
     getBlogs() {
-        this.blogService.getAllBlogs().pipe(
-            map(changes => changes.map(c => ({ key: c.payload.key, ...c.payload.val() })))
-        ).subscribe(_ => {
-            this.blogData = _;
-            let a = _.find(_ => _.key === this.data.key);
-            // console.log(a);
-            this.patchForm(a.content);
-        })
+        if (this.data.key) {
+            this.blogService.getAllBlogs().pipe(
+                map(changes => changes.map(c => ({ key: c.payload.key, ...c.payload.val() })))
+            ).subscribe(_ => {
+                this.blogData = _;
+                let a = _.find(_ => _.key === this.data.key);
+                // console.log(a);
+                this.patchForm(a.content);
+            })
+        }
     }
 
     private initForm() {
