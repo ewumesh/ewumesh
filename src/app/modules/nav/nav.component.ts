@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Router } from '@angular/router';
 import { AuthService } from '../authentication/auth.service';
 
@@ -9,22 +8,12 @@ import { AuthService } from '../authentication/auth.service';
     styleUrls: ['./nav.scss']
 })
 export class NavComponent implements OnInit {
-
-    loggedList: AngularFireList<any>;
-    isLogged: boolean = false;
-
     constructor(
         private router: Router,
-        public authService: AuthService,
-        private db: AngularFireDatabase
+        public authService: AuthService
     ) { }
 
-    ngOnInit() {
-        this.loggedList = this.db.list('loggedUser');
-        this.loggedList.snapshotChanges().subscribe(_ => {
-            console.log(_);
-        })
-     }
+    ngOnInit(): void { }
 
     home() {
         this.router.navigate(['/home'])
