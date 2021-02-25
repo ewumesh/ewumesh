@@ -5,7 +5,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { delay, filter, map } from 'rxjs/operators';
+import { delay, map } from 'rxjs/operators';
 import { SnackbarComponent } from 'src/app/shred/validations/snackbar/snackbar.component';
 import { SocialLinkComponent } from './social/social-link.component';
 import { TeamFormComponent } from './team.form.component';
@@ -24,7 +24,6 @@ import { TeamService } from './team.service';
 })
 export class TeamComponent implements OnInit, AfterViewInit {
     dataSource: MatTableDataSource<any> = new MatTableDataSource(null);    
-    // columnsToDisplay = ['select','sn', 'firstName','lastName', 'position', 'about'];
     displayedColumns: string[] = [ 'sn', 'name', 'position', 'about', 'action'];
     expandedElement: any | null;
 
@@ -43,6 +42,7 @@ export class TeamComponent implements OnInit, AfterViewInit {
           map(changes => changes.map(c => ({key: c.payload.key, ...c.payload.val()})))
         ).subscribe(_ => {
           this.dataSource.data = _;
+          this.dataSource._updateChangeSubscription();
         })
     }
 
