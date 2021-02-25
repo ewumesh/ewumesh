@@ -290,6 +290,9 @@ Apache-2.0
 @firebase/util
 Apache-2.0
 
+@kolkov/angular-editor
+MIT
+
 bootstrap
 MIT
 The MIT License (MIT)
