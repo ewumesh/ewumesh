@@ -26,7 +26,9 @@ export class IndividualViewComponent implements OnInit, OnDestroy {
             .queryParams
             .subscribe((params) => {
                 // this.memberName = params["name"];
+                // this.individualBlog = this.blogs.find(_ => _.id === params)
                 this.individualBlog = params;
+
             });
             
             this.getAllBlogs();

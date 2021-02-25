@@ -11,6 +11,8 @@ import {MatTableModule} from '@angular/material/table';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { AngularEditorModule } from '@kolkov/angular-editor';
+import { HttpClientModule } from '@angular/common/http';
 
 import { BlogComponent } from './blog.component';
 import { BlogFormComponent } from './blog.form.component';
@@ -26,7 +28,7 @@ import { BlogService } from './blog.service';
         ]),
         FormsModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatSelectModule,
         MatCheckboxModule, MatDialogModule, MatTableModule, MatMenuModule, MatIconModule, 
-        MatAutocompleteModule
+        MatAutocompleteModule, AngularEditorModule, HttpClientModule
      ],
     exports: [],
     providers: [BlogService],

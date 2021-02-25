@@ -14,7 +14,7 @@
                         alt=""> -->
                     <div class="card-body">
                         <h5 class="card-title">
-                            <a [routerLink]="['/view']" [queryParams]=" b.content">{{b.content.author}}</a>
+                            <a [routerLink]="['/view']" [queryParams]="b.content">{{b.content.title}}</a>
                         </h5>
                         <p class="date-author">
                             {{b.content.date}} By <span class="author"> {{b.content.author}}</span>
