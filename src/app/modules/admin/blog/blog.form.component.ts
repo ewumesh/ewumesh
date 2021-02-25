@@ -5,6 +5,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { delay, map } from 'rxjs/operators';
 
+import { AngularEditorConfig } from '@kolkov/angular-editor';
+
 import { GenericValidator } from 'src/app/shred/validations/generic-validators';
 import { BlogService } from './blog.service';
 
@@ -16,6 +18,53 @@ export class BlogFormComponent implements OnInit {
 
     blogForm: FormGroup;
     genericValidator: GenericValidator;
+
+    editorConfig: AngularEditorConfig = {
+        editable: true,
+          spellcheck: true,
+          height: 'auto',
+          minHeight: '0',
+          maxHeight: 'auto',
+          width: 'auto',
+          minWidth: '0',
+          translate: 'yes',
+          enableToolbar: true,
+          showToolbar: true,
+          placeholder: 'Enter text here...',
+          defaultParagraphSeparator: '',
+          defaultFontName: '',
+          defaultFontSize: '',
+          fonts: [
+            {class: 'arial', name: 'Arial'},
+            {class: 'times-new-roman', name: 'Times New Roman'},
+            {class: 'calibri', name: 'Calibri'},
+            {class: 'comic-sans-ms', name: 'Comic Sans MS'}
+          ],
+          customClasses: [
+          {
+            name: 'quote',
+            class: 'quote',
+          },
+          {
+            name: 'redText',
+            class: 'redText'
+          },
+          {
+            name: 'titleText',
+            class: 'titleText',
+            tag: 'h1',
+          },
+        ],
+        uploadUrl: 'v1/image',
+        uploadWithCredentials: false,
+        sanitize: true,
+        toolbarPosition: 'top',
+        toolbarHiddenButtons: [
+          ['bold', 'italic'],
+          ['fontSize']
+        ]
+    };
+    
 
     blogData: any[] = [];
 

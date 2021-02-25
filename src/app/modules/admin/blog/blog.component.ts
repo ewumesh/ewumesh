@@ -48,7 +48,8 @@ export class BlogComponent implements OnInit {
         let instance: MatDialogRef<BlogFormComponent, any>;
         const data = this.dataSource.data.find(_ => _.content.id === id);
         instance = this.dialog.open(BlogFormComponent, {
-          width: '900px',
+          width: '1300px',
+          height:'100vh',
           data: data ? data : {},
           autoFocus: false,
       });

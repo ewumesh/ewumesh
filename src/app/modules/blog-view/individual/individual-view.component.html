@@ -16,8 +16,8 @@
             <div class="bs-component">
                 <article style="letter-spacing: -0.003em;line-height: 32px;font-size: 21px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
                     <!-- {{individualBlog.content}}, -->
-                    <p class="p">{{individualBlog.content|slice:0:400}}</p>,
-                    <p>{{individualBlog.content|slice:800:1600}} </p>
+                    <p class="p" [innerHtml]="individualBlog.content"></p>,
+                    <!-- <p>{{individualBlog.content|slice:800:1600}} </p>
                     <p> {{individualBlog.content|slice:1600:2000}}</p>
                     <p> {{individualBlog.content|slice:2000:2800}}</p>
                     <p> {{individualBlog.content|slice:2800:4000}}</p>
@@ -25,7 +25,7 @@
                     <p> {{individualBlog.content|slice:4500:7000}}</p>
                     <p> {{individualBlog.content|slice:7000:9000}}</p>
                     <p> {{individualBlog.content|slice:9000:11000}}</p>
-                    <p> {{individualBlog.content|slice:11000:15000}}</p>
+                    <p> {{individualBlog.content|slice:11000:15000}}</p> -->
                     <div class="horizontal-center">
                         <div class="author">
                             <a href="#">
