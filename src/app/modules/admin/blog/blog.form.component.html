@@ -17,9 +17,14 @@
         </div>
 
         <div class="col-md-6">
-            <mat-form-field style="width: 100%;" appearance="outline">
+            <!-- <mat-form-field style="width: 100%;" appearance="outline">
                 <mat-label class="input_label">Enter Date</mat-label>
                 <input formControlName="date" type="author" matInput placeholder="Enter Date">
+            </mat-form-field> -->
+            <mat-form-field style="width: 100%;" appearance="outline">
+                <mat-label>Date</mat-label>
+                <input datePickerFormat="MMMM Do YYYY" (click)="date.open()" (focus)="date.open()" [matDatepicker]="date" matInput formControlName="select Date" formControlName="date">
+                <mat-datepicker #date></mat-datepicker>
             </mat-form-field>
         </div>
         <div class="col-md-6">

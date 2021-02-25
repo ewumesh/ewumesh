@@ -13,11 +13,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { HttpClientModule } from '@angular/common/http';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 import { BlogComponent } from './blog.component';
 import { BlogFormComponent } from './blog.form.component';
 import { BlogService } from './blog.service';
-
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
     declarations: [BlogComponent, BlogFormComponent],
@@ -28,7 +29,8 @@ import { BlogService } from './blog.service';
         ]),
         FormsModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatSelectModule,
         MatCheckboxModule, MatDialogModule, MatTableModule, MatMenuModule, MatIconModule, 
-        MatAutocompleteModule, AngularEditorModule, HttpClientModule
+        MatAutocompleteModule, AngularEditorModule, HttpClientModule, MatDatepickerModule,
+        MatNativeDateModule
      ],
     exports: [],
     providers: [BlogService],
