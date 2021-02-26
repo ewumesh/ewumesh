@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './modules/404/404.component';
+import { AccessDeniedComponent } from './modules/404/access-denied/access-denied.component';
 import { NotFoundComponent } from './modules/404/page-not-found.component';
 import { AlwaysAuthGuard } from './route.guard';
 
@@ -21,6 +22,7 @@ const routes: Routes = [
 	{path: 'view', loadChildren: () => import('./modules/blog-view/individual/individual-view.module').then(b => b.IndividualViewModule)},
 	{path: '404', component: PageNotFoundComponent},
 	{path: 'notfound', component: NotFoundComponent},
+	{path: 'access-denied', component: AccessDeniedComponent},
 	{ path: '', redirectTo: 'home', pathMatch: 'full' },
 	{ path: '**', redirectTo: '404' },
 	{ path: '*', redirectTo: 'notfound' },
