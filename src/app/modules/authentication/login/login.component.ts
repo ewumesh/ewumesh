@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
         private router: Router,
         private snackbarService: MatSnackBar,
         private authService: AuthService,
-        private db: AngularFireDatabase
+        private db: AngularFireDatabase,
     ) {
         this.genericValidator = new GenericValidator({
             'userName': {
@@ -91,8 +91,10 @@ export class LoginComponent implements OnInit, AfterViewInit {
                 })
                 this.authService.currentUser = true;
                 this.authService.logged = a.key;
-                this.db.list('loggedUser').push({data: a});
-                this.router.navigate(['/profile'], {queryParams: a});
+                localStorage.setItem("logged", JSON.stringify(a));
+                
+                this.router.navigate(['home']);
+                window.location.reload();
             },400)
         } else {
             setTimeout(() => {
