@@ -8,12 +8,20 @@ import { AuthService } from '../authentication/auth.service';
     styleUrls: ['./nav.scss']
 })
 export class NavComponent implements OnInit {
+
+    isLogged: boolean = false;
+
     constructor(
         private router: Router,
         public authService: AuthService
     ) { }
 
-    ngOnInit(): void { }
+    ngOnInit() {
+        let a = JSON.parse(localStorage.getItem('logged'));
+        if(a !== null) {
+            this.isLogged = true;
+        }
+     }
 
     home() {
         this.router.navigate(['/home'])
@@ -24,7 +32,9 @@ export class NavComponent implements OnInit {
     }
 
     logout() {
-        this.authService.currentUser = undefined;
+        localStorage.setItem('logged', null);
+        this.router.navigate(['/home']);
+        window.location.reload();
     }
 
 
