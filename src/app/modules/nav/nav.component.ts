@@ -24,8 +24,6 @@ export class NavComponent implements OnInit {
             this.isLogged = true;
             this.loggedData = a;
         }
-
-        console.log(a.content);
      }
 
     home() {
