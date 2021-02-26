@@ -11,6 +11,8 @@ export class NavComponent implements OnInit {
 
     isLogged: boolean = false;
 
+    loggedData: any;
+
     constructor(
         private router: Router,
         public authService: AuthService
@@ -20,7 +22,10 @@ export class NavComponent implements OnInit {
         let a = JSON.parse(localStorage.getItem('logged'));
         if(a !== null) {
             this.isLogged = true;
+            this.loggedData = a;
         }
+
+        console.log(a.content);
      }
 
     home() {
