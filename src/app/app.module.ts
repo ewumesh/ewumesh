@@ -13,6 +13,8 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
 
+import {AlwaysAuthGuard} from './route.guard'
+
 @NgModule({
   declarations: [
     AppComponent  ],
@@ -29,7 +31,7 @@ import { environment } from '../environments/environment';
     SnackbarModule,
     PageNotFoundModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, AlwaysAuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
