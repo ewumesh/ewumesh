@@ -53,4 +53,15 @@ export class NavComponent implements OnInit {
     blog() {
         this.router.navigate(['/blogs']);
     }
+    blogAdmin() {
+        this.router.navigate(['/admin/blogs']);
+    }
+
+    profile() {
+        this.router.navigate(['/profile']);
+    }
+    team() {
+        this.router.navigate(['/admin/team']);
+    }
+
 }

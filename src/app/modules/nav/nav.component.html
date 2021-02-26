@@ -9,7 +9,17 @@
                 <li><a href="Javascript:;" (click)="blog()">Blog</a></li>
                 <li><a href="Javascript:;" (click)="contact()">Contact</a></li>
                 <li><a href="Javascript:;" (click)="about()">About</a></li>
-                <li *ngIf="isLogged === true"><a href="Javascript:;">Profile</a></li>
+                <li *ngIf="isLogged === true"><a [matMenuTriggerFor]="menu" href="Javascript:;">
+                    Profile
+                </a>
+                    <mat-menu #menu="matMenu">
+                        <button (click)="profile()" mat-menu-item><a >Profile</a></button>
+                        <button (click)="team()" mat-menu-item><a>Team</a></button>
+                        <button (click)="blogAdmin()" mat-menu-item><a>Blog</a></button>
+                        <button mat-menu-item>Setting</button>
+                    </mat-menu>
+
+                </li>
                 <li (click)="logout()" *ngIf="isLogged === true"><a href="Javascript:;">Logout</a></li>
                 <li *ngIf="isLogged === false"><a href="Javascript:;" (click)="login()">Login</a></li>
                 <li *ngIf="isLogged === false"><a href="Javascript:;" (click)="register()">Register</a></li>
