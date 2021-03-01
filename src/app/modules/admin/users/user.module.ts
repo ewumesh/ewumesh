@@ -5,6 +5,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatMenuModule } from '@angular/material/menu';
 
 import { UserComponent } from './user.component';
+import { DeleteConfirmModule } from 'src/app/shred/delete-confirm/delete-confirm.module';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
     declarations: [UserComponent],
@@ -13,7 +15,7 @@ import { UserComponent } from './user.component';
         RouterModule.forChild([
             {path: '' , component: UserComponent}
         ]),
-        MatTableModule, MatMenuModule
+        MatTableModule, MatMenuModule,MatDialogModule, DeleteConfirmModule
      ],
     exports: [],
     providers: [],

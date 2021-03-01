@@ -26,7 +26,9 @@
 .signup_page {
     padding-top: 100px;
     min-height: 100vh;
-    animation: myanimation 10s infinite;
+    background: url(https://image.freepik.com/free-photo/shiny-lights_385-19321244.jpg);
+    background-size: cover;
+    // animation: myanimation 10s infinite;
 }
 
 @keyframes myanimation {
