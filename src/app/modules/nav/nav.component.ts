@@ -67,4 +67,8 @@ export class NavComponent implements OnInit {
         this.router.navigate(['/admin/team']);
     }
 
+    user() {
+        this.router.navigate(['admin/users'])
+    }
+
 }

@@ -3,12 +3,13 @@ import { FormBuilder, FormControlName, FormGroup, Validators } from '@angular/fo
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { delay, map } from 'rxjs/operators';
+import { delay, filter, map } from 'rxjs/operators';
 
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 
 import { GenericValidator } from 'src/app/shred/validations/generic-validators';
 import { BlogService } from './blog.service';
+import { ChangesConfirmComponent } from 'src/app/shred/changes-confirm/changes-confirm.component';
 
 @Component({
     templateUrl: './blog.form.component.html',
@@ -181,14 +182,14 @@ export class BlogFormComponent implements OnInit {
     }
 
     cancel() {
-        // if (this.teamForm.dirty) {
-        //     this.dialog.open(ChangesConfirmComponent).afterClosed()
-        //         .pipe(
-        //             filter(_ => _)
-        //         ).subscribe(_ => this.dialogRef.close());
-        // } else {
-        this.dialogRef.close();
-        // }
+        if (this.blogForm.dirty) {
+            this.dialog.open(ChangesConfirmComponent).afterClosed()
+                .pipe(
+                    filter(_ => _)
+                ).subscribe(_ => this.dialogRef.close());
+        } else {
+            this.dialogRef.close();
+        }
     }
 
     ngAfterViewInit() {

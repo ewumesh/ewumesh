@@ -17,6 +17,8 @@ import { TeamFormComponent } from './team.form.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SocialLinkComponent } from './social/social-link.component';
+import { DeleteConfirmModule } from 'src/app/shred/delete-confirm/delete-confirm.module';
+import { ChangesConfirmModule } from 'src/app/shred/changes-confirm/changes-confirm.module';
 
 @NgModule({
     declarations: [TeamComponent, TeamFormComponent, SocialLinkComponent],
@@ -28,7 +30,8 @@ import { SocialLinkComponent } from './social/social-link.component';
             }
         ]),
         FormsModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatDialogModule, MatSelectModule,
-        MatTableModule,MatCheckboxModule,MatSortModule, MatMenuModule, MatSnackBarModule, MatAutocompleteModule
+        MatTableModule,MatCheckboxModule,MatSortModule, MatMenuModule, MatSnackBarModule, MatAutocompleteModule,
+        DeleteConfirmModule, ChangesConfirmModule
      ],
     exports: [],
     providers: [TeamService],

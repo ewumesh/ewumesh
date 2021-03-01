@@ -19,6 +19,7 @@ import { BlogComponent } from './blog.component';
 import { BlogFormComponent } from './blog.form.component';
 import { BlogService } from './blog.service';
 import { MatNativeDateModule } from '@angular/material/core';
+import { DeleteConfirmModule } from 'src/app/shred/delete-confirm/delete-confirm.module';
 
 @NgModule({
     declarations: [BlogComponent, BlogFormComponent],
@@ -30,7 +31,7 @@ import { MatNativeDateModule } from '@angular/material/core';
         FormsModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatSelectModule,
         MatCheckboxModule, MatDialogModule, MatTableModule, MatMenuModule, MatIconModule, 
         MatAutocompleteModule, AngularEditorModule, HttpClientModule, MatDatepickerModule,
-        MatNativeDateModule
+        MatNativeDateModule, DeleteConfirmModule
      ],
     exports: [],
     providers: [BlogService],

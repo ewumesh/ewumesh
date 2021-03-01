@@ -12,7 +12,7 @@ const routes: Routes = [
     {path: 'profile', loadChildren: () => import('./modules/profile/profile.module'). then(r => r.ProfileModule)},
     {path: 'admin', children: [
 		{path: 'team', canActivate: [AlwaysAuthGuard], loadChildren: () => import('./modules/admin/team/team.module').then(r => r.TeamModule)},
-		{path: 'users', canActivate: [AlwaysAuthGuard], loadChildren: () => import('./modules/admin/users/user.module').then(r => r.UserModule)},
+		{path: 'users',  loadChildren: () => import('./modules/admin/users/user.module').then(r => r.UserModule)},
 		{path: 'blogs',canActivate: [AlwaysAuthGuard], loadChildren: () => import('./modules/admin/blog/blog.module').then(r => r.BlogModule)},
 		{path: 'user-response',canActivate: [AlwaysAuthGuard], loadChildren: () => import('./modules/admin/user-response/user-response.module').then(r => r.UserResponseModule)},
 	]},

@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { delay, filter, map } from 'rxjs/operators';
+import { ChangesConfirmComponent } from 'src/app/shred/changes-confirm/changes-confirm.component';
 
 import { GenericValidator } from 'src/app/shred/validations/generic-validators';
 import { SnackbarComponent } from 'src/app/shred/validations/snackbar/snackbar.component';
@@ -150,14 +151,14 @@ export class TeamFormComponent implements OnInit, AfterViewInit{
     }
 
     cancel() {
-        // if (this.teamForm.dirty) {
-        //     this.dialog.open(ChangesConfirmComponent).afterClosed()
-        //         .pipe(
-        //             filter(_ => _)
-        //         ).subscribe(_ => this.dialogRef.close());
-        // } else {
+        if (this.teamForm.dirty) {
+            this.dialog.open(ChangesConfirmComponent).afterClosed()
+                .pipe(
+                    filter(_ => _)
+                ).subscribe(_ => this.dialogRef.close());
+        } else {
             this.dialogRef.close();
-        // }
+        }
     }
 
 
