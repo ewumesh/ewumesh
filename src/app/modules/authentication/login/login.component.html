@@ -45,7 +45,12 @@
                                 <div class="col-md 12 text-center pt-3">
                                     <button [disabled]="loginForm.invalid || isLoading" class="login_btn login_btn-5">
                                         <span *ngIf="!isLoading">LOGIN</span>   
-                                        <span *ngIf="isLoading"><i style="font-size: 22px;" class="fa fa-cog fa-spin"></i></span>
+                                        <!-- <span *ngIf="isLoading"><i style="font-size: 22px;" class="fa fa-cog fa-spin"></i></span> -->
+                                          <!-- spinner -->
+                                            <div *ngIf="isLoading" class="spinner">
+                                                <div></div>
+                                                <div></div>
+                                            </div>
                                     </button>
                                 </div>
                             </div>
