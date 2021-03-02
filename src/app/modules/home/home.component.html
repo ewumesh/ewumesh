@@ -29,7 +29,8 @@
                 <!-- <div class="col-lg-3 col-md-6 d-flex align-items-stretch pt-4" cdkDragBoundary=".row" *ngFor="let t of team" cdkDrag> -->
                 <div *ngIf="team.length > 0" class="member">
                     <div class="member-img">
-                        <img [src]="t.content.imgUrl" class="img-fluid" alt="">
+                        <img *ngIf="t.content.imgUrl" [src]="t.content.imgUrl" class="img-fluid" alt="">
+                        <img *ngIf="!t.content.imgUrl" src="assets/images/team-2.jpg" class="img-fluid" alt="">
                         <div class="social" *ngFor="let l  of t.content.links">
                             <a [attr.href]="l.twitter"><i class="fa fa-twitter-square"></i></a>
                             <a [attr.href]="l.facebook"><i class="fa fa-facebook-square"></i></a>
@@ -50,7 +51,7 @@
 
             </div>
             <div *ngIf="team.length < 1" class="col-lg-3 col-md-6 d-flex align-items-stretch pt-4">
-                <div class="card">
+                <div class="card member">
                     <div class="card__image loading"></div>
                     <div class="card__title loading"></div>
                     <div class="card__subtitle loading"></div>
@@ -60,7 +61,7 @@
                 </div>
             </div>
             <div *ngIf="team.length < 1" class="col-lg-3 col-md-6 d-flex align-items-stretch pt-4">
-                <div class="card">
+                <div class="card member">
                     <div class="card__image loading"></div>
                     <div class="card__title loading"></div>
                     <div class="card__subtitle loading"></div>
@@ -70,7 +71,7 @@
                 </div>
             </div>
             <div *ngIf="team.length < 1" class="col-lg-3 col-md-6 d-flex align-items-stretch pt-4">
-                <div class="card">
+                <div class="card member">
                     <div class="card__image loading"></div>
                     <div class="card__title loading"></div>
                     <div class="card__subtitle loading"></div>
@@ -80,7 +81,47 @@
                 </div>
             </div>
             <div *ngIf="team.length < 1" class="col-lg-3 col-md-6 d-flex align-items-stretch pt-4">
-                <div class="card">
+                <div class="card member">
+                    <div class="card__image loading"></div>
+                    <div class="card__title loading"></div>
+                    <div class="card__subtitle loading"></div>
+                    <div class="card__description1 loading"></div>
+                    <div class="card__description2 loading"></div>
+                    <div class="card__description loading"></div>
+                </div>
+            </div>
+            <div *ngIf="team.length < 1" class="col-lg-3 col-md-6 d-flex align-items-stretch pt-4">
+                <div class="card member">
+                    <div class="card__image loading"></div>
+                    <div class="card__title loading"></div>
+                    <div class="card__subtitle loading"></div>
+                    <div class="card__description1 loading"></div>
+                    <div class="card__description2 loading"></div>
+                    <div class="card__description loading"></div>
+                </div>
+            </div>
+            <div *ngIf="team.length < 1" class="col-lg-3 col-md-6 d-flex align-items-stretch pt-4">
+                <div class="card member">
+                    <div class="card__image loading"></div>
+                    <div class="card__title loading"></div>
+                    <div class="card__subtitle loading"></div>
+                    <div class="card__description1 loading"></div>
+                    <div class="card__description2 loading"></div>
+                    <div class="card__description loading"></div>
+                </div>
+            </div>
+            <div *ngIf="team.length < 1" class="col-lg-3 col-md-6 d-flex align-items-stretch pt-4">
+                <div class="card member">
+                    <div class="card__image loading"></div>
+                    <div class="card__title loading"></div>
+                    <div class="card__subtitle loading"></div>
+                    <div class="card__description1 loading"></div>
+                    <div class="card__description2 loading"></div>
+                    <div class="card__description loading"></div>
+                </div>
+            </div>
+            <div *ngIf="team.length < 1" class="col-lg-3 col-md-6 d-flex align-items-stretch pt-4">
+                <div class="card member">
                     <div class="card__image loading"></div>
                     <div class="card__title loading"></div>
                     <div class="card__subtitle loading"></div>
@@ -351,8 +392,8 @@
         </div>
 
 
-        <h2 class="text-center pt-4 mt-4 mb-4 pb-4" style="color: #00E676;">Latest Blogs</h2>
-        <div class=" foreground" style="background-color: #2b2b5f;">
+        <h2 *ngIf="blogs.length > 0" class="text-center pt-4 mt-4 mb-4 pb-4" style="color: #00E676;">Latest Blogs</h2>
+        <div *ngIf="blogs.length > 0" class=" foreground" style="background-color: #2b2b5f;">
             <article class="container article-preview pt-4 arc">
                 <div class="row" *ngFor="let a of blogs | slice:0:2;">
                     <div class="col-sm-2">
