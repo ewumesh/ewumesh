@@ -492,3 +492,128 @@ footer a:hover {
     line-height: 75px;
     margin: -40px auto 0 auto;
 }
+
+// Skeleton
+.card {
+    background-color: #fff;
+    height: auto;
+    width: auto;
+    overflow: hidden;
+    margin: 12px;
+    border-radius: 5px;
+    box-shadow: 9px 17px 45px -29px rgba(0, 0, 0, 0.44);
+}
+
+
+/* Card image loading */
+
+.card__image img {
+    width: 100%;
+    height: 100%;
+}
+
+.card__image.loading {
+    height: 250px;
+    width: 400px;
+}
+
+
+/* Card title */
+
+.card__title {
+    padding: 8px;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.card__title.loading {
+    height: 1rem;
+    width: 70%;
+    margin: 1rem 1rem 0.5rem 2rem;
+    border-radius: 3px;
+}
+
+// Card subtitles
+.card__subtitle {
+    padding: 5px 8px 8px 8px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.card__subtitle.loading {
+    height: 5px;
+    width: 50%;
+    margin: 0rem 1rem 1rem 4rem;
+    border-radius: 3px;
+}
+
+
+/* Card description */
+
+.card__description {
+    padding: 8px;
+    font-size: 16px;
+}
+
+.card__description.loading {
+    height: 0.5rem;
+    margin: 0rem 1rem 0.5rem 1rem;
+    border-radius: 3px;
+}
+
+.card__description1 {
+    padding: 8px;
+    font-size: 16px;
+}
+
+.card__description1.loading {
+    height: 0.5rem;
+    width: 60%;
+    margin: 0rem 1rem 0.5rem 1rem;
+    border-radius: 3px;
+}
+
+.card__description2 {
+    padding: 8px;
+    font-size: 16px;
+}
+
+.card__description2.loading {
+    height: 0.5rem;
+    width: 80%;
+    margin: 0rem 1rem 0.5rem 1rem;
+    border-radius: 3px;
+}
+
+
+/* The loading Class */
+
+.loading {
+    position: relative;
+    background-color: #e2e2e2;
+}
+
+
+/* The moving element */
+
+.loading::after {
+    display: block;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: translateX(-100%);
+    background: -webkit-gradient(linear, left top, right top, from(transparent), color-stop(rgba(255, 255, 255, 0.2)), to(transparent));
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    /* Adding animation */
+    animation: loading 0.8s infinite;
+}
+
+
+/* Loading Animation */
+
+@keyframes loading {
+    100% {
+        transform: translateX(100%);
+    }
+}
