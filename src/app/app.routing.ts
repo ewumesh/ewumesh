@@ -20,6 +20,7 @@ const routes: Routes = [
 	{path: 'contact', loadChildren: () => import('./modules/contact/contact-us.module').then(b => b.ContactUSModule)},
 	{path: 'about', loadChildren: () => import('./modules/about/about.module').then(b => b.AboutModule)},
 	{path: 'view', loadChildren: () => import('./modules/blog-view/individual/individual-view.module').then(b => b.IndividualViewModule)},
+	{path: 'live-chat', canActivate: [AlwaysAuthGuard], loadChildren: () => import('./modules/chat/chat.module').then(b => b.ChatModule)},
 	{path: '404', component: PageNotFoundComponent},
 	{path: 'notfound', component: NotFoundComponent},
 	{path: 'access-denied', component: AccessDeniedComponent},

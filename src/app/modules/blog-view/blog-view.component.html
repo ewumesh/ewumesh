@@ -4,7 +4,7 @@
             <h2>Our <span>Blog</span></h2>
             <p>It is a long established fact that a reader will be of a page when established fact looking at its layout.</p>
         </div>
-        <div class="row mt-5">
+        <div class="row mt-5" *ngIf="blogs.length > 0">
             <div class="col-md-4" *ngFor="let b of blogs">
                 <div class="card">
                     <img *ngIf="b.content.headerImg" [src]="b.content.headerImg" alt="">
@@ -23,6 +23,70 @@
                             <!-- {{b.content.content | slice:0:200}}.... -->
                         </p>
                     </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row mt-5" *ngIf="blogs.length < 1">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card__image loading"></div>
+                    <div class="card__title loading"></div>
+                    <div class="card__subtitle loading"></div>
+                    <div class="card__description1 loading"></div>
+                    <div class="card__description2 loading"></div>
+                    <div class="card__description loading"></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card__image loading"></div>
+                    <div class="card__title loading"></div>
+                    <div class="card__subtitle loading"></div>
+                    <div class="card__description1 loading"></div>
+                    <div class="card__description2 loading"></div>
+                    <div class="card__description loading"></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card__image loading"></div>
+                    <div class="card__title loading"></div>
+                    <div class="card__subtitle loading"></div>
+                    <div class="card__description1 loading"></div>
+                    <div class="card__description2 loading"></div>
+                    <div class="card__description loading"></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card__image loading"></div>
+                    <div class="card__title loading"></div>
+                    <div class="card__subtitle loading"></div>
+                    <div class="card__description1 loading"></div>
+                    <div class="card__description2 loading"></div>
+                    <div class="card__description loading"></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card__image loading"></div>
+                    <div class="card__title loading"></div>
+                    <div class="card__subtitle loading"></div>
+                    <div class="card__description1 loading"></div>
+                    <div class="card__description2 loading"></div>
+                    <div class="card__description loading"></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card__image loading"></div>
+                    <div class="card__title loading"></div>
+                    <div class="card__subtitle loading"></div>
+                    <div class="card__description1 loading"></div>
+                    <div class="card__description2 loading"></div>
+                    <div class="card__description loading"></div>
                 </div>
             </div>
         </div>

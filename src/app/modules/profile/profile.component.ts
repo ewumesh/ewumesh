@@ -8,7 +8,9 @@ export class ProfileComponent implements OnInit {
     panelOpenState = false;
     users: any = {};
 
-    constructor() { }
+    constructor() { 
+        // window.location.reload();
+    }
 
     ngOnInit() {
     }

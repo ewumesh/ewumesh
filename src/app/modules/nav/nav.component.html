@@ -15,6 +15,7 @@
                     <mat-menu #menu="matMenu">
                         <button (click)="profile()" mat-menu-item><a >Profile</a></button>
                         <button *ngIf="loggedData.content.role === 'admin'" (click)="team()" mat-menu-item><a>Team</a></button>
+                        <button (click)="chat()" mat-menu-item><a>Live Chat</a></button>
                         <button *ngIf="loggedData.content.role === 'admin'" (click)="blogAdmin()" mat-menu-item><a>Blog</a></button>
                         <button *ngIf="loggedData.content.role === 'admin'" (click)="user()" mat-menu-item><a>Users</a></button>
                         <button mat-menu-item>Setting</button>
