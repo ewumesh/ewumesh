@@ -1,4 +1,4 @@
-import {Component, OnInit } from '@angular/core';
+import {AfterContentInit, Component, DoCheck, OnChanges, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { map } from 'rxjs/operators';
 import { ChatService } from './chat.service';
@@ -7,7 +7,7 @@ import { ChatService } from './chat.service';
     templateUrl: './chat.component.html',
     styleUrls: ['./chat.scss']
 })
-export class ChatComponent implements OnInit {
+export class ChatComponent implements OnInit, DoCheck {
 
     chatForm: FormGroup;
     loggedUser = JSON.parse(localStorage.getItem('logged'));
@@ -15,30 +15,37 @@ export class ChatComponent implements OnInit {
     chats: any[] = [];
 
     individualChat: any[] = [];
+    another: any[] =[];
 
     constructor(
         private fb: FormBuilder,
         private chatService: ChatService
     ) {
 
+
+
         this.initForm();
     }
 
     ngOnInit() {
 
+
+
+     }
+
+     ngDoCheck() {
         this.chatService.getAllMessages().pipe(
             map(changes => changes.map(c => ({ key: c.payload.key, ...c.payload.val() })))
           ).subscribe(_ => {
             this.chats = _;
 
-            let a =_.filter(_ => _.content.name === this.loggedUser.content.email );
+
+            let a =this.chats.filter(_ => _.content.name === this.loggedUser.content.email );
             this.individualChat = a;
-
-            let b = _.filter(_ => _.content.name !== this.loggedUser.content.email);
-            this.chats = b;
-
+    
+            let b = this.chats.filter(_ => _.content.name !== this.loggedUser.content.email);
+            this.another = b;
           })
-
      }
 
     private initForm() {
