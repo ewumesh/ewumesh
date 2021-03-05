@@ -27,7 +27,6 @@
             background-color: #00E676;
             border-radius: 50%;
             animation: bouncer 1s cubic-bezier(0.19, 0.57, 0.3, 0.98) infinite alternate;
-            /* use https://cubic-bezier.com/ to customize the curve */
         }
         
         .bouncer div:nth-child(2) {
@@ -98,22 +97,10 @@
 </head>
 
 <body>
-
-
-    <!-- bouncing balls -->
-    <!-- <div class="bouncer">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-    </div> -->
-
-
-
-
     <app-root>
         <!-- bouncing balls -->
-        <div style="position: absolute;
+        <div style="background-color: #283b32 !important; height: 100vh !important; width: 100% !important;">
+            <div style="position: absolute;
         margin: auto;
         top: 0;
         right: 0;
@@ -122,18 +109,19 @@
         width: 100px;
         height: 100px;
         border-radius: 3px;">
-            <div class="bouncer">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
+                <div class="bouncer">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
 
-            <!-- flipping squares -->
-            <!-- <div class="square">
+                <!-- flipping squares -->
+                <!-- <div class="square">
                 <div></div>
                 <div></div>
             </div> -->
+            </div>
         </div>
     </app-root>
 
@@ -178,8 +166,6 @@
     <script>
         function myFunction() {
             var x = document.getElementById("myDIV");
-            // console.log(x);
-            // console.log(x.classList.contains('open'));
             if (x.classList.contains('open')) {
                 x.classList.remove("open");
             } else {

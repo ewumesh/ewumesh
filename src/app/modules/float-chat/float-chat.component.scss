@@ -44,7 +44,7 @@ body {
 
 .form-box {
     margin: 16px auto;
-    font-size: 16px;
+    font-size: 13px;
     border-radius: 9px;
     position: fixed;
     opacity: 0;
@@ -74,9 +74,9 @@ body {
 .msger {
     display: flex;
     flex-flow: column wrap;
-    // justify-content: space-between;
-    width: 100%;
-    // max-width: 867px;
+    justify-content: space-between;
+    // width: 100%;
+    max-width: 867px;
     // margin: 25px 10px;
     height: 64vh;
     border: var(--border);
