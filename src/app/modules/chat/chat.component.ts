@@ -1,4 +1,4 @@
-import {AfterContentInit, Component, DoCheck, OnChanges, OnInit } from '@angular/core';
+import {Component, DoCheck, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { map } from 'rxjs/operators';
 import { ChatService } from './chat.service';
@@ -7,46 +7,36 @@ import { ChatService } from './chat.service';
     templateUrl: './chat.component.html',
     styleUrls: ['./chat.scss']
 })
-export class ChatComponent implements OnInit, DoCheck {
+export class ChatComponent implements OnInit {
 
     chatForm: FormGroup;
     loggedUser = JSON.parse(localStorage.getItem('logged'));
 
     chats: any[] = [];
-
     individualChat: any[] = [];
-    another: any[] =[];
+    another: any[] = [];
 
     constructor(
         private fb: FormBuilder,
         private chatService: ChatService
     ) {
-
-
-
-        this.initForm();
-    }
-
-    ngOnInit() {
-
-
-
-     }
-
-     ngDoCheck() {
+        
         this.chatService.getAllMessages().pipe(
             map(changes => changes.map(c => ({ key: c.payload.key, ...c.payload.val() })))
-          ).subscribe(_ => {
+        ).subscribe(_ => {
             this.chats = _;
 
-
-            let a =this.chats.filter(_ => _.content.name === this.loggedUser.content.email );
+            let a = this.chats.filter(_ => _.content.name === this.loggedUser.content.email);
             this.individualChat = a;
     
             let b = this.chats.filter(_ => _.content.name !== this.loggedUser.content.email);
             this.another = b;
-          })
-     }
+        })
+    }
+
+    ngOnInit() {
+        this.initForm();
+    }
 
     private initForm() {
         this.chatForm = this.fb.group({
@@ -59,8 +49,9 @@ export class ChatComponent implements OnInit, DoCheck {
     }
 
     saveChanges() {
-        console.log(this.chatForm.value);
-        this.chatService.sendMessage(this.chatForm.value).subscribe(_ => {
+        let formData = this.chatForm.value;
+        formData.name = this.loggedUser.content.email;
+        this.chatService.sendMessage(formData).subscribe(_ => {
             console.log('Message sent!!!');
         });
 
@@ -71,5 +62,5 @@ export class ChatComponent implements OnInit, DoCheck {
             name: null
         })
     }
-    
+
 }
