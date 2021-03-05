@@ -14,6 +14,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
 
 import {AlwaysAuthGuard} from './route.guard'
+import { FloatChatModule } from './modules/float-chat/float-chat.module';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {AlwaysAuthGuard} from './route.guard'
     BrowserAnimationsModule,
     ScrollTopModule,
     SnackbarModule,
-    PageNotFoundModule
+    PageNotFoundModule,
+    FloatChatModule
   ],
   providers: [AuthService, AlwaysAuthGuard],
   bootstrap: [AppComponent]
