@@ -5,7 +5,7 @@ import { Observable, of } from 'rxjs';
 @Injectable({
     providedIn: 'root'
 })
-export class ChatService {
+export class FloatChatService {
 
     chats: AngularFireList<any>;
 

@@ -1,14 +1,14 @@
-import {Component, DoCheck, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { map } from 'rxjs/operators';
-import { ChatService } from './chat.service';
+import { FloatChatService } from './float-chat.service';
 
 @Component({
-    templateUrl: './chat.component.html',
-    styleUrls: ['./chat.scss']
+    selector: 'f-chat',
+    templateUrl: './float-chat.component.html',
+    styleUrls: ['./float-chat.component.scss']
 })
-export class ChatComponent implements OnInit {
-
+export class FloatChatComponent implements OnInit {
     chatForm: FormGroup;
     loggedUser = JSON.parse(localStorage.getItem('logged'));
 
@@ -18,7 +18,7 @@ export class ChatComponent implements OnInit {
 
     constructor(
         private fb: FormBuilder,
-        private chatService: ChatService
+        private chatService: FloatChatService
     ) {
         
         this.chatService.getAllMessages().pipe(
@@ -41,7 +41,7 @@ export class ChatComponent implements OnInit {
     private initForm() {
         this.chatForm = this.fb.group({
             id: 0,
-            message: null,
+            message: [null, Validators.required],
             currentTime: Date.now(),
             name: this.loggedUser.content.email,
 

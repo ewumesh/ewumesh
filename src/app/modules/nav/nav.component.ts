@@ -70,8 +70,5 @@ export class NavComponent implements OnInit {
     user() {
         this.router.navigate(['admin/users'])
     }
-    chat() {
-        this.router.navigate(['live-chat'])
-    }
 
 }

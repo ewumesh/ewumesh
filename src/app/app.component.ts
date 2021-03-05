@@ -12,6 +12,8 @@ import { fadeAnimation } from './route-transition-animations';
 export class AppComponent {
   title = 'ewumesh';
 
+  loggedUser = JSON.parse(localStorage.getItem('logged'));
+
   public getRouterOutletState(outlet) {
     return outlet.isActivated ? outlet.activatedRoute : '';
   }
