@@ -67,6 +67,7 @@ body {
     height: 490px;
     width: 366px;
     opacity: 1000;
+    z-index: 9999999;
 }
 
 //@at-root
@@ -133,7 +134,7 @@ body {
 }
 
 .msg-bubble {
-    max-width: 100%;
+    width: 100%;
     padding: 10px;
     border-radius: 15px;
     background: #ececec;
