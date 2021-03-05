@@ -14,6 +14,11 @@
                     </div>
                 </header>
 
+                <div *ngIf="chats.length < 1" class="text-center" style="width: 100%;">
+                    <h4 style="padding: 170px 0;">No Messages</h4>
+                </div>
+
+                <span *ngIf="chats.length > 0">
                 <main class="msger-chat">
                     <div class="msg left-msg" *ngFor="let m of another">
                         <div class="msg-img" style="background-image: url(https://image.flaticon.com/icons/svg/327/327779.svg)"></div>
@@ -46,6 +51,7 @@
                         </div>
                     </div>
                 </main>
+            </span>
 
                 <form class="msger-inputarea" [formGroup]="chatForm" (ngSubmit)="saveChanges()" autocomplete="off">
                     <input type="text" formControlName="message" class="msger-input" placeholder="Enter your message...">
