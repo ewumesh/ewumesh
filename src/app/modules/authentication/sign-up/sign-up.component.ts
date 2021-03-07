@@ -20,6 +20,8 @@ export class SignUpComponent implements OnInit, AfterViewInit {
 
     users: any[] = [];
 
+    userName: boolean = false;
+
     genericValidator: GenericValidator;
     displayMessage: any = {};
     @ViewChildren(FormControlName, { read: ElementRef })
@@ -41,7 +43,19 @@ export class SignUpComponent implements OnInit, AfterViewInit {
             },
             'confirmPassword': {
                 'required': 'This field is required.'
-            }
+            },
+            'firstName': {
+                'required': 'This field is required.'
+            },
+            'lastName': {
+                'required': 'This field is required.'
+            },
+            'userName': {
+                'required': 'This field is required.'
+            },
+            'address': {
+                'required': 'This field is required.'
+            },
         });
     }
 
@@ -64,6 +78,16 @@ export class SignUpComponent implements OnInit, AfterViewInit {
             id: 0,
             email: [null, [Validators.required, Validators.pattern(Regex.emailRegex)]],
             role: 'user',
+            firstName: [null, Validators.required],
+            middleName: [null],
+            lastName: [null, Validators.required],
+            userName: [null, Validators.required],
+            address: [null, Validators.required],
+            dob: null,
+            phone: null,
+            gender: [null, Validators.required],
+            edu: null,
+            about: null,
             password: [null, Validators.required],
             confirmPassword: [null, Validators.required]
         }, { validator: this.passwordConfirming })
@@ -82,6 +106,19 @@ export class SignUpComponent implements OnInit, AfterViewInit {
     }
 
     ngAfterViewInit() {
+
+        this.signupForm.get('userName').valueChanges.subscribe(_ => {
+            this.authService.getAllUsers().pipe(
+                map(changes => changes.map(c => ({ key: c.payload.key, ...c.payload.val() })))
+            ).subscribe(d => {
+                let value = d.find(data => data.content.userName === _);
+                if(value !== undefined) {
+                    this.userName = true;
+                } else {
+                    this.userName = false;
+                }
+            })
+        })
         this.validation();
     }
 

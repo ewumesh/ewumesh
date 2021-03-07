@@ -93,8 +93,12 @@ export class LoginComponent implements OnInit, AfterViewInit {
                 this.authService.logged = a.key;
                 localStorage.setItem("logged", JSON.stringify(a));
                 
-                this.router.navigate(['home']);
-                window.location.reload();
+                this.router.navigate(['profile']);
+
+                setTimeout(() => {
+                    window.location.reload();
+                }, 400)
+                
             },400)
         } else {
             setTimeout(() => {

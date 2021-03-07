@@ -1,7 +1,7 @@
 <header id="home" class="signup_page pb-4">
     <div class="row m_0">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
             <mat-card class="signup_card">
                 <div class="text-center">
                     <img class="login_img" src="assets/logo/e-logo.png">
@@ -10,25 +10,108 @@
                 <div class="row">
                     <div class="col-md-12 text-center signup_form">
                         <form [formGroup]="signupForm" (ngSubmit)="saveChanges()" autocomplete="off">
-                            <mat-form-field class="max-width">
-                                <mat-label class="input_label">Email</mat-label>
-                                <input formControlName="email" type="email" matInput placeholder="Enter username">
-                                <mat-error class="font-danger" *ngIf="displayMessage?.email">{{displayMessage?.email}}</mat-error>
-                            </mat-form-field>
+                            <div class="row">
+                                <!-- <div class="col-md-4">
+                                    <mat-form-field class="max-width">
+                                        <mat-label class="input_label">Email</mat-label>
+                                        <input formControlName="email" type="email" matInput placeholder="Enter username">
+                                        <mat-error class="font-danger" *ngIf="displayMessage?.email">{{displayMessage?.email}}</mat-error>
+                                    </mat-form-field>
+                                </div> -->
 
-                            <mat-form-field class="max-width pt-3">
-                                <mat-label class="input_label">Password</mat-label>
-                                <input formControlName="password" type="password" matInput placeholder="Enter Your Password">
-                                <mat-error class="font-danger" *ngIf="displayMessage?.password">{{displayMessage?.password}}</mat-error>
-                            </mat-form-field>
+                                <div class="col-md-4">
+                                    <mat-form-field class="max-width">
+                                        <mat-label class="input_label">First Name</mat-label>
+                                        <input formControlName="firstName" type="text" matInput placeholder="Enter your first name">
+                                        <mat-error class="font-danger" *ngIf="displayMessage?.firstName">{{displayMessage?.firstName}}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field class="max-width">
+                                        <mat-label class="input_label">Middle Name</mat-label>
+                                        <input formControlName="middleName" type="text" matInput placeholder="Enter your middle name(optional)">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field class="max-width">
+                                        <mat-label class="input_label">Last Name</mat-label>
+                                        <input formControlName="lastName" type="text" matInput placeholder="Enter your last name">
+                                        <mat-error class="font-danger" *ngIf="displayMessage?.lastName">{{displayMessage?.lastName}}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field class="max-width pt-3">
+                                        <mat-label class="input_label">User Name</mat-label>
+                                        <input formControlName="userName" type="text" matInput placeholder="Create your username">
+                                        <mat-error class="font-danger" *ngIf="displayMessage?.userName">{{displayMessage?.userName}}</mat-error>
+                                    </mat-form-field>
+                                    <p class="wrong_password" *ngIf="userName === true"> Username Not available </p>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field class="max-width pt-3">
+                                        <mat-label class="input_label">Address</mat-label>
+                                        <input formControlName="address" type="text" matInput placeholder="Enter your address">
+                                        <mat-error class="font-danger" *ngIf="displayMessage?.address">{{displayMessage?.address}}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field class="max-width pt-3">
+                                        <mat-label class="input_label">Date of birth</mat-label>
+                                        <input formControlName="dob" type="text" matInput placeholder="Enter your dob">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field class="max-width pt-3">
+                                        <mat-label class="input_label">Phone No.</mat-label>
+                                        <input formControlName="phone" type="text" matInput placeholder="Enter your phone no">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field class="max-width pt-3">
+                                        <mat-label class="input_label">Gender</mat-label>
+                                        <input formControlName="gender" type="text" matInput placeholder="Enter your gender">
+                                        <mat-error class="font-danger" *ngIf="displayMessage?.gender">{{displayMessage?.gender}}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field class="max-width pt-3">
+                                        <mat-label class="input_label">Education</mat-label>
+                                        <input formControlName="edu" type="text" matInput placeholder="Enter your higher education level.">
+                                    </mat-form-field>
+                                </div>
 
-                            <mat-form-field class="max-width pt-3">
-                                <mat-label class="input_label">Confirm Password</mat-label>
-                                <input formControlName="confirmPassword" type="password" matInput placeholder="Re-enter your password">
-                                <mat-error class="font-danger" *ngIf="displayMessage?.confirmPassword">{{displayMessage?.confirmPassword}}</mat-error>
-                            </mat-form-field>
-                            <p class="wrong_password" *ngIf="signupForm.errors?.invalid"> Password doesn't match </p>
 
+                                <div class="col-md-4">
+                                    <mat-form-field class="max-width pt-3">
+                                        <mat-label class="input_label">Email</mat-label>
+                                        <input formControlName="email" type="email" matInput placeholder="Enter username">
+                                        <mat-error class="font-danger" *ngIf="displayMessage?.email">{{displayMessage?.email}}</mat-error>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <mat-form-field class="max-width pt-3">
+                                        <mat-label class="input_label">Password</mat-label>
+                                        <input formControlName="password" type="password" matInput placeholder="Enter Your Password">
+                                        <mat-error class="font-danger" *ngIf="displayMessage?.password">{{displayMessage?.password}}</mat-error>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <mat-form-field class="max-width pt-3">
+                                        <mat-label class="input_label">Confirm Password</mat-label>
+                                        <input formControlName="confirmPassword" type="password" matInput placeholder="Re-enter your password">
+                                        <mat-error class="font-danger" *ngIf="displayMessage?.confirmPassword">{{displayMessage?.confirmPassword}}</mat-error>
+                                    </mat-form-field>
+                                    <p class="wrong_password" *ngIf="signupForm.errors?.invalid"> Password doesn't match </p>
+                                </div>
+                                <div class="col-md-12" style="padding: 0 !important;">
+                                    <mat-form-field class="max-width pt-3">
+                                        <mat-label class="input_label">About</mat-label>
+                                        <textarea formControlName="about" type="text" matInput placeholder="Write about yourself"></textarea>
+                                    </mat-form-field>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-md 12 text-center pt-3">
                                     <button [disabled]="signupForm.invalid || isLoading" class="signup_btn signup_btn-5">
@@ -49,6 +132,6 @@
                 </div>
             </mat-card>
         </div>
-        <div class="col-md-4"></div>
+        <div class="col-md-2"></div>
     </div>
 </header>

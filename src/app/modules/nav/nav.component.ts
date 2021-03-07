@@ -37,7 +37,10 @@ export class NavComponent implements OnInit {
     logout() {
         localStorage.setItem('logged', null);
         this.router.navigate(['/home']);
-        window.location.reload();
+
+        setTimeout(() => {
+            window.location.reload();
+        }, 400)
     }
 
 

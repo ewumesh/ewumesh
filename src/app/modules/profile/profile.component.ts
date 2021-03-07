@@ -5,11 +5,11 @@ import { Component, OnInit, ViewChild } from '@angular/core';
     styleUrls: ['./profile.scss']
 })
 export class ProfileComponent implements OnInit {
+    loggedUserProfile = JSON.parse(localStorage.getItem('logged'));
     panelOpenState = false;
     users: any = {};
 
     constructor() { 
-        // window.location.reload();
     }
 
     ngOnInit() {
