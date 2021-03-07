@@ -7,7 +7,8 @@ import { GenericValidator } from '../../../shred/validations/generic-validators'
 import { Regex } from '../../../shred/validations/regex';
 import { AuthService } from '../auth.service';
 import { SnackbarComponent } from 'src/app/shred/validations/snackbar/snackbar.component';
-import { delay, map } from 'rxjs/operators';
+import { delay, map, startWith } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
     templateUrl: './sign-up.component.html',
@@ -26,6 +27,19 @@ export class SignUpComponent implements OnInit, AfterViewInit {
     displayMessage: any = {};
     @ViewChildren(FormControlName, { read: ElementRef })
     private formInputElements: ElementRef[];
+
+    options: any[] = [
+        {name: 'Software Designer'},
+        {name: 'Software Developer'},
+        {name: 'Frontend Developer'},
+        {name: 'Backend Developer'},
+        {name: 'Database Administrator'},
+        {name: 'Angular Developer'},
+        {name: 'PHP Developer'},
+        {name: '.NET Developer'},
+        {name: 'Python Developer'},
+      ];
+      filteredOptions: Observable<any[]>;
 
     constructor(
         private fb: FormBuilder,
@@ -56,14 +70,34 @@ export class SignUpComponent implements OnInit, AfterViewInit {
             'address': {
                 'required': 'This field is required.'
             },
+            'gender': {
+                'required': 'This field is required.'
+            },
         });
     }
 
     ngOnInit() {
         this.initForm();
 
+        this.filteredOptions = this.signupForm.get('position').valueChanges
+        .pipe(
+          startWith(''),
+          map(value => typeof value === 'string' ? value : value.name),
+          map(name => name ? this._filter(name) : this.options.slice())
+        );
+
         this.getListOfUsers();
     }
+
+    displayFn(user: any): string {
+        return user && user.name ? user.name : '';
+      }
+    
+      private _filter(name: string): any[] {
+        const filterValue = name.toLowerCase();
+    
+        return this.options.filter(option => option.name.toLowerCase().indexOf(filterValue) === 0);
+      }
 
     getListOfUsers() {
         this.authService.getAllUsers().pipe(
@@ -88,6 +122,8 @@ export class SignUpComponent implements OnInit, AfterViewInit {
             gender: [null, Validators.required],
             edu: null,
             about: null,
+            position: null,
+            profilePic: null,
             password: [null, Validators.required],
             confirmPassword: [null, Validators.required]
         }, { validator: this.passwordConfirming })

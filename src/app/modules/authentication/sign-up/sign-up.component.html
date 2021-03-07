@@ -55,9 +55,11 @@
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-4">
+
                                     <mat-form-field class="max-width pt-3">
                                         <mat-label class="input_label">Date of birth</mat-label>
-                                        <input formControlName="dob" type="text" matInput placeholder="Enter your dob">
+                                        <input datePickerFormat="MMMM Do YYYY" (click)="date.open()" (focus)="date.open()" [matDatepicker]="date" matInput formControlName="dob">
+                                        <mat-datepicker #date></mat-datepicker>
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-4">
@@ -69,7 +71,11 @@
                                 <div class="col-md-4">
                                     <mat-form-field class="max-width pt-3">
                                         <mat-label class="input_label">Gender</mat-label>
-                                        <input formControlName="gender" type="text" matInput placeholder="Enter your gender">
+                                        <mat-select formControlName="gender">
+                                            <mat-option value="Male">Male</mat-option>
+                                            <mat-option value="Female">Female</mat-option>
+                                            <mat-option value="Other">Other</mat-option>
+                                        </mat-select>
                                         <mat-error class="font-danger" *ngIf="displayMessage?.gender">{{displayMessage?.gender}}</mat-error>
                                     </mat-form-field>
                                 </div>
@@ -77,6 +83,29 @@
                                     <mat-form-field class="max-width pt-3">
                                         <mat-label class="input_label">Education</mat-label>
                                         <input formControlName="edu" type="text" matInput placeholder="Enter your higher education level.">
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-5">
+                                    <mat-form-field class="max-width pt-3">
+                                        <mat-label class="input_label">Position</mat-label>
+                                        <input type="text" placeholder="Enter your position" matInput formControlName="position" [matAutocomplete]="auto">
+                                        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                                            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                                                {{option.name}}
+                                            </mat-option>
+                                        </mat-autocomplete>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-7">
+                                    <mat-form-field class="max-width pt-3">
+                                        <mat-label class="input_label">Prifile Picture</mat-label>
+                                        <input formControlName="edu" type="text" matInput placeholder="Select your profile picture.">
+                                        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                                            <mat-option>
+                                                https://www.
+                                            </mat-option>
+                                        </mat-autocomplete>
                                     </mat-form-field>
                                 </div>
 
