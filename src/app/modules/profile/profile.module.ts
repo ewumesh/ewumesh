@@ -2,11 +2,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import {MatExpansionModule} from '@angular/material/expansion';
-
-import { ProfileComponent } from './profile.component';
+import {MatTabsModule} from '@angular/material/tabs';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
+
+import { ProfileComponent } from './profile.component';
 
 @NgModule({
     declarations: [ProfileComponent],
@@ -18,7 +20,9 @@ import { MatInputModule } from '@angular/material/input';
         MatExpansionModule,
         MatIconModule,
         MatFormFieldModule,
-        MatInputModule
+        MatInputModule,
+        MatTabsModule,
+        MatCardModule
      ],
     exports: [],
     providers: [],

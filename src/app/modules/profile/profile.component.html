@@ -12,18 +12,93 @@
                                     alt="Circle Image" class="img-raised rounded-circle img-fluid">
                             </div>
                             <div class="name">
-                                <h3 class="title">Christian Louboutin</h3>
-                                <h6>Designer</h6>
-                                <a href="#pablo" class="btn btn-just-icon btn-link btn-dribbble"><i class="fa fa-dribbble"></i></a>
+                                <h3 class="title">{{loggedUserProfile.content.firstName}} {{loggedUserProfile.content.middleNmae}}{{loggedUserProfile.content.lastName}}</h3>
+                                <h6>@{{loggedUserProfile.content.userName}}</h6>
+                                <!-- <a href="#pablo" class="btn btn-just-icon btn-link btn-dribbble"><i class="fa fa-dribbble"></i></a>
                                 <a href="#pablo" class="btn btn-just-icon btn-link btn-twitter"><i class="fa fa-twitter"></i></a>
-                                <a href="#pablo" class="btn btn-just-icon btn-link btn-pinterest"><i class="fa fa-pinterest"></i></a>
+                                <a href="#pablo" class="btn btn-just-icon btn-link btn-pinterest"><i class="fa fa-pinterest"></i></a> -->
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="description text-center">
-                    <p>An artist of considerable range, Chet Faker — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. </p>
+                    <p>{{loggedUserProfile.content.about}} </p>
                 </div>
+                <mat-tab-group animationDuration="0ms">
+                    <mat-tab label="Basic Information">
+                        <!-- <div class="row"> -->
+                        <mat-card style="background-color: rgb(204, 204, 204);">
+                            <div class="row mt-3 mb-3">
+                                <div class="col-md-4"><b>Name:</b></div>
+                                <div class="col-md-8">
+                                    {{loggedUserProfile.content.firstName}} {{loggedUserProfile.content.middleName}}{{loggedUserProfile.content.lastName}}
+
+                                </div>
+                            </div>
+                            <div class="row mt-3 mb-3">
+                                <div class="col-md-4"><b>Position:</b></div>
+                                <div class="col-md-8">
+                                    {{loggedUserProfile.content.position}}
+
+                                </div>
+                            </div>
+
+                            <div class="row mt-3 mb-3">
+                                <div class="col-md-4"><b>Gender:</b></div>
+                                <div class="col-md-8">
+                                    {{loggedUserProfile.content.gender}}
+
+                                </div>
+                            </div>
+
+                            <div class="row mt-3 mb-3">
+                                <div class="col-md-4"><b>Date of Birth:</b></div>
+                                <div class="col-md-8">
+                                    {{loggedUserProfile.content.dob}}
+
+                                </div>
+                            </div>
+
+                            <div class="row mt-3 mb-3">
+                                <div class="col-md-4"><b>About:</b></div>
+                                <div class="col-md-8">
+                                    {{loggedUserProfile.content.about}}
+
+                                </div>
+                            </div>
+                        </mat-card>
+                        <!-- </div> -->
+                    </mat-tab>
+                    <mat-tab label="Contact Information">
+                        <mat-card style="background-color: rgb(204, 204, 204);">
+                            <div class="row mt-3 mb-3">
+                                <div class="col-md-4"><b>Email:</b></div>
+                                <div class="col-md-8">
+                                    {{loggedUserProfile.content.email}}
+
+                                </div>
+                            </div>
+                            <div class="row mt-3 mb-3">
+                                <div class="col-md-4"><b>Phone No.:</b></div>
+                                <div class="col-md-8">
+                                    (+977)-{{loggedUserProfile.content.phone}}
+
+                                </div>
+                            </div>
+                        </mat-card>
+                    </mat-tab>
+                    <mat-tab label="Education Details">
+                        <mat-card style="background-color: rgb(204, 204, 204);">
+                            <div class="row mt-3 mb-3">
+                                <div class="col-md-4"><b>Higher education level:</b></div>
+                                <div class="col-md-8">
+                                    {{loggedUserProfile.content.edu}}
+
+                                </div>
+                            </div>
+                        </mat-card>
+                    </mat-tab>
+                </mat-tab-group>
                 <!-- <div class="row">
                     <div class="col-md-6 ml-auto mr-auto">
                         <div class="profile-tabs">
