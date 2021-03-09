@@ -41,6 +41,8 @@ export class SignUpComponent implements OnInit, AfterViewInit {
       ];
       filteredOptions: Observable<any[]>;
 
+      hide = true;
+
     constructor(
         private fb: FormBuilder,
         private router: Router,

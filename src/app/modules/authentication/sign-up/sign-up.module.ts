@@ -13,6 +13,7 @@ import { SignUpComponent } from './sign-up.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatIconModule } from '@angular/material/icon';
 // import { AuthService } from '../auth.service';
 
 @NgModule({
@@ -33,6 +34,7 @@ import { MatNativeDateModule } from '@angular/material/core';
         MatAutocompleteModule,
         MatNativeDateModule,
         MatDatepickerModule,
+        MatIconModule
         
     ],
     exports: [],

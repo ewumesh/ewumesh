@@ -38,6 +38,12 @@ export class AuthService {
         return of(true);
     }
 
+    editUser(key, body): Observable<any> {
+        this.usersList.update(key, {content: body});
+
+        return of(body);
+    }
+
     logOut() {
         return this.currentUser = false;
     }

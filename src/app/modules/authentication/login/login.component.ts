@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
     loginForm: FormGroup;
 
     users: any[] = [];
+    hide = true;
 
     genericValidator: GenericValidator;
     displayMessage: any = {};
