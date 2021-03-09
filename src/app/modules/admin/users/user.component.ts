@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
 import { delay, map } from 'rxjs/operators';
+import { collectionInOut, flyInOut, listAnimation, rowsAnimation } from 'src/app/shred/animations/animations';
 import { DeleteConfirmComponent } from 'src/app/shred/delete-confirm/delete-confirm.component';
 
 import { SnackbarComponent } from '../../../../../src/app/shred/validations/snackbar/snackbar.component';
@@ -10,7 +11,8 @@ import { AuthService } from '../../authentication/auth.service';
 
 @Component({
     templateUrl: './user.component.html',
-    styleUrls: ['./user.component.scss']
+    styleUrls: ['./user.component.scss'],
+    animations: [rowsAnimation, flyInOut, listAnimation, collectionInOut],
 })
 export class UserComponent implements OnInit, AfterViewInit {
 

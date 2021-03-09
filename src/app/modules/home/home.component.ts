@@ -1,6 +1,6 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
-import { delay, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { BlogService } from '../admin/blog/blog.service';
 import { TeamService } from '../admin/team/team.service';
 
@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
     this.tService.getAllTeams().pipe(
       map(changes => changes.map(c => ({ key: c.payload.key, ...c.payload.val() })))
     ).subscribe(_ => {
-      this.team = _;
+      this.team = _.slice(0,4);
     })
 
     this.getAllBlogs();

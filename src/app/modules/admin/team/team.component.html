@@ -3,7 +3,7 @@
         <h3>List of Team</h3>
         <button class="btn btn-primary float-right m-2" (click)="edit(0)">Add new</button>
 
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" [@collectionInOut]="dataSource.data?.length">
 
             <!-- Checkbox Column -->
             <!-- <ng-container matColumnDef="select">
@@ -58,7 +58,7 @@
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)">
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;">
             </tr>
         </table>
 

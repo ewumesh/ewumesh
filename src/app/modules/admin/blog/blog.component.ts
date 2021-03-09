@@ -9,17 +9,12 @@ import { SnackbarComponent } from 'src/app/shred/validations/snackbar/snackbar.c
 import { BlogFormComponent } from './blog.form.component';
 import { BlogService } from './blog.service';
 import { DeleteConfirmComponent } from 'src/app/shred/delete-confirm/delete-confirm.component';
+import { collectionInOut, flyInOut, listAnimation, rowsAnimation } from 'src/app/shred/animations/animations';
 
 @Component({
   templateUrl: './blog.component.html',
   styleUrls: ['./blog.scss'],
-  animations: [
-    trigger('detailExpand', [
-      state('collapsed', style({ height: '0px', minHeight: '0' })),
-      state('expanded', style({ height: '*' })),
-      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
-    ]),
-  ],
+  animations: [rowsAnimation, flyInOut, listAnimation, collectionInOut],
 })
 
 export class BlogComponent implements OnInit {

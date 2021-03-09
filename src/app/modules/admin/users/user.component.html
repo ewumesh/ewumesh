@@ -3,7 +3,7 @@
         <h3>List of Users</h3>
         <!-- <button class="btn btn-primary float-right m-2" (click)="edit(0)">Add new</button> -->
 
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="width: 100%;">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="width: 100%;" [@collectionInOut]="dataSource.data?.length">
 
             <ng-container matColumnDef="sn" style="width: 100px;">
                 <th mat-header-cell *matHeaderCellDef> No. </th>
