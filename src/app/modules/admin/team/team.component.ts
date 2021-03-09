@@ -1,33 +1,31 @@
-import { animate, state, style, transition, trigger } from '@angular/animations';
 import { SelectionModel } from '@angular/cdk/collections';
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { delay, map } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { delay, map, takeUntil } from 'rxjs/operators';
+
 import { SnackbarComponent } from 'src/app/shred/validations/snackbar/snackbar.component';
 import { SocialLinkComponent } from './social/social-link.component';
 import { TeamFormComponent } from './team.form.component';
 import { TeamService } from './team.service';
 import { DeleteConfirmComponent } from '../../../shred/delete-confirm/delete-confirm.component'
 import { DeleteConfirmModule } from 'src/app/shred/delete-confirm/delete-confirm.module';
+import { collectionInOut, flyInOut, listAnimation, rowsAnimation } from 'src/app/shred/animations/animations';
 
 @Component({
   templateUrl: './team.component.html',
   styleUrls: ['./team.scss'],
-  animations: [
-    trigger('detailExpand', [
-      state('collapsed', style({ height: '0px', minHeight: '0' })),
-      state('expanded', style({ height: '*' })),
-      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
-    ]),
-  ],
+  animations: [rowsAnimation, flyInOut, listAnimation, collectionInOut],
 })
-export class TeamComponent implements OnInit, AfterViewInit {
+export class TeamComponent implements OnInit, AfterViewInit, OnDestroy {
   dataSource: MatTableDataSource<any> = new MatTableDataSource(null);
   displayedColumns: string[] = ['sn', 'name', 'position', 'about', 'action'];
   expandedElement: any | null;
+
+  private readonly toDestroy$ = new Subject<void>();
 
   @ViewChild(MatSort) sort: MatSort;
   selection = new SelectionModel<any>(true, []);
@@ -42,7 +40,7 @@ export class TeamComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.tService.getAllTeams().pipe(
       map(changes => changes.map(c => ({ key: c.payload.key, ...c.payload.val() })))
-    ).subscribe(_ => {
+    ).pipe(takeUntil(this.toDestroy$),delay(100)).subscribe(_ => {
       this.dataSource.data = _;
       this.dataSource._updateChangeSubscription();
     })
@@ -93,5 +91,10 @@ export class TeamComponent implements OnInit, AfterViewInit {
       data: data ? data : {},
       autoFocus: false
     })
+  }
+
+  ngOnDestroy() {
+    this.toDestroy$.next();
+    this.toDestroy$.complete();
   }
 }

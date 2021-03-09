@@ -1,13 +1,13 @@
 <div style="background-color: rgb(124, 112, 112); padding-top: 100px; padding-bottom: 20px;">
     <div class="container">
-        <h3>List of Team</h3>
+        <h3>List of Blogs</h3>
         <div class="row">
             <div class="col-md-12">
                 <button class="btn btn-primary float-right m-3" (click)="edit(0)">Add new</button>
             </div>
         </div>
 
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" [@collectionInOut]="dataSource.data?.length">
 
             <!-- Checkbox Column -->
             <!-- <ng-container matColumnDef="select">
@@ -28,7 +28,7 @@
 
             <ng-container matColumnDef="title">
                 <th mat-header-cell *matHeaderCellDef> Title </th>
-                <td mat-cell *matCellDef="let element"> {{element.content.title}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.content.title |slice:0:50}} </td>
             </ng-container>
 
             <ng-container matColumnDef="date">
@@ -43,12 +43,12 @@
 
             <ng-container matColumnDef="headerImg">
                 <th mat-header-cell *matHeaderCellDef> Header Image </th>
-                <td mat-cell *matCellDef="let element"> {{element.content.headerImg}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.content.headerImg |slice:0:50}} </td>
             </ng-container>
 
             <ng-container matColumnDef="content">
                 <th mat-header-cell *matHeaderCellDef> Content </th>
-                <td mat-cell *matCellDef="let element"> {{element.content.content |slice:0:100}}.. </td>
+                <td mat-cell *matCellDef="let element"> {{element.content.content |slice:0:50}}.. </td>
             </ng-container>
 
             <ng-container matColumnDef="action">

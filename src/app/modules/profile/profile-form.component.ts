@@ -110,6 +110,7 @@ export class ProfileFormComponent implements OnInit, AfterViewInit {
     private patchForm(d) {
         this.profileForm.patchValue({
             id: d.id,
+            sn: d.sn,
             email: d.email,
             role: d.role,
             firstName: d.firstName,
