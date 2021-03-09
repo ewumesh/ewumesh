@@ -98,7 +98,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
                 setTimeout(() => {
                     window.location.reload();
-                }, 400)
+                }, 600)
                 
             },400)
         } else {
@@ -108,7 +108,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
                     duration: 5000,
                     verticalPosition: "top",
                     horizontalPosition: "right"
-                })
+                });
+                this.isLoading = false;
             }, 400)
         }
     }
