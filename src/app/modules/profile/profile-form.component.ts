@@ -2,8 +2,10 @@ import { AfterViewInit, ElementRef, Inject } from '@angular/core';
 import { Component, OnInit, ViewChildren } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControlName, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { GenericValidator } from 'src/app/shred/validations/generic-validators';
 import { Regex } from 'src/app/shred/validations/regex';
+import { SnackbarComponent } from 'src/app/shred/validations/snackbar/snackbar.component';
 import { AuthService } from '../authentication/auth.service';
 
 @Component({
@@ -24,6 +26,7 @@ export class ProfileFormComponent implements OnInit, AfterViewInit {
         private dialog: MatDialog,
         private dialogRef: MatDialogRef<ProfileFormComponent>,
         private authService: AuthService,
+        private snackbarService: MatSnackBar,
         @Inject(MAT_DIALOG_DATA)
         public data: any
     ) {
@@ -92,6 +95,13 @@ export class ProfileFormComponent implements OnInit, AfterViewInit {
     saveChanges() {
         this.isLoading = true;
         this.authService.editUser(this.data.key, this.profileForm.value).subscribe(a => {
+
+            this.snackbarService.openFromComponent(SnackbarComponent, {
+                data: 'Profile Updated Successfully!!',
+                duration: 5000,
+                verticalPosition: "top",
+                horizontalPosition: "right"
+            })
             this.dialogRef.close();
             this.isLoading = false;
         });

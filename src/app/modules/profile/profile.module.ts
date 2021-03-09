@@ -16,6 +16,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ProfileFormComponent } from './profile-form.component';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
     declarations: [
@@ -38,7 +39,8 @@ import { MatNativeDateModule } from '@angular/material/core';
         MatDatepickerModule,
         MatAutocompleteModule,
         MatSelectModule,
-        MatDialogModule
+        MatDialogModule,
+        MatSnackBarModule
      ],
     exports: [],
     providers: [],

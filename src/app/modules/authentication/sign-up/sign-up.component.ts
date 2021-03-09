@@ -115,7 +115,7 @@ export class SignUpComponent implements OnInit, AfterViewInit {
             email: [null, [Validators.required, Validators.pattern(Regex.emailRegex)]],
             role: 'user',
             firstName: [null, Validators.required],
-            middleName: [null],
+            middleName: '',
             lastName: [null, Validators.required],
             userName: [null, Validators.required],
             address: [null, Validators.required],
@@ -125,7 +125,7 @@ export class SignUpComponent implements OnInit, AfterViewInit {
             edu: null,
             about: null,
             position: null,
-            profilePic: null,
+            profilePic: '',
             password: [null, Validators.required],
             confirmPassword: [null, Validators.required]
         }, { validator: this.passwordConfirming })
