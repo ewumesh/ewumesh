@@ -28,7 +28,10 @@
 
                             <mat-form-field class="login_field">
                                 <mat-label class="input_label">Password</mat-label>
-                                <input formControlName="password" type="password" matInput placeholder="Enter Your Password">
+                                <input formControlName="password" type="password" [type]="hide ? 'password' : 'text'" matInput placeholder="Enter Your Password">
+                                <span type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                </span>
                                 <mat-error class="font-danger" *ngIf="displayMessage?.password">{{displayMessage?.password}}</mat-error>
                             </mat-form-field>
 

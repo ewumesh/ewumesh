@@ -1,10 +1,10 @@
 <body class="profile-page" style="background: url(https://image.freepik.com/free-photo/shiny-lights_385-19321244.jpg); background-size: cover; height: 200vh;">
-
     <div class="page-header header-filter" data-parallax="true"></div>
     <div class="main main-raised">
         <div class="profile-content">
-            <div class="container">
+            <div class="container" *ngIf="user.key">
                 <div class="row">
+
                     <div class="col-md-6 ml-auto mr-auto">
                         <div class="profile">
                             <div class="avatar">
@@ -12,33 +12,34 @@
                                     alt="Circle Image" class="img-raised rounded-circle img-fluid">
                             </div>
                             <div class="name">
-                                <h3 class="title">{{loggedUserProfile.content.firstName}} {{loggedUserProfile.content.middleNmae}}{{loggedUserProfile.content.lastName}}</h3>
-                                <h6>@{{loggedUserProfile.content.userName}}</h6>
-                                <!-- <a href="#pablo" class="btn btn-just-icon btn-link btn-dribbble"><i class="fa fa-dribbble"></i></a>
-                                <a href="#pablo" class="btn btn-just-icon btn-link btn-twitter"><i class="fa fa-twitter"></i></a>
-                                <a href="#pablo" class="btn btn-just-icon btn-link btn-pinterest"><i class="fa fa-pinterest"></i></a> -->
+                                <h3 class="title">{{user.content.firstName}} {{user.content.middleName}}{{user.content.lastName}}</h3>
+                                <h6>@{{user.content.userName}}</h6>
                             </div>
                         </div>
+
+                    </div>
+                    <div class="col-md-1 pull-right">
+                        <button style="z-index: 99999999999;" type="button" (click)="edit(user)" class="btn btn-primary pull-right">Edit profile</button>
                     </div>
                 </div>
                 <div class="description text-center">
-                    <p>{{loggedUserProfile.content.about}} </p>
+                    <p>{{user.content.about}} </p>
                 </div>
                 <mat-tab-group animationDuration="0ms">
                     <mat-tab label="Basic Information">
                         <!-- <div class="row"> -->
-                        <mat-card style="background-color: rgb(204, 204, 204);">
+                        <mat-card style="background-color: rgb(241, 238, 238);">
                             <div class="row mt-3 mb-3">
                                 <div class="col-md-4"><b>Name:</b></div>
                                 <div class="col-md-8">
-                                    {{loggedUserProfile.content.firstName}} {{loggedUserProfile.content.middleName}}{{loggedUserProfile.content.lastName}}
+                                    {{user.content.firstName}} {{user.content.middleName}}{{user.content.lastName}}
 
                                 </div>
                             </div>
                             <div class="row mt-3 mb-3">
                                 <div class="col-md-4"><b>Position:</b></div>
                                 <div class="col-md-8">
-                                    {{loggedUserProfile.content.position}}
+                                    {{user.content.position}}
 
                                 </div>
                             </div>
@@ -46,7 +47,7 @@
                             <div class="row mt-3 mb-3">
                                 <div class="col-md-4"><b>Gender:</b></div>
                                 <div class="col-md-8">
-                                    {{loggedUserProfile.content.gender}}
+                                    {{user.content.gender}}
 
                                 </div>
                             </div>
@@ -54,7 +55,7 @@
                             <div class="row mt-3 mb-3">
                                 <div class="col-md-4"><b>Date of Birth:</b></div>
                                 <div class="col-md-8">
-                                    {{loggedUserProfile.content.dob}}
+                                    {{user.content.dob | date:'mediumDate'}}
 
                                 </div>
                             </div>
@@ -62,7 +63,7 @@
                             <div class="row mt-3 mb-3">
                                 <div class="col-md-4"><b>About:</b></div>
                                 <div class="col-md-8">
-                                    {{loggedUserProfile.content.about}}
+                                    {{user.content.about}}
 
                                 </div>
                             </div>
@@ -70,29 +71,27 @@
                         <!-- </div> -->
                     </mat-tab>
                     <mat-tab label="Contact Information">
-                        <mat-card style="background-color: rgb(204, 204, 204);">
+                        <mat-card style="background-color: rgb(241, 238, 238);">
                             <div class="row mt-3 mb-3">
                                 <div class="col-md-4"><b>Email:</b></div>
                                 <div class="col-md-8">
-                                    {{loggedUserProfile.content.email}}
-
+                                    {{user.content.email}}
                                 </div>
                             </div>
                             <div class="row mt-3 mb-3">
                                 <div class="col-md-4"><b>Phone No.:</b></div>
                                 <div class="col-md-8">
-                                    (+977)-{{loggedUserProfile.content.phone}}
-
+                                    {{user.content.phone}}
                                 </div>
                             </div>
                         </mat-card>
                     </mat-tab>
                     <mat-tab label="Education Details">
-                        <mat-card style="background-color: rgb(204, 204, 204);">
+                        <mat-card style="background-color: rgb(241, 238, 238);">
                             <div class="row mt-3 mb-3">
                                 <div class="col-md-4"><b>Higher education level:</b></div>
                                 <div class="col-md-8">
-                                    {{loggedUserProfile.content.edu}}
+                                    {{user.content.edu}}
 
                                 </div>
                             </div>

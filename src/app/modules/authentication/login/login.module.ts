@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatIconModule } from '@angular/material/icon';
 
 import { LoginComponent } from './login.component';
 import { ForgotPasswordComponent } from '../forgot-password/forgot-password.component';
@@ -33,7 +34,8 @@ import { ForgotPasswordComponent } from '../forgot-password/forgot-password.comp
         MatInputModule,
         MatDialogModule,
         MatSnackBarModule,
-        MatCheckboxModule
+        MatCheckboxModule,
+        MatIconModule
     ],
     exports: [],
     // providers: [AuthService],

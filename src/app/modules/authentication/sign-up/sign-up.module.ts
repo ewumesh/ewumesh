@@ -7,8 +7,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 import { SignUpComponent } from './sign-up.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatIconModule } from '@angular/material/icon';
 // import { AuthService } from '../auth.service';
 
 @NgModule({
@@ -24,7 +29,13 @@ import { SignUpComponent } from './sign-up.component';
         MatFormFieldModule,
         MatCardModule,
         MatCheckboxModule,
-        MatSnackBarModule
+        MatSnackBarModule,
+        MatSelectModule,
+        MatAutocompleteModule,
+        MatNativeDateModule,
+        MatDatepickerModule,
+        MatIconModule
+        
     ],
     exports: [],
     // providers: [AuthService],
