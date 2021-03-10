@@ -17,11 +17,14 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ProfileFormComponent } from './profile-form.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ImageCropperModule } from 'src/app/shred/image-cropper/image-cropper.module';
+import { ProfilePictureComponent } from './profile-image/profile-picture.component';
 
 @NgModule({
     declarations: [
         ProfileComponent,
-        ProfileFormComponent
+        ProfileFormComponent,
+        ProfilePictureComponent
     ],
     imports: [ 
         CommonModule,
@@ -40,10 +43,11 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
         MatAutocompleteModule,
         MatSelectModule,
         MatDialogModule,
-        MatSnackBarModule
+        MatSnackBarModule,
+        ImageCropperModule
      ],
-    exports: [],
+    exports: [ImageCropperModule],
     providers: [],
-    entryComponents: [ProfileFormComponent]
+    entryComponents: [ProfileFormComponent, ProfilePictureComponent]
 })
 export class ProfileModule {}
