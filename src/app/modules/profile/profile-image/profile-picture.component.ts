@@ -1,9 +1,11 @@
 import { Component, Inject, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Dimensions } from 'src/app/shred/image-cropper/interfaces/dimensions.interface';
 import { ImageCroppedEvent } from 'src/app/shred/image-cropper/interfaces/image-cropped-event.interface';
 import { ImageTransform } from 'src/app/shred/image-cropper/interfaces/image-transform.interface';
 import { base64ToFile } from 'src/app/shred/image-cropper/utils/blob.utils';
+import { SnackbarComponent } from 'src/app/shred/validations/snackbar/snackbar.component';
 import { AuthService } from '../../authentication/auth.service';
 
 @Component({
@@ -22,6 +24,7 @@ export class ProfilePictureComponent {
     constructor(
         private dialog: MatDialog,
         private dialogRef: MatDialogRef<ProfilePictureComponent>,
+        private snackbarService: MatSnackBar,
         private authService: AuthService,
         @Inject(MAT_DIALOG_DATA)
         public data: any
@@ -34,6 +37,14 @@ export class ProfilePictureComponent {
         formData.profilePic = this.croppedImage;
         // console.log(formData)
         this.authService.editUser(this.data.key, formData).pipe().subscribe(_ => {
+            this.dialogRef.close(); 
+
+            this.snackbarService.openFromComponent(SnackbarComponent, {
+                data: 'Profile Picture updated Successfully!!',
+                duration: 5000,
+                verticalPosition: "top",
+                horizontalPosition: "right"
+            })
             this.dialogRef.close();
         })
     }
