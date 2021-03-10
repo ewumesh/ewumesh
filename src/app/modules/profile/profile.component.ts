@@ -3,6 +3,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { map } from 'rxjs/operators';
 import { AuthService } from '../authentication/auth.service';
 import { ProfileFormComponent } from './profile-form.component';
+import { ProfilePictureComponent } from './profile-image/profile-picture.component';
 
 @Component({
     templateUrl: './profile.component.html',
@@ -40,6 +41,15 @@ export class ProfileComponent implements OnInit, AfterViewInit {
             data: d ? d : {},
             autoFocus: false,
             hasBackdrop: false
+        });
+    }
+
+    uplaodImage() {
+        let d = this.list.find(_ => _.key === this.loggedUserProfile.key);
+        this.dialog.open(ProfilePictureComponent, {
+            width: '100%',
+            height: '100vh',
+            data: d ? d : {},
         });
     }
 

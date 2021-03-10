@@ -61,8 +61,8 @@ a .material-icons {
 }
 
 .profile-page .profile img {
-    max-width: 160px;
-    width: 100%;
+    // max-width: 160px; 
+    // width: 100%;
     margin: 0 auto;
     -webkit-transform: translate3d(0, -50%, 0);
     -moz-transform: translate3d(0, -50%, 0);
@@ -314,4 +314,46 @@ img.rounded {
 
 .hover-cross:hover {
     cursor: pointer;
+}
+
+.tarjeta {
+    width: 300px;
+    height: 300px;
+    border: 1px solid #ccc;
+    margin: 10px auto;
+    box-shadow: 3px 3px 10px #999
+}
+
+.avatar {
+    overflow: hidden;
+    border-radius: 50%;
+    background-color: #eee;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.tarjeta img {
+    height: 100%;
+}
+
+.mascara {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    top: 66%;
+    background-color: rgba(0, 180, 0, 0.5);
+    color: white;
+    font-size: 52px;
+    text-align: center;
+    padding-top: 20px;
+    z-index: 10;
+    opacity: 0.4;
+}
+
+.mascara:hover {
+    // background-color: rgba(12, 51, 12, 0.5);
+    cursor: pointer;
+    opacity: 1;
 }
