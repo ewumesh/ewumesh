@@ -19,12 +19,15 @@
                 </div>
 
                 <main class="msger-chat">
-                    <div class="msg left-msg" *ngFor="let m of another">
-                        <div class="msg-img" style="background-image: url(https://image.flaticon.com/icons/svg/327/327779.svg)"></div>
+
+                    <!-- <div class="msg left-msg" *ngFor="let m of individualChat">
+                        <span *ngIf="m.content.name === 'admin@gmail.com'">
+                            <div class="msg-img" style="background-image: url(https://image.flaticon.com/icons/svg/327/327779.svg)"></div>
+
 
                         <div class="msg-bubble">
                             <div class="msg-info">
-                                <div class="msg-info-name">{{m.content.name}}</div>
+                                <div class="msg-info-name">{{m.content.userName}}</div>
                                 <div class="msg-info-time">{{m.content.currentTime}}</div>
                             </div>
 
@@ -32,14 +35,17 @@
                                 {{m.content.message}}
                             </div>
                         </div>
-                    </div>
+                    </span>
+                    </div> -->
 
                     <div class="msg right-msg" *ngFor="let m of individualChat">
-                        <div class="msg-img" style="background-image: url(https://image.flaticon.com/icons/svg/145/145867.svg)"></div>
+                        <span *ngIf="m.content.name === 'admin@gmail.com'">
+                            <div class="msg-img" style="background-image: url(https://image.flaticon.com/icons/svg/327/327779.svg)"></div>
+
 
                         <div class="msg-bubble">
                             <div class="msg-info">
-                                <div class="msg-info-name">{{m.content.name}}</div>
+                                <div class="msg-info-name">{{m.content.userName}}</div>
                                 <div class="msg-info-time">{{m.content.currentTime}}</div>
                                 <!-- <div class="msg-info-time">{{m.content.currentTime | date:'shortTime'}}</div> -->
                             </div>
@@ -48,6 +54,22 @@
                                 {{m.content.message}}
                             </div>
                         </div>
+                    </span>
+
+                        <span *ngIf="m.content.name === loggedUser.content.email">
+                            <div class="msg-img" style="background-image: url(https://image.flaticon.com/icons/svg/145/145867.svg)"></div>
+
+                        <div class="msg-bubble">
+                            <div class="msg-info">
+                                <div class="msg-info-name">{{m.content.userName}}</div>
+                                <div class="msg-info-time">{{m.content.currentTime}}</div>
+                            </div>
+
+                            <div class="msg-text">
+                                {{m.content.message}}
+                            </div>
+                        </div>
+                    </span>
                     </div>
                 </main>
 
