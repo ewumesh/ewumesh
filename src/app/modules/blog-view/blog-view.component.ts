@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { delay, map } from 'rxjs/operators';
+import { collectionInOut } from 'src/app/shred/animations/animations';
 import { BlogService } from '../admin/blog/blog.service';
 
 @Component({
     templateUrl: './blog-view.component.html',
-    styleUrls: ['./blog-view.component.scss']
+    styleUrls: ['./blog-view.component.scss'],
+    animations: [collectionInOut]
 })
 export class BlogViewComponent implements OnInit {
 

@@ -1,6 +1,6 @@
-<body class="profile-page" style="background: url(https://image.freepik.com/free-photo/shiny-lights_385-19321244.jpg); background-size: cover; height: 200vh;">
+<body class="profile-page" style="background: url(https://image.freepik.com/free-photo/shiny-lights_385-19321244.jpg); background-size: cover; height: 200vh;" [@collectionInOut]>
     <div class="page-header header-filter" data-parallax="true"></div>
-    <div class="main main-raised">
+    <div class="main main-raised" [@rowsAnimation]>
         <div class="profile-content">
             <div class="container" *ngIf="user.key">
                 <div class="row">
@@ -110,6 +110,13 @@
                                     {{user.content.edu}}
 
                                 </div>
+                            </div>
+                        </mat-card>
+                    </mat-tab>
+                    <mat-tab label="Change Password">
+                        <mat-card style="background-color: rgb(241, 238, 238);">
+                            <div class="row mt-3 mb-3">
+                                <h4 class="p-4">Change your password</h4>
                             </div>
                         </mat-card>
                     </mat-tab>

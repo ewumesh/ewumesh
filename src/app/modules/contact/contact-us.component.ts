@@ -2,13 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { delay } from 'rxjs/operators';
+import { collectionInOut } from 'src/app/shred/animations/animations';
 import { SnackbarComponent } from 'src/app/shred/validations/snackbar/snackbar.component';
 
 import { ContactUsService } from './contact-us.service';
 
 @Component({
     templateUrl: './contact-us.component.html',
-    styleUrls: ['./contact-us.scss']
+    styleUrls: ['./contact-us.scss'],
+    animations: [collectionInOut]
 })
 export class ContactUsComponent implements OnInit {
 
