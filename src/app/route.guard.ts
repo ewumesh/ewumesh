@@ -19,9 +19,9 @@ export class AlwaysAuthGuard implements CanActivate {
             //     // return false;
             // }
 
-            // if(data.content.role !== 'admin') {
-            //     return this.router.navigate(['/access-denied']);
-            // }
+            if(data.content.role !== 'admin') {
+                return this.router.navigate(['/access-denied']);
+            }
         }
 
 

@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { map } from 'rxjs/operators';
 import { AuthService } from '../authentication/auth.service';
@@ -30,7 +31,7 @@ export class ProfileComponent implements OnInit, AfterViewInit {
             this.list = _;
             let data = this.list.find(a => a.key === this.loggedUserProfile.key)
             this.user = data;
-        })
+        });
     }
 
     edit(data) {
