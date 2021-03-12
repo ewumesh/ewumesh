@@ -2,13 +2,15 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { map } from 'rxjs/operators';
+import { collectionInOut, listAnimation, rowsAnimation } from 'src/app/shred/animations/animations';
 import { AuthService } from '../authentication/auth.service';
 import { ProfileFormComponent } from './profile-form.component';
 import { ProfilePictureComponent } from './profile-image/profile-picture.component';
 
 @Component({
     templateUrl: './profile.component.html',
-    styleUrls: ['./profile.scss']
+    styleUrls: ['./profile.scss'],
+    animations: [collectionInOut,listAnimation,rowsAnimation]
 })
 export class ProfileComponent implements OnInit, AfterViewInit {
     loggedUserProfile = JSON.parse(localStorage.getItem('logged'));

@@ -1,12 +1,14 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
+import { fadeInOutStagger, listAnimation, collectionInOut} from 'src/app/shred/animations/animations';
 import { BlogService } from '../admin/blog/blog.service';
 import { TeamService } from '../admin/team/team.service';
 
 @Component({
   templateUrl: './home.component.html',
-  styleUrls: ['./home.scss']
+  styleUrls: ['./home.scss'],
+  animations: [fadeInOutStagger, listAnimation, collectionInOut]
 })
 export class HomeComponent implements OnInit {
 
