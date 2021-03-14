@@ -1,14 +1,15 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChildren } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControlName, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { delay, map } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 import { GenericValidator } from '../../../shred/validations/generic-validators';
 import { Regex } from '../../../shred/validations/regex';
 import { AuthService } from '../auth.service';
 import { SnackbarComponent } from 'src/app/shred/validations/snackbar/snackbar.component';
-import { delay, map, startWith } from 'rxjs/operators';
-import { Observable, Subject } from 'rxjs';
+
 
 @Component({
     templateUrl: './sign-up.component.html',
@@ -28,19 +29,6 @@ export class SignUpComponent implements OnInit, AfterViewInit, OnDestroy {
     displayMessage: any = {};
     @ViewChildren(FormControlName, { read: ElementRef })
     private formInputElements: ElementRef[];
-
-    options: any[] = [
-        {name: 'Software Designer'},
-        {name: 'Software Developer'},
-        {name: 'Frontend Developer'},
-        {name: 'Backend Developer'},
-        {name: 'Database Administrator'},
-        {name: 'Angular Developer'},
-        {name: 'PHP Developer'},
-        {name: '.NET Developer'},
-        {name: 'Python Developer'},
-      ];
-      filteredOptions: Observable<any[]>;
 
       hide = true;
 
@@ -82,25 +70,9 @@ export class SignUpComponent implements OnInit, AfterViewInit, OnDestroy {
     ngOnInit() {
         this.initForm();
 
-        this.filteredOptions = this.signupForm.get('position').valueChanges
-        .pipe(
-          startWith(''),
-          map(value => typeof value === 'string' ? value : value.name),
-          map(name => name ? this._filter(name) : this.options.slice())
-        );
-
         this.getListOfUsers();
     }
 
-    displayFn(user: any): string {
-        return user && user.name ? user.name : '';
-      }
-    
-      private _filter(name: string): any[] {
-        const filterValue = name.toLowerCase();
-    
-        return this.options.filter(option => option.name.toLowerCase().indexOf(filterValue) === 0);
-      }
 
     getListOfUsers() {
         this.authService.getAllUsers().pipe(
