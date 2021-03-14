@@ -82,6 +82,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
     saveChanges() {
         this.isLoading = true;
         let a = this.users.find(_ => _.content.email === this.loginForm.value.userName && _.content.password === this.loginForm.value.password);
+        console.log(a);
         if(a !== undefined) {
             setTimeout(() => {
                 this.snackbarService.openFromComponent(SnackbarComponent, {

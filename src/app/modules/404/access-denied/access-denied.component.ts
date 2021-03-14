@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { collectionInOut } from 'src/app/shred/animations/animations';
 
 @Component({
@@ -7,7 +8,11 @@ import { collectionInOut } from 'src/app/shred/animations/animations';
     animations: [collectionInOut]
 })
 export class AccessDeniedComponent implements OnInit {
-    constructor() { }
+    constructor(private router: Router) { }
 
     ngOnInit(): void { }
+
+    goHome() {
+        this.router.navigate(['/home']);
+    }
 }
