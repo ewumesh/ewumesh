@@ -12,7 +12,6 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { LoginComponent } from './login.component';
 import { ForgotPasswordComponent } from '../forgot-password/forgot-password.component';
-// import { AuthService } from '../auth.service';
 
 @NgModule({
     declarations: [

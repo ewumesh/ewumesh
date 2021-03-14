@@ -4,7 +4,8 @@
         <p>Many people limit themselves to what they think they can do.<br> You can go as far as your mind lets you. What you believe, remember, you can achieve.
             <p>
 
-                <a id="header_button" href="Javascript:;" [routerLink]="['/register']">Connect with us</a>
+                <a *ngIf="!loggedUser" id="header_button" href="Javascript:;" [routerLink]="['/register']">Connect with us</a>
+                <a *ngIf="loggedUser" id="header_button" href="home:;">Read more..</a>
     </div>
 </header>
 

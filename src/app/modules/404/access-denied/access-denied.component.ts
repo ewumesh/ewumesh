@@ -8,10 +8,12 @@ import { collectionInOut } from 'src/app/shred/animations/animations';
     animations: [collectionInOut]
 })
 export class AccessDeniedComponent implements OnInit {
+    
     constructor(private router: Router) { }
 
     ngOnInit(): void { }
 
+    // Navigate to hompepage
     goHome() {
         this.router.navigate(['/home']);
     }

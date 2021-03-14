@@ -11,13 +11,6 @@
                     <div class="col-md-12 text-center signup_form">
                         <form [formGroup]="signupForm" (ngSubmit)="saveChanges()" autocomplete="off">
                             <div class="row">
-                                <!-- <div class="col-md-4">
-                                    <mat-form-field class="max-width">
-                                        <mat-label class="input_label">Email</mat-label>
-                                        <input formControlName="email" type="email" matInput placeholder="Enter username">
-                                        <mat-error class="font-danger" *ngIf="displayMessage?.email">{{displayMessage?.email}}</mat-error>
-                                    </mat-form-field>
-                                </div> -->
 
                                 <div class="col-md-4">
                                     <mat-form-field class="max-width">
@@ -55,14 +48,6 @@
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-4">
-
-                                    <mat-form-field class="max-width pt-3">
-                                        <mat-label class="input_label">Date of birth</mat-label>
-                                        <input datePickerFormat="MMMM Do YYYY" (click)="date.open()" (focus)="date.open()" [matDatepicker]="date" matInput formControlName="dob">
-                                        <mat-datepicker #date></mat-datepicker>
-                                    </mat-form-field>
-                                </div>
-                                <div class="col-md-4">
                                     <mat-form-field class="max-width pt-3">
                                         <mat-label class="input_label">Phone No.</mat-label>
                                         <input formControlName="phone" type="text" matInput placeholder="Enter your phone no">
@@ -86,30 +71,12 @@
                                     </mat-form-field>
                                 </div>
 
-                                <div class="col-md-5">
+                                <div class="col-md-4">
                                     <mat-form-field class="max-width pt-3">
                                         <mat-label class="input_label">Position</mat-label>
                                         <input type="text" placeholder="Enter your position" matInput formControlName="position">
-                                        <!-- <input type="text" placeholder="Enter your position" matInput formControlName="position" [matAutocomplete]="auto"> -->
-                                        <!-- <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-                                            <mat-option *ngFor="let option of filteredOptions | async" [value]="option.name">
-                                                {{option.name}}
-                                            </mat-option>
-                                        </mat-autocomplete> -->
                                     </mat-form-field>
                                 </div>
-                                <div class="col-md-7">
-                                    <mat-form-field class="max-width pt-3">
-                                        <mat-label class="input_label">Prifile Picture</mat-label>
-                                        <input formControlName="edu" type="text" matInput placeholder="Select your profile picture.">
-                                        <!-- <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-                                            <mat-option>
-                                                https://www.
-                                            </mat-option>
-                                        </mat-autocomplete> -->
-                                    </mat-form-field>
-                                </div>
-
 
                                 <div class="col-md-4">
                                     <mat-form-field class="max-width pt-3">
@@ -147,7 +114,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md 12 text-center pt-3">
-                                    <button [disabled]="signupForm.invalid || isLoading" class="signup_btn signup_btn-5">
+                                    <button [disabled]="signupForm.invalid || isLoading || existUserName" class="signup_btn signup_btn-5">
                                         <span *ngIf="!isLoading">REGISTER</span>   
                                         <!-- <span *ngIf="isLoading"><i style="font-size: 22px;" class="fa fa-cog fa-spin"></i></span> -->
                                         <div *ngIf="isLoading" class="spinner">

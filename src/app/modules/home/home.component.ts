@@ -14,6 +14,8 @@ import { TeamService } from '../admin/team/team.service';
 export class HomeComponent implements OnInit, OnDestroy {
   private readonly toDestroy$ = new Subject<void>();
 
+  loggedUser = JSON.parse(localStorage.getItem('logged'));
+
   team: any[] = [];
   blogs: any[] = [];
   constructor(

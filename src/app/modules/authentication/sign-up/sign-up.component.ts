@@ -1,14 +1,15 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChildren } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControlName, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { delay, map } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 import { GenericValidator } from '../../../shred/validations/generic-validators';
 import { Regex } from '../../../shred/validations/regex';
 import { AuthService } from '../auth.service';
 import { SnackbarComponent } from 'src/app/shred/validations/snackbar/snackbar.component';
-import { delay, map, startWith } from 'rxjs/operators';
-import { Observable, Subject } from 'rxjs';
+
 
 @Component({
     templateUrl: './sign-up.component.html',
@@ -24,25 +25,14 @@ export class SignUpComponent implements OnInit, AfterViewInit, OnDestroy {
 
     userName: boolean = false;
 
+    existUserName: boolean = false;
+
     genericValidator: GenericValidator;
     displayMessage: any = {};
     @ViewChildren(FormControlName, { read: ElementRef })
     private formInputElements: ElementRef[];
 
-    options: any[] = [
-        {name: 'Software Designer'},
-        {name: 'Software Developer'},
-        {name: 'Frontend Developer'},
-        {name: 'Backend Developer'},
-        {name: 'Database Administrator'},
-        {name: 'Angular Developer'},
-        {name: 'PHP Developer'},
-        {name: '.NET Developer'},
-        {name: 'Python Developer'},
-      ];
-      filteredOptions: Observable<any[]>;
-
-      hide = true;
+    hide = true;
 
     constructor(
         private fb: FormBuilder,
@@ -82,25 +72,9 @@ export class SignUpComponent implements OnInit, AfterViewInit, OnDestroy {
     ngOnInit() {
         this.initForm();
 
-        this.filteredOptions = this.signupForm.get('position').valueChanges
-        .pipe(
-          startWith(''),
-          map(value => typeof value === 'string' ? value : value.name),
-          map(name => name ? this._filter(name) : this.options.slice())
-        );
-
         this.getListOfUsers();
     }
 
-    displayFn(user: any): string {
-        return user && user.name ? user.name : '';
-      }
-    
-      private _filter(name: string): any[] {
-        const filterValue = name.toLowerCase();
-    
-        return this.options.filter(option => option.name.toLowerCase().indexOf(filterValue) === 0);
-      }
 
     getListOfUsers() {
         this.authService.getAllUsers().pipe(
@@ -120,7 +94,7 @@ export class SignUpComponent implements OnInit, AfterViewInit, OnDestroy {
             lastName: [null, Validators.required],
             userName: [null, Validators.required],
             address: [null, Validators.required],
-            dob: '',
+            dob: [null],
             phone: '',
             gender: [null, Validators.required],
             edu: null,
@@ -150,11 +124,14 @@ export class SignUpComponent implements OnInit, AfterViewInit, OnDestroy {
             this.authService.getAllUsers().pipe(
                 map(changes => changes.map(c => ({ key: c.payload.key, ...c.payload.val() })))
             ).subscribe(d => {
+                this.existUserName = false;
                 let value = d.find(data => data.content.userName === _);
-                if(value !== undefined) {
+                if (value !== undefined) {
                     this.userName = true;
+                    this.existUserName = true;
                 } else {
                     this.userName = false;
+                    this.existUserName = false;
                 }
             })
         })
@@ -164,6 +141,7 @@ export class SignUpComponent implements OnInit, AfterViewInit, OnDestroy {
     saveChanges() {
         this.isLoading = true;
         let a = this.users.find(_ => _.content.email === this.signupForm.value.email);
+        console.log(this.signupForm.value);
         if (a === undefined) {
             this.authService.addUser(this.signupForm.value).pipe(delay(400)).subscribe(_ => {
                 this.router.navigate(['/home']);

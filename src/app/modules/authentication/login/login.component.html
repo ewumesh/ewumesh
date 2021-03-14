@@ -4,16 +4,6 @@
         <div class="col-md-4">
             <mat-card class="login_card">
                 <div class="text-center">
-                    <!-- <div class="row">
-                        <div class="col-md-3"></div>
-                        <div class="col-md-6">
-                            <div class="img">
-
-                            </div>
-                        </div>
-                        <div class="col-md-3"></div>
-                    </div> -->
-
                     <img class="login_img" src="assets/logo/e-logo.png">
                 </div>
 
@@ -21,8 +11,8 @@
                     <div class="col-md-12 text-center login_form">
                         <form [formGroup]="loginForm" (ngSubmit)="saveChanges()" class="example-form" autocomplete="off">
                             <mat-form-field class="login_field">
-                                <mat-label class="input_label">Username</mat-label>
-                                <input formControlName="userName" type="email" matInput placeholder="Enter username">
+                                <mat-label class="input_label">Email</mat-label>
+                                <input formControlName="userName" type="email" matInput placeholder="Enter your email">
                                 <mat-error class="font-danger" *ngIf="displayMessage?.userName">{{displayMessage?.userName}}</mat-error>
                             </mat-form-field>
 
