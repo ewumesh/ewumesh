@@ -25,12 +25,14 @@ export class SignUpComponent implements OnInit, AfterViewInit, OnDestroy {
 
     userName: boolean = false;
 
+    existUserName: boolean = false;
+
     genericValidator: GenericValidator;
     displayMessage: any = {};
     @ViewChildren(FormControlName, { read: ElementRef })
     private formInputElements: ElementRef[];
 
-      hide = true;
+    hide = true;
 
     constructor(
         private fb: FormBuilder,
@@ -92,7 +94,7 @@ export class SignUpComponent implements OnInit, AfterViewInit, OnDestroy {
             lastName: [null, Validators.required],
             userName: [null, Validators.required],
             address: [null, Validators.required],
-            dob: '',
+            dob: [null],
             phone: '',
             gender: [null, Validators.required],
             edu: null,
@@ -122,11 +124,14 @@ export class SignUpComponent implements OnInit, AfterViewInit, OnDestroy {
             this.authService.getAllUsers().pipe(
                 map(changes => changes.map(c => ({ key: c.payload.key, ...c.payload.val() })))
             ).subscribe(d => {
+                this.existUserName = false;
                 let value = d.find(data => data.content.userName === _);
-                if(value !== undefined) {
+                if (value !== undefined) {
                     this.userName = true;
+                    this.existUserName = true;
                 } else {
                     this.userName = false;
+                    this.existUserName = false;
                 }
             })
         })
@@ -136,6 +141,7 @@ export class SignUpComponent implements OnInit, AfterViewInit, OnDestroy {
     saveChanges() {
         this.isLoading = true;
         let a = this.users.find(_ => _.content.email === this.signupForm.value.email);
+        console.log(this.signupForm.value);
         if (a === undefined) {
             this.authService.addUser(this.signupForm.value).pipe(delay(400)).subscribe(_ => {
                 this.router.navigate(['/home']);

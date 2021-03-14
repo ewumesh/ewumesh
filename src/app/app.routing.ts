@@ -9,7 +9,7 @@ const routes: Routes = [
     {path: 'login', loadChildren: () => import('./modules/authentication/login/login.module'). then(r => r.LoginModule)},
     {path: 'register', loadChildren: () => import('./modules/authentication/sign-up/sign-up.module'). then(r => r.SignUpModule)},
     {path: 'home', loadChildren: () => import('./modules/home/home.module'). then(r => r.HomeModule)},
-    {path: 'profile', canActivate: [AlwaysAuthGuard], loadChildren: () => import('./modules/profile/profile.module'). then(r => r.ProfileModule)},
+    {path: 'profile',loadChildren: () => import('./modules/profile/profile.module'). then(r => r.ProfileModule)},
     {path: 'admin', children: [
 		{path: 'team', canActivate: [AlwaysAuthGuard], loadChildren: () => import('./modules/admin/team/team.module').then(r => r.TeamModule)},
 		{path: 'users', canActivate: [AlwaysAuthGuard], loadChildren: () => import('./modules/admin/users/user.module').then(r => r.UserModule)},

@@ -9,12 +9,14 @@ import { collectionInOut } from 'src/app/shred/animations/animations';
 })
 export class AboutComponent implements OnInit, OnDestroy {
 
+    // defininig readonly property
     private readonly toDestroy$ = new Subject<void>();
     
     constructor() { }
 
     ngOnInit() { }
 
+    // Destroy the component
     ngOnDestroy() {
         this.toDestroy$.next();
         this.toDestroy$.complete();

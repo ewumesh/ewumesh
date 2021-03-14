@@ -11,8 +11,8 @@
                     <div class="col-md-12 text-center login_form">
                         <form [formGroup]="loginForm" (ngSubmit)="saveChanges()" class="example-form" autocomplete="off">
                             <mat-form-field class="login_field">
-                                <mat-label class="input_label">Username</mat-label>
-                                <input formControlName="userName" type="email" matInput placeholder="Enter username">
+                                <mat-label class="input_label">Email</mat-label>
+                                <input formControlName="userName" type="email" matInput placeholder="Enter your email">
                                 <mat-error class="font-danger" *ngIf="displayMessage?.userName">{{displayMessage?.userName}}</mat-error>
                             </mat-form-field>
 
