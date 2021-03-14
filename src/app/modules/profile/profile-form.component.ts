@@ -67,6 +67,7 @@ export class ProfileFormComponent implements OnInit, AfterViewInit {
     private initForm() {
         this.profileForm = this.fb.group({
             id: 0,
+            sn: 0,
             email: [null, [Validators.required, Validators.pattern(Regex.emailRegex)]],
             role: 'user',
             firstName: [null, Validators.required],

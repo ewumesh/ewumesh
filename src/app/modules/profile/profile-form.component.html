@@ -1,5 +1,5 @@
 <h1 mat-dialog-title>Edit Your Profile
-    <p class="pull-right hover-cross" (click)="cancel()"><i class="fa fa-times"></i></p>
+    <button style="padding: 1px 5px 1px 5px !important" class="pull-right btn btn-danger btn-xs" (click)="cancel()"><i class="fa fa-times" ></i></button>
 </h1>
 <!-- <h1 class="pull-right" mat-dialog-title (click)="cancel()"></h1> -->
 
@@ -24,20 +24,19 @@
                 <input formControlName="lastName" type="text" matInput placeholder="Enter your last name">
             </mat-form-field>
         </div>
-        <div class="col-md-4">
+        <!-- <div class="col-md-4">
             <mat-form-field class="pt-3" style="width: 100%;">
                 <mat-label class="input_label">User Name</mat-label>
                 <input formControlName="userName" type="text" matInput placeholder="Create your username">
             </mat-form-field>
-            <!-- <p class="wrong_password" *ngIf="userName === true"> Username Not available </p> -->
-        </div>
-        <div class="col-md-4">
+        </div> -->
+        <div class="col-md-6">
             <mat-form-field class="pt-3" style="width: 100%;">
                 <mat-label class="input_label">Address</mat-label>
                 <input formControlName="address" type="text" matInput placeholder="Enter your address">
             </mat-form-field>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-6">
 
             <mat-form-field class="pt-3" style="width: 100%;">
                 <mat-label class="input_label">Date of birth</mat-label>
