@@ -1,6 +1,7 @@
-import { Component, Inject, ViewChild } from '@angular/core';
+import { Component, Inject, OnDestroy, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Subject } from 'rxjs';
 import { Dimensions } from 'src/app/shred/image-cropper/interfaces/dimensions.interface';
 import { ImageCroppedEvent } from 'src/app/shred/image-cropper/interfaces/image-cropped-event.interface';
 import { ImageTransform } from 'src/app/shred/image-cropper/interfaces/image-transform.interface';
@@ -11,7 +12,9 @@ import { AuthService } from '../../authentication/auth.service';
 @Component({
     templateUrl: './profile-picture.component.html'
 })
-export class ProfilePictureComponent {
+export class ProfilePictureComponent implements OnDestroy {
+    private readonly toDestroy$ = new Subject<void>();
+    
     imageChangedEvent: any = '';
     croppedImage: any = '';
     canvasRotation = 0;
@@ -138,5 +141,10 @@ export class ProfilePictureComponent {
             ...this.transform,
             rotate: this.rotation
         };
+    }
+
+    ngOnDestroy() {
+        this.toDestroy$.next();
+        this.toDestroy$.complete();
     }
 }

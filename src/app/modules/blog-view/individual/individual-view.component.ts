@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { BlogService } from '../../admin/blog/blog.service';
 
@@ -8,6 +9,8 @@ import { BlogService } from '../../admin/blog/blog.service';
     styleUrls: ['./individual-view.scss']
 })
 export class IndividualViewComponent implements OnInit, OnDestroy {
+
+    private readonly toDestroy$ = new Subject<void>();
 
     public subs$;
 
@@ -47,5 +50,8 @@ export class IndividualViewComponent implements OnInit, OnDestroy {
         if (this.subs$) {
             this.subs$.unsubscribe();
         }
+
+        this.toDestroy$.next();
+        this.toDestroy$.complete();
     }
 }

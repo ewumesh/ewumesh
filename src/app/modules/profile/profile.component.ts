@@ -1,6 +1,7 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { collectionInOut, listAnimation, rowsAnimation } from 'src/app/shred/animations/animations';
 import { AuthService } from '../authentication/auth.service';
@@ -12,7 +13,10 @@ import { ProfilePictureComponent } from './profile-image/profile-picture.compone
     styleUrls: ['./profile.scss'],
     animations: [collectionInOut,listAnimation,rowsAnimation]
 })
-export class ProfileComponent implements OnInit, AfterViewInit {
+export class ProfileComponent implements OnInit, AfterViewInit, OnDestroy {
+
+    private readonly toDestroy$ = new Subject<void>();
+    
     loggedUserProfile = JSON.parse(localStorage.getItem('logged'));
     list: any[] = [];
     user: any = {};
@@ -58,5 +62,10 @@ export class ProfileComponent implements OnInit, AfterViewInit {
 
     ngAfterViewInit() {
 
+    }
+
+    ngOnDestroy() {
+        this.toDestroy$.next();
+        this.toDestroy$.complete();
     }
 }
