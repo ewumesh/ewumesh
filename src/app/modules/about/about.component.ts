@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
 import { collectionInOut } from 'src/app/shred/animations/animations';
 
 @Component({
@@ -6,8 +7,16 @@ import { collectionInOut } from 'src/app/shred/animations/animations';
     styleUrls: ['./about.scss'],
     animations: [collectionInOut]
 })
-export class AboutComponent implements OnInit {
+export class AboutComponent implements OnInit, OnDestroy {
+
+    private readonly toDestroy$ = new Subject<void>();
+    
     constructor() { }
 
     ngOnInit() { }
+
+    ngOnDestroy() {
+        this.toDestroy$.next();
+        this.toDestroy$.complete();
+    }
 }

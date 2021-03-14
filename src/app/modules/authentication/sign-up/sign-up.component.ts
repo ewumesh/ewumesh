@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChildren } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControlName, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
@@ -8,13 +8,14 @@ import { Regex } from '../../../shred/validations/regex';
 import { AuthService } from '../auth.service';
 import { SnackbarComponent } from 'src/app/shred/validations/snackbar/snackbar.component';
 import { delay, map, startWith } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 @Component({
     templateUrl: './sign-up.component.html',
     styleUrls: ['./sign-up.scss']
 })
-export class SignUpComponent implements OnInit, AfterViewInit {
+export class SignUpComponent implements OnInit, AfterViewInit, OnDestroy {
+    private readonly toDestroy$ = new Subject<void>();
 
     signupForm: FormGroup;
     isLoading: boolean = false;
@@ -190,5 +191,10 @@ export class SignUpComponent implements OnInit, AfterViewInit {
         setTimeout(() => {
             this.router.navigate(['/login']);
         }, 400)
+    }
+
+    ngOnDestroy() {
+        this.toDestroy$.next();
+        this.toDestroy$.complete();
     }
 }

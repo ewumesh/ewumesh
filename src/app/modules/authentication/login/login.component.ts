@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChildren } from '@angular/core';
 import { FormBuilder, FormControlName, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
@@ -10,12 +10,14 @@ import { ForgotPasswordComponent } from '../forgot-password/forgot-password.comp
 import { AuthService } from '../auth.service';
 import { SnackbarComponent } from '../../../../../src/app/shred/validations/snackbar/snackbar.component';
 import { AngularFireDatabase } from '@angular/fire/database';
+import { Subject } from 'rxjs';
 
 @Component({
     templateUrl: './login.component.html',
     styleUrls: ['./login.scss']
 })
-export class LoginComponent implements OnInit, AfterViewInit {
+export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
+    private readonly toDestroy$ = new Subject<void>();
     horizontalPosition: MatSnackBarHorizontalPosition = 'right';
     verticalPosition: MatSnackBarVerticalPosition = 'top';
 
@@ -127,6 +129,11 @@ export class LoginComponent implements OnInit, AfterViewInit {
         setTimeout(() => {
             this.router.navigate(['/register']);
         }, 400)
+    }
+
+    ngOnDestroy() {
+        this.toDestroy$.next();
+        this.toDestroy$.complete();
     }
 
 }

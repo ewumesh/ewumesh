@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { FloatChatService } from './float-chat.service';
 
@@ -8,7 +9,9 @@ import { FloatChatService } from './float-chat.service';
     templateUrl: './float-chat.component.html',
     styleUrls: ['./float-chat.component.scss']
 })
-export class FloatChatComponent implements OnInit {
+export class FloatChatComponent implements OnInit, OnDestroy {
+    private readonly toDestroy$ = new Subject<void>();
+
     chatForm: FormGroup;
     loggedUser = JSON.parse(localStorage.getItem('logged'));
 
@@ -63,6 +66,11 @@ export class FloatChatComponent implements OnInit {
             name: null,
             userName: null,
         })
+    }
+
+    ngOnDestroy() {
+        this.toDestroy$.next();
+        this.toDestroy$.complete();
     }
 
 }
