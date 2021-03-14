@@ -89,23 +89,24 @@
                                 <div class="col-md-5">
                                     <mat-form-field class="max-width pt-3">
                                         <mat-label class="input_label">Position</mat-label>
-                                        <input type="text" placeholder="Enter your position" matInput formControlName="position" [matAutocomplete]="auto">
-                                        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-                                            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                                        <input type="text" placeholder="Enter your position" matInput formControlName="position">
+                                        <!-- <input type="text" placeholder="Enter your position" matInput formControlName="position" [matAutocomplete]="auto"> -->
+                                        <!-- <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                                            <mat-option *ngFor="let option of filteredOptions | async" [value]="option.name">
                                                 {{option.name}}
                                             </mat-option>
-                                        </mat-autocomplete>
+                                        </mat-autocomplete> -->
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-7">
                                     <mat-form-field class="max-width pt-3">
                                         <mat-label class="input_label">Prifile Picture</mat-label>
                                         <input formControlName="edu" type="text" matInput placeholder="Select your profile picture.">
-                                        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                                        <!-- <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
                                             <mat-option>
                                                 https://www.
                                             </mat-option>
-                                        </mat-autocomplete>
+                                        </mat-autocomplete> -->
                                     </mat-form-field>
                                 </div>
 
