@@ -96,7 +96,38 @@
                     <mat-tab label="Change Password">
                         <mat-card style="background-color: rgb(241, 238, 238);">
                             <div class="row mt-3 mb-3">
-                                <h4 class="p-4">Change your password</h4>
+                                <div class="col-md-12">
+                                    <form [formGroup]="changePasswordForm" (ngSubmit)="upDatePassword()" autocomplete="off">
+                                        <h4 class="p-4">Change your password</h4>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <mat-form-field style="width: 100%;">
+                                                    <mat-label class="input_label">Current Password</mat-label>
+                                                    <input formControlName="currentPassword" type="text" matInput placeholder="Enter your current password">
+                                                </mat-form-field>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <mat-form-field style="width: 100%;">
+                                                    <mat-label class="input_label">New Password</mat-label>
+                                                    <input formControlName="newPassword" type="text" matInput placeholder="Enter your new password">
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <mat-form-field style="width: 100%;">
+                                                    <mat-label class="input_label">Re-enter Password</mat-label>
+                                                    <input formControlName="cPassword" type="text" matInput placeholder="Re-Enter your new password">
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-12 text-center">
+                                                <button class="btn btn-primary" type="submit">Update Password</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </mat-card>
                     </mat-tab>

@@ -21,14 +21,38 @@ export class ProfileComponent implements OnInit, AfterViewInit, OnDestroy {
     list: any[] = [];
     user: any = {};
 
+    changePasswordForm: FormGroup;
+
     constructor(
         private dialog: MatDialog,
+        private fb: FormBuilder,
         private authService: AuthService
     ) {
         this.getListOfUsers();
     }
 
-    ngOnInit() { }
+    ngOnInit() {
+        this.initForm();
+     }
+
+    private initForm() {
+        this.changePasswordForm = this.fb.group({
+            currentPassword: null,
+            newPassword: null,
+            cPassword: null,
+        });
+    }
+
+    upDatePassword() {
+        // let formData = this.changePasswordForm.value;
+        // this.authService.getAllUsers().pipe(
+        //     map(changes => changes.map(c => ({ key: c.payload.key, ...c.payload.val() })))
+        // ).subscribe(_ => {
+        //     let data = this.list.find(a => a.key === this.loggedUserProfile.key);
+
+        //     this.authService.editUser(data.key, data)
+        // });
+    }
 
     getListOfUsers() {
         this.authService.getAllUsers().pipe(
