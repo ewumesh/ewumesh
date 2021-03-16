@@ -15,6 +15,7 @@ import { environment } from '../environments/environment';
 
 import {AlwaysAuthGuard} from './route.guard'
 import { FloatChatModule } from './modules/float-chat/float-chat.module';
+import { ExtendedMatDialog } from './shred/dialog-animator';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { FloatChatModule } from './modules/float-chat/float-chat.module';
     PageNotFoundModule,
     FloatChatModule
   ],
-  providers: [AuthService, AlwaysAuthGuard],
+  providers: [AuthService, AlwaysAuthGuard, ExtendedMatDialog],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
