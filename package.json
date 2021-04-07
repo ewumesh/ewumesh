@@ -23,6 +23,7 @@
         "@angular/platform-browser-dynamic": "~11.0.5",
         "@angular/router": "~11.0.5",
         "@kolkov/angular-editor": "^1.1.4",
+        "aos": "^2.3.4",
         "bootstrap": "^4.6.0",
         "firebase": "^7.0 || ^8.0",
         "font-awesome": "^4.7.0",
