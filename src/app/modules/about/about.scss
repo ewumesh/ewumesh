@@ -172,7 +172,7 @@ aside {
     display: block;
     height: 250px;
     width: 250px;
-    background: url(https://scontent.cdninstagram.com/hphotos-xaf1/t51.2885-15/e15/11378374_853832531356458_933714392_n.jpg);
+    // background: url(https://scontent.cdninstagram.com/hphotos-xaf1/t51.2885-15/e15/11378374_853832531356458_933714392_n.jpg);
     background-size: cover;
     overflow: hidden;
     box-shadow: 0 0 20px 7px rgb(43, 42, 42);
@@ -475,7 +475,8 @@ aside:hover ul li:nth-child(3) {
     padding: 150px 20px 20px 20px;
     box-sizing: border-box;
     font-family: Roboto, Helvetica, Arial, serif;
-    background: url(https://image.freepik.com/free-photo/shiny-lights_385-19321244.jpg);
+    background-color: #52b788;
+    // background: url(https://image.freepik.com/free-photo/shiny-lights_385-19321244.jpg);
     // background-color: #6f42c1;
     background-size: cover;
 }
