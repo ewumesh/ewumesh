@@ -1,27 +1,63 @@
-# Ewumesh
+# Hi there 👋
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.5.
+I'm Umesh, a Fullstack Developer based in Kathmandu, Nepal. I'm passionate about AI and Data Science.
 
-## Development server
+## 🚀 About Me
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- 🎓 I'm currently working on Software development company and studying as well.
+- 🌱 I’m currently learning Data Science.
+- 👯 I’m looking to collaborate on AI or Data Related Projects.
+- 💬 Ask me about Project what I have done
+- 📫 How to reach me: [Ewumesh](https://www.umesthapa.com.np)
+- 😄 Pronouns: 😄
+- ⚡ Fun fact: 😄
 
-## Code scaffolding
+## 🛠️ Skills
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Languages**: Javascript, PHP, Python, HTML, SCSS
+- **Frameworks/Libraries**: Reactjs, Vuejs, Nextjs, Angular
+- **Tools**: VS Code, Jetbrains,Pycharm
 
-## Build
+## 📈 GitHub Stats
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+![GitHub stats](https://github-readme-stats.vercel.app/api?username=ewumesh&show_icons=true&theme=radical)
 
-## Running unit tests
+## 📫 How to Reach Me
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- [LinkedIn](https://www.linkedin.com/in/ewumesh)
+- [Twitter](https://twitter.com/rewumesh)
+- [Email](mailto:umeshthapa539@gmail.com)
 
-## Running end-to-end tests
+## 😄 Pronouns
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+- He/Him/His
 
-## Further help
+## ⚡ Fun Fact
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- I can type over 100 words per minute.
+
+## 📝 Blog
+
+I write about Tech on my blog at [URL](https://umesthapa.com.np/blog/661b8b7c0f722923b09b4fde).
+
+## 💻 Projects
+
+Here are some of the projects I've worked on:
+
+- [Project 1](https://github.com/ewumesh/me) - 
+- [Project 2](https://github.com/ewumesh/me-server) - 
+
+## 📚 Education
+
+- BCA in Computer Application from Tribhuwan University, 2023.
+
+## 👯 Community
+
+- [GitHub Community](https://github.com/ewumesh)
+- [LinkedIn Group](https://www.linkedin.com/groups/ewumesh)
+
+## 📫 Contact
+
+Feel free to reach out to me at umeshthapa539@gmail.com or connect with me on [LinkedIn](https://www.linkedin.com/in/ewumesh).
+
+Thank you for visiting my profile!
