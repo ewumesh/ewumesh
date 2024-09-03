@@ -2,6 +2,8 @@
 
 I'm Umesh, a Fullstack Developer based in Kathmandu, Nepal. I'm passionate about AI and Data Science.
 
+[![](https://visitcount.itsvg.in/api?id=ewumesh&label=Profile%20Views&pretty=false)](https://visitcount.itsvg.in)
+
 ## 🚀 About Me
 
 - 🎓 I'm currently working on Software development company and studying as well.
