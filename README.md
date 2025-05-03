@@ -1,6 +1,6 @@
 # Hi there 👋
 
-I'm Umesh, a Fullstack Developer based in Kathmandu, Nepal. I'm passionate about AI and Data Science.
+Full Stack developer with strong skills in building scalable APIs and creating responsive UIs. Skilled in database design, cloud deployment, and implementing DevOps practices to improve CI/CD processes. Experienced in developing HIPAA-compliant applications, ensuring data security and privacy in healthcare environments. Focused on delivering high-performance, secure, and clean code while contributing to quality solutions in an agile environment.
 
 [![](https://visitcount.itsvg.in/api?id=ewumesh&label=Profile%20Views&pretty=false)](https://visitcount.itsvg.in)
 
