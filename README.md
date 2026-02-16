@@ -17,7 +17,7 @@ Full Stack developer with strong skills in building scalable APIs and creating r
 ## 🛠️ Skills
 
 - **Languages**: Javascript, PHP, Python, HTML, SCSS
-- **Frameworks/Libraries**: Reactjs, Vuejs, Nextjs, Angular
+- **Frameworks/Libraries**: Reactjs, Vuejs, Nextjs, Angular,Reactnative
 - **Tools**: VS Code, Jetbrains,Pycharm
 
 ## 📈 GitHub Stats
