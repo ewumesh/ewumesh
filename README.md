@@ -1,65 +1,112 @@
-# Hi there 👋
+# 👋 Hi, I'm Umesh Thapa
 
-Full Stack developer with strong skills in building scalable APIs and creating responsive UIs. Skilled in database design, cloud deployment, and implementing DevOps practices to improve CI/CD processes. Experienced in developing HIPAA-compliant applications, ensuring data security and privacy in healthcare environments. Focused on delivering high-performance, secure, and clean code while contributing to quality solutions in an agile environment.
+🚀 Full Stack Developer | React • Next.js • Angular • NestJS • Node.js  
+☁️ Cloud & DevOps | AWS • Azure  
+🔐 Secure & Scalable Systems | HIPAA-Compliant Applications  
 
-[![](https://visitcount.itsvg.in/api?id=ewumesh&label=Profile%20Views&pretty=false)](https://visitcount.itsvg.in)
+---
 
 ## 🚀 About Me
 
-- 🎓 I'm currently working on Software development company and studying as well.
-- 🌱 I’m currently learning Data Science.
-- 👯 I’m looking to collaborate on AI or Data Related Projects.
-- 💬 Ask me about Project what I have done
-- 📫 How to reach me: [Ewumesh](https://www.umesthapa.com.np)
-- 😄 Pronouns: 😄
-- ⚡ Fun fact: 😄
+Results-driven Full Stack Developer with strong experience in building scalable backend systems and high-performance frontend applications.
 
-## 🛠️ Skills
+I specialize in:
 
-- **Languages**: Javascript, PHP, Python, HTML, SCSS
-- **Frameworks/Libraries**: Reactjs, Vuejs, Nextjs, Angular,Reactnative
-- **Tools**: VS Code, Jetbrains,Pycharm
+- Designing scalable REST & GraphQL APIs
+- Building responsive and production-ready UIs
+- Cloud deployment & DevOps automation
+- Developing HIPAA-compliant healthcare systems
+- Implementing CI/CD pipelines
+- Writing secure, maintainable, and clean code
+
+Currently exploring **Data Science & AI-driven applications**.
+
+---
+
+## 🛠️ Tech Stack
+
+### 👨‍💻 Frontend
+- React.js  
+- Next.js  
+- Angular  
+- React Native  
+- HTML5  
+- SCSS  
+- TypeScript  
+- JavaScript  
+
+### ⚙️ Backend
+- Node.js  
+- Express.js  
+- NestJS  
+- Python  
+
+### 🗄️ Databases
+- PostgreSQL  
+- SQL  
+- MongoDB  
+
+### ☁️ Cloud & DevOps
+- AWS (EC2, S3, RDS, IAM)  
+- Microsoft Azure  
+- Docker  
+- GitHub Actions (CI/CD)  
+- Nginx  
+- PM2  
+
+### 🧰 Tools
+- VS Code  
+- WebStorm  
+- PyCharm  
+- Postman  
+- Git & GitHub  
+
+---
+
+## 💼 What I Focus On
+
+- 🏗 Scalable & maintainable architecture  
+- 🔐 Secure production-grade systems  
+- ⚡ Performance optimization (Frontend & Backend)  
+- 📦 Modular & monorepo-based structure  
+- 🚀 Agile & fast delivery  
+
+---
 
 ## 📈 GitHub Stats
 
-![GitHub stats](https://github-readme-stats.vercel.app/api?username=ewumesh&show_icons=true&theme=radical)
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=ewumesh&show_icons=true&theme=radical)
 
-## 📫 How to Reach Me
+![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=ewumesh&layout=compact&theme=radical)
 
-- [LinkedIn](https://www.linkedin.com/in/ewumesh)
-- [Twitter](https://twitter.com/rewumesh)
-- [Email](mailto:umeshthapa539@gmail.com)
+---
 
-## 😄 Pronouns
+## 💻 Featured Projects(personal)
 
-- He/Him/His
+### 🏥 Healthcare Management System
+HIPAA-compliant platform with secure authentication, encrypted storage, and audit logs.  
+**Tech:** Next.js, NestJS, PostgreSQL, AWS  
 
-## ⚡ Fun Fact
+### 🏨 Hourly Hotel Booking App
+Map-based booking system with chat, call, and deep linking features.  
+**Tech:** React Native, Node.js, PostgresSQL  
 
-- I can type over 100 words per minute.
+### 🛠 Admin Dashboard Platform
+Role-based system with dynamic form validation and optimized APIs.  
+**Tech:** Angular, Express.js, PostgreSQL  
 
-## 📝 Blog
-
-I write about Tech on my blog at [URL](https://umesthapa.com.np/blog/661b8b7c0f722923b09b4fde).
-
-## 💻 Projects
-
-Here are some of the projects I've worked on:
-
-- [Project 1](https://github.com/ewumesh/me) - 
-- [Project 2](https://github.com/ewumesh/me-server) - 
+---
 
 ## 📚 Education
 
-- BCA in Computer Application from Tribhuwan University, 2023.
+🎓 BCA in Computer Application  
+Tribhuvan University (2023)
 
-## 👯 Community
+---
 
-- [GitHub Community](https://github.com/ewumesh)
-- [LinkedIn Group](https://www.linkedin.com/groups/ewumesh)
+## 📫 Connect With Me
 
-## 📫 Contact
+- 💼 LinkedIn: https://www.linkedin.com/in/ewumesh  
+- 📧 Email: umeshthapa539@gmail.com  
 
-Feel free to reach out to me at umeshthapa539@gmail.com or connect with me on [LinkedIn](https://www.linkedin.com/in/ewumesh).
-
-Thank you for visiting my profile!
+---
